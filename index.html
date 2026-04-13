@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flaglette</title>
   <meta name="description" content="Guess a new flag every day!">
   <meta name="theme-color" content="#0f0f0f">
-  <!-- Open Graph: 카카오톡·문자(SMS) 링크 미리보기 등 -->
+  <!-- 카톡 캐시 초기화는 https://developers.kakao.com/tool/clear/og 에서 할 수 있음 -->
+  <!-- Open Graph · Twitter Card (링크 공유 미리보기). 정적 HTML: <head>에 직접 기술 -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Flaglette">
+  <meta property="og:url" content="https://flaglette.vercel.app/">
   <meta property="og:title" content="Flaglette">
   <meta property="og:description" content="Guess a new flag every day!">
-  <meta property="og:image" content="images/og-card.png">
+  <meta property="og:image" content="https://flaglette.vercel.app/image/og-card.png">
+  <meta property="og:image:secure_url" content="https://flaglette.vercel.app/image/og-card.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,9 +23,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Flaglette">
   <meta name="twitter:description" content="Guess a new flag every day!">
-  <meta name="twitter:image" content="images/og-card.png">
-  <!-- 배포 후 카카오 등 미리보기: og:image 절대 URL 권장 → npm run prepare:og (site-origin.txt) -->
-  <title>Flaglette</title>
+  <meta name="twitter:image" content="https://flaglette.vercel.app/image/og-card.png">
+  <link rel="canonical" href="https://flaglette.vercel.app/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="style.css">
   <!-- file:// 로 열 때는 브라우저가 countries.json fetch를 막으므로, 아래 내용을 countries.json 과 맞춰 두세요. -->

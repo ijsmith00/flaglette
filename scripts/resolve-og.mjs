@@ -44,7 +44,7 @@ function escAttr(s) {
 const origin = readOrigin();
 let lines = fs.readFileSync(indexPath, "utf8").split(/\r?\n/);
 
-const imageRel = "images/og-card.png";
+const imageRel = "image/og-card.png";
 const imageUrl = origin ? `${origin}/${imageRel}` : imageRel;
 const pageUrl = origin ? `${origin}/` : "";
 

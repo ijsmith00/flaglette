@@ -1,10 +1,4 @@
-# 배포된 사이트의 공개 HTTPS 주소 (끝에 / 없음).
-# 예: https://flaglette.example.com
-# GitHub Pages 예: https://username.github.io/repository-name
-#
-# 이 파일의 첫 URL 줄(주석 아님)을 채운 뒤: npm run prepare:og
-# Netlify/Vercel 빌드 시: 빌드 커맨드에 npm run prepare:og 포함 시
-#   URL / VERCEL_URL 환경 변수로 자동 설정될 수 있음 (scripts/resolve-og.mjs 참고)
-#
-# 비어 있으면 og:image는 상대 경로입니다. 카카오톡 미리보기에는 절대 URL이 필요합니다.
+# 공개 HTTPS origin (끝에 / 없음). npm run prepare:og 시 메타와 동기화할 때 사용.
+# 카톡 캐시 초기화: https://developers.kakao.com/tool/clear/og
 
+https://flaglette.vercel.app
