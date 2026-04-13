@@ -224,11 +224,6 @@ function openShareDialog() {
   dlg.showModal();
 }
 
-function closeShareDialog() {
-  const dlg = document.getElementById("share-dialog");
-  if (dlg && typeof dlg.close === "function") dlg.close();
-}
-
 async function shareToFacebookFromDialog() {
   const pageUrl = getSharePageUrl() || window.location.href.split("#")[0];
   const text = generateShareText();
@@ -267,6 +262,11 @@ async function shareToTikTokFromDialog() {
     "Copied! Paste in TikTok caption or another app from the share sheet."
   );
   window.open("https://www.tiktok.com/", "_blank", "noopener,noreferrer");
+}
+
+function closeShareDialog() {
+  const dlg = document.getElementById("share-dialog");
+  if (dlg && typeof dlg.close === "function") dlg.close();
 }
 
 async function shareViaSystemSheet() {
