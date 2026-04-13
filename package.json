@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "start": "serve -l 3000 .",
-    "dev": "serve -l 3000 ."
+    "dev": "serve -l 3000 .",
+    "prepare:og": "node scripts/resolve-og.mjs"
   },
   "devDependencies": {
     "serve": "^14.2.4"
