@@ -1551,6 +1551,26 @@
     </div>
     </div>
   </main>
+  <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-dialog-title">
+    <div class="share-dialog__inner">
+      <div class="share-dialog__top">
+        <h2 id="share-dialog-title" class="share-dialog__title">Share result</h2>
+        <button type="button" class="share-dialog__close" id="share-dialog-close" aria-label="Close">×</button>
+      </div>
+      <p class="share-dialog__sub">Pick a destination. X opens a post draft. Instagram and TikTok copy your result first — paste in the app.</p>
+      <div class="share-dialog__grid">
+        <button type="button" class="share-dialog__btn share-dialog__btn--system" id="share-opt-system" hidden>
+          Share via device…
+        </button>
+        <button type="button" class="share-dialog__btn share-dialog__btn--facebook" id="share-opt-facebook">Facebook</button>
+        <button type="button" class="share-dialog__btn share-dialog__btn--x" id="share-opt-x" aria-label="X (Twitter)">X</button>
+        <button type="button" class="share-dialog__btn share-dialog__btn--instagram" id="share-opt-instagram">Instagram</button>
+        <button type="button" class="share-dialog__btn share-dialog__btn--tiktok" id="share-opt-tiktok">TikTok</button>
+      </div>
+      <p class="share-dialog__status" id="share-dialog-status" role="status" aria-live="polite"></p>
+      <button type="button" class="share-dialog__copy" id="share-copy-only">Copy text only</button>
+    </div>
+  </dialog>
   <script src="script.js"></script>
 </body>
 </html>

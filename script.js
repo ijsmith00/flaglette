@@ -142,6 +142,17 @@ function loadShareSnapshotFromStorage() {
   }
 }
 
+/** https 페이지에서만 — 소셜 공유·페이스북 u 파라미터용 */
+function getSharePageUrl() {
+  try {
+    const { protocol, host, pathname } = window.location;
+    if (protocol !== "http:" && protocol !== "https:") return "";
+    return `${protocol}//${host}${pathname}`;
+  } catch (_) {
+    return "";
+  }
+}
+
 /** 클립보드에 넣을 Wordle 스타일 결과 문자열 */
 function generateShareText() {
   const snap = shareSnapshot || loadShareSnapshotFromStorage();
@@ -150,7 +161,9 @@ function generateShareText() {
   const resultEmoji = snap.won ? "✅" : "❌";
   const stripeLine = snap.stripeEmojiLine || "";
   const hintSuffix = snap.hintsUsed > 0 ? " 💡" : "";
-  return `Flaglette #${n} 🌍 ${resultEmoji}\n\n${stripeLine}\n\nGuesses ${snap.attempts}/3${hintSuffix}\n\n`;
+  const body = `Flaglette #${n} 🌍 ${resultEmoji}\n\n${stripeLine}\n\nGuesses ${snap.attempts}/3${hintSuffix}`;
+  const pageUrl = getSharePageUrl();
+  return pageUrl ? `${body}\n\n${pageUrl}\n` : `${body}\n\n`;
 }
 
 /** 게임 종료 직후 인라인 공유 버튼 표시 */
@@ -165,23 +178,180 @@ function hideShareRow() {
   if (row) row.hidden = true;
 }
 
-/** 공유 텍스트를 클립보드에 복사하고 버튼 라벨 잠깐 변경 */
-async function copyShareText(button) {
+/** 공유 문자열을 클립보드에 복사 (성공 여부) */
+async function copyShareTextToClipboard() {
+  const text = generateShareText();
+  if (!text.trim()) return false;
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (e) {
+    console.warn("클립보드 복사 실패", e);
+    return false;
+  }
+}
+
+let shareDialogStatusClearId = null;
+
+function setShareDialogStatus(message) {
+  const el = document.getElementById("share-dialog-status");
+  if (el) el.textContent = message || "";
+  if (shareDialogStatusClearId != null) {
+    clearTimeout(shareDialogStatusClearId);
+    shareDialogStatusClearId = null;
+  }
+  if (message) {
+    shareDialogStatusClearId = setTimeout(() => {
+      if (el) el.textContent = "";
+      shareDialogStatusClearId = null;
+    }, 4500);
+  }
+}
+
+/** 공유 다이얼로그: 인스타·틱톡 등은 웹에서 직접 글 게시 API가 없어 복사 후 앱/사이트로 연결 */
+function openShareDialog() {
   const text = generateShareText();
   if (!text.trim()) return;
+  const dlg = document.getElementById("share-dialog");
+  if (!dlg || typeof dlg.showModal !== "function") {
+    const btn =
+      document.getElementById("share-btn-game") ||
+      document.getElementById("share-btn-daily");
+    if (btn) copyShareText(btn);
+    return;
+  }
+  setShareDialogStatus("");
+  dlg.showModal();
+}
+
+function closeShareDialog() {
+  const dlg = document.getElementById("share-dialog");
+  if (dlg && typeof dlg.close === "function") dlg.close();
+}
+
+async function shareToFacebookFromDialog() {
+  const pageUrl = getSharePageUrl() || window.location.href.split("#")[0];
+  const text = generateShareText();
+  const u = encodeURIComponent(pageUrl);
+  const quote = encodeURIComponent(text.replace(/\s+/g, " ").trim().slice(0, 500));
+  const url = `https://www.facebook.com/sharer/sharer.php?u=${u}&quote=${quote}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+  setShareDialogStatus("Facebook share window opened.");
+}
+
+function shareToXFromDialog() {
+  const text = generateShareText();
+  if (!text.trim()) return;
+  const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  window.open(intentUrl, "_blank", "noopener,noreferrer");
+  setShareDialogStatus("Post draft opened in a new tab.");
+}
+
+async function shareToInstagramFromDialog() {
+  if (!(await copyShareTextToClipboard())) {
+    setShareDialogStatus("Could not copy — check clipboard permission.");
+    return;
+  }
+  setShareDialogStatus(
+    "Copied! Paste in Instagram (caption, Story text, or DM)."
+  );
+  window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
+}
+
+async function shareToTikTokFromDialog() {
+  if (!(await copyShareTextToClipboard())) {
+    setShareDialogStatus("Could not copy — check clipboard permission.");
+    return;
+  }
+  setShareDialogStatus(
+    "Copied! Paste in TikTok caption or another app from the share sheet."
+  );
+  window.open("https://www.tiktok.com/", "_blank", "noopener,noreferrer");
+}
+
+async function shareViaSystemSheet() {
+  const text = generateShareText();
+  const url = getSharePageUrl() || undefined;
+  if (!navigator.share) {
+    setShareDialogStatus("Sharing is not available in this browser.");
+    return;
+  }
+  try {
+    const payload = url ? { title: "Flaglette", text, url } : { title: "Flaglette", text };
+    await navigator.share(payload);
+    closeShareDialog();
+  } catch (e) {
+    if (e && e.name === "AbortError") return;
+    console.warn("Web Share failed", e);
+    setShareDialogStatus("Could not open the system share sheet.");
+  }
+}
+
+let shareDialogInited = false;
+
+function initShareDialog() {
+  if (shareDialogInited) return;
+  const dlg = document.getElementById("share-dialog");
+  if (!dlg) return;
+  shareDialogInited = true;
+
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) dlg.close();
+  });
+
+  const webBtn = document.getElementById("share-opt-system");
+  if (webBtn) {
+    webBtn.hidden = !(
+      typeof navigator !== "undefined" && typeof navigator.share === "function"
+    );
+    webBtn.addEventListener("click", () => shareViaSystemSheet());
+  }
+
+  document.getElementById("share-opt-facebook")?.addEventListener("click", () => {
+    shareToFacebookFromDialog();
+  });
+  document.getElementById("share-opt-x")?.addEventListener("click", () => {
+    shareToXFromDialog();
+  });
+  document.getElementById("share-opt-instagram")?.addEventListener("click", () => {
+    shareToInstagramFromDialog();
+  });
+  document.getElementById("share-opt-tiktok")?.addEventListener("click", () => {
+    shareToTikTokFromDialog();
+  });
+
+  const copyOnly = document.getElementById("share-copy-only");
+  if (copyOnly) {
+    copyOnly.addEventListener("click", async () => {
+      if (!(await copyShareTextToClipboard())) {
+        setShareDialogStatus("Could not copy.");
+        return;
+      }
+      const def = copyOnly.dataset.labelDefault || copyOnly.textContent.trim();
+      if (!copyOnly.dataset.labelDefault) copyOnly.dataset.labelDefault = def;
+      copyOnly.textContent = "Copied! ✓";
+      setShareDialogStatus("Result copied to clipboard.");
+      setTimeout(() => {
+        copyOnly.textContent = copyOnly.dataset.labelDefault;
+      }, 1500);
+    });
+  }
+
+  const closeBtn = document.getElementById("share-dialog-close");
+  if (closeBtn) closeBtn.addEventListener("click", () => dlg.close());
+}
+
+/** 공유 텍스트를 클립보드에 복사하고 버튼 라벨 잠깐 변경 */
+async function copyShareText(button) {
+  if (!(await copyShareTextToClipboard())) return;
   if (!button.dataset.labelDefault) {
     button.dataset.labelDefault = button.textContent.trim();
   }
   const label = button.dataset.labelDefault;
-  try {
-    await navigator.clipboard.writeText(text);
-    button.textContent = "Copied! ✓";
-    setTimeout(() => {
-      button.textContent = label;
-    }, 1500);
-  } catch (e) {
-    console.warn("클립보드 복사 실패", e);
-  }
+  button.textContent = "Copied! ✓";
+  setTimeout(() => {
+    button.textContent = label;
+  }, 1500);
 }
 
 /** 로컬 자정까지 남은 시간(ms) */
@@ -287,7 +457,7 @@ function showDailyCompleteScreen(saved) {
   if (att) att.textContent = String(saved.attempts ?? "—");
   const shareDaily = document.getElementById("share-btn-daily");
   if (shareDaily) {
-    shareDaily.onclick = () => copyShareText(shareDaily);
+    shareDaily.onclick = () => openShareDialog();
   }
   startMidnightCountdown();
 }
@@ -671,6 +841,7 @@ async function loadCountries() {
 
 /** 페이지 로드: 오늘 완료 여부 → 데일리 국가 선정·이벤트 연결 */
 async function init() {
+  initShareDialog();
   /* await 전에 동기 확인 — 완료 시 게임 영역이 잠깐이라도 보이지 않게 */
   try {
     const raw = localStorage.getItem(getDailyStorageKey());
@@ -708,7 +879,7 @@ async function init() {
   const guessInput = document.getElementById("guess-input");
   const shareGameBtn = document.getElementById("share-btn-game");
   if (shareGameBtn) {
-    shareGameBtn.onclick = () => copyShareText(shareGameBtn);
+    shareGameBtn.onclick = () => openShareDialog();
   }
   document.getElementById("submit-btn").addEventListener("click", handleGuess);
   guessInput.addEventListener("keydown", (e) => {

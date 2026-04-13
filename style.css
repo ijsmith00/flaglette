@@ -356,3 +356,156 @@ main {
     transform: scale(1);
   }
 }
+
+.share-dialog {
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  max-width: calc(100vw - 32px);
+  width: 22rem;
+  max-height: min(90vh, 36rem);
+  overflow: auto;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+.share-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.share-dialog__inner {
+  padding: 1.1rem 1.15rem 1.15rem;
+  text-align: left;
+}
+
+.share-dialog__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.share-dialog__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.share-dialog__close {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.share-dialog__close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.share-dialog__sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0 0 0.85rem;
+}
+
+.share-dialog__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.share-dialog__btn {
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: rgba(255, 255, 255, 0.95);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.share-dialog__btn:hover {
+  background: var(--surface-hover);
+  border-color: rgba(251, 191, 36, 0.35);
+  transform: translateY(-1px);
+}
+
+.share-dialog__btn:active {
+  transform: translateY(0);
+}
+
+.share-dialog__btn--system {
+  border-color: rgba(251, 191, 36, 0.45);
+}
+
+.share-dialog__btn--facebook {
+  border-color: rgba(24, 119, 242, 0.45);
+}
+
+.share-dialog__btn--x {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.share-dialog__btn--instagram {
+  border-color: rgba(228, 64, 95, 0.45);
+}
+
+.share-dialog__btn--tiktok {
+  border-color: rgba(105, 201, 208, 0.45);
+}
+
+.share-dialog__status {
+  min-height: 1.25rem;
+  margin: 0.65rem 0 0;
+  font-size: 0.8rem;
+  color: var(--success);
+  line-height: 1.35;
+}
+
+.share-dialog__copy {
+  margin-top: 0.75rem;
+  width: 100%;
+  min-height: 40px;
+  padding: 0.4rem 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.share-dialog__copy:hover {
+  color: var(--accent);
+}
