@@ -5,7 +5,9 @@
     "start": "serve -l 3000 .",
     "dev": "serve -l 3000 .",
     "prepare:og": "node scripts/resolve-og.mjs",
-    "sync:countries": "node scripts/sync-countries-embedded.mjs"
+    "sync:countries": "node scripts/sync-countries-embedded.mjs",
+    "generate:countries": "node scripts/generate-countries-database.mjs",
+    "migrate:stripes": "node scripts/migrate-remove-stripes-retier.mjs"
   },
   "devDependencies": {
     "serve": "^14.2.4"

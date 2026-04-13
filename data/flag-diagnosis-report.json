@@ -1,0 +1,1789 @@
+{
+  "sourceFile": "countries.json",
+  "totalCountries": 200,
+  "categoryDefinitions": {
+    "TRUE_STRIPES": "TRUE_STRIPES — tribands / multibands where stripes are the main design (no large central emblem dominating).",
+    "SOLID_WITH_EMBLEM": "SOLID_WITH_EMBLEM — mostly solid field or simple bands plus large emblem, text, weapon, or disc.",
+    "CROSS": "CROSS — Nordic cross, Greek cross, Union Jack–style, Swiss cross, or cross as defining geometry.",
+    "TRIANGLE_OR_DIAGONAL": "TRIANGLE_OR_DIAGONAL — hoist triangle, wedge, diagonal bicolor/tricolor, or strong diagonal division.",
+    "COMPLEX": "COMPLEX — coats of arms, maps, detailed seals, many symbols, or strong non-stripe geometry.",
+    "QUARTERED_OR_OTHER": "QUARTERED_OR_OTHER — quarters, saltires without Nordic arms, Panamanian quarters, odd partitions."
+  },
+  "categoryCounts": {
+    "TRUE_STRIPES": 45,
+    "SOLID_WITH_EMBLEM": 24,
+    "CROSS": 14,
+    "TRIANGLE_OR_DIAGONAL": 13,
+    "COMPLEX": 100,
+    "QUARTERED_OR_OTHER": 4
+  },
+  "buckets": {
+    "TRUE_STRIPES": [
+      {
+        "code": "AM",
+        "name_en": "Armenia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AT",
+        "name_en": "Austria",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AZ",
+        "name_en": "Azerbaijan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BE",
+        "name_en": "Belgium",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "BF",
+        "name_en": "Burkina Faso",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BG",
+        "name_en": "Bulgaria",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BW",
+        "name_en": "Botswana",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CI",
+        "name_en": "Côte d'Ivoire",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "CM",
+        "name_en": "Cameroon",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CO",
+        "name_en": "Colombia",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "DE",
+        "name_en": "Germany",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "EE",
+        "name_en": "Estonia",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "FR",
+        "name_en": "France",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "GA",
+        "name_en": "Gabon",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GH",
+        "name_en": "Ghana",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GM",
+        "name_en": "Gambia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GN",
+        "name_en": "Guinea",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "HU",
+        "name_en": "Hungary",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ID",
+        "name_en": "Indonesia",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 2
+      },
+      {
+        "code": "IE",
+        "name_en": "Ireland",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "IT",
+        "name_en": "Italy",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "KW",
+        "name_en": "Kuwait",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LT",
+        "name_en": "Lithuania",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LU",
+        "name_en": "Luxembourg",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LV",
+        "name_en": "Latvia",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LY",
+        "name_en": "Libya",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MC",
+        "name_en": "Monaco",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 2
+      },
+      {
+        "code": "ML",
+        "name_en": "Mali",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "MU",
+        "name_en": "Mauritius",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 4
+      },
+      {
+        "code": "NE",
+        "name_en": "Niger",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NG",
+        "name_en": "Nigeria",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "NL",
+        "name_en": "Netherlands",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PE",
+        "name_en": "Peru",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PL",
+        "name_en": "Poland",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 2
+      },
+      {
+        "code": "PS",
+        "name_en": "Palestine",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "RO",
+        "name_en": "Romania",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "RU",
+        "name_en": "Russia",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SD",
+        "name_en": "Sudan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SL",
+        "name_en": "Sierra Leone",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SN",
+        "name_en": "Senegal",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SY",
+        "name_en": "Syria",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TD",
+        "name_en": "Chad",
+        "stripesTodo": false,
+        "direction": "vertical",
+        "bandCount": 3
+      },
+      {
+        "code": "TH",
+        "name_en": "Thailand",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 5
+      },
+      {
+        "code": "UA",
+        "name_en": "Ukraine",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 2
+      },
+      {
+        "code": "YE",
+        "name_en": "Yemen",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      }
+    ],
+    "SOLID_WITH_EMBLEM": [
+      {
+        "code": "AL",
+        "name_en": "Albania",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BD",
+        "name_en": "Bangladesh",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CA",
+        "name_en": "Canada",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CL",
+        "name_en": "Chile",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CN",
+        "name_en": "China",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CY",
+        "name_en": "Cyprus",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "DZ",
+        "name_en": "Algeria",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "FM",
+        "name_en": "Micronesia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GL",
+        "name_en": "Greenland",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "JP",
+        "name_en": "Japan",
+        "stripesTodo": false,
+        "direction": "center",
+        "bandCount": 2
+      },
+      {
+        "code": "KG",
+        "name_en": "Kyrgyzstan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KZ",
+        "name_en": "Kazakhstan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LA",
+        "name_en": "Laos",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MA",
+        "name_en": "Morocco",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MR",
+        "name_en": "Mauritania",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MV",
+        "name_en": "Maldives",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PK",
+        "name_en": "Pakistan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PW",
+        "name_en": "Palau",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SA",
+        "name_en": "Saudi Arabia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SO",
+        "name_en": "Somalia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TN",
+        "name_en": "Tunisia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TR",
+        "name_en": "Turkey",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "VN",
+        "name_en": "Vietnam",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ZM",
+        "name_en": "Zambia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      }
+    ],
+    "CROSS": [
+      {
+        "code": "CH",
+        "name_en": "Switzerland",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "DK",
+        "name_en": "Denmark",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "DO",
+        "name_en": "Dominican Republic",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "FI",
+        "name_en": "Finland",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GB",
+        "name_en": "United Kingdom",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GE",
+        "name_en": "Georgia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GR",
+        "name_en": "Greece",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "IL",
+        "name_en": "Israel",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "IS",
+        "name_en": "Iceland",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NO",
+        "name_en": "Norway",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NZ",
+        "name_en": "New Zealand",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SE",
+        "name_en": "Sweden",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TO",
+        "name_en": "Tonga",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TV",
+        "name_en": "Tuvalu",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      }
+    ],
+    "TRIANGLE_OR_DIAGONAL": [
+      {
+        "code": "BA",
+        "name_en": "Bosnia and Herzegovina",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BJ",
+        "name_en": "Benin",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BS",
+        "name_en": "Bahamas",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CD",
+        "name_en": "DR Congo",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CG",
+        "name_en": "Republic of the Congo",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CU",
+        "name_en": "Cuba",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CZ",
+        "name_en": "Czechia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "DJ",
+        "name_en": "Djibouti",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GY",
+        "name_en": "Guyana",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MG",
+        "name_en": "Madagascar",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PH",
+        "name_en": "Philippines",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PR",
+        "name_en": "Puerto Rico",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SS",
+        "name_en": "South Sudan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      }
+    ],
+    "COMPLEX": [
+      {
+        "code": "AD",
+        "name_en": "Andorra",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AE",
+        "name_en": "United Arab Emirates",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AF",
+        "name_en": "Afghanistan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AG",
+        "name_en": "Antigua and Barbuda",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AO",
+        "name_en": "Angola",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AR",
+        "name_en": "Argentina",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "AU",
+        "name_en": "Australia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BB",
+        "name_en": "Barbados",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BH",
+        "name_en": "Bahrain",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BN",
+        "name_en": "Brunei",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BO",
+        "name_en": "Bolivia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BR",
+        "name_en": "Brazil",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BT",
+        "name_en": "Bhutan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BY",
+        "name_en": "Belarus",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "BZ",
+        "name_en": "Belize",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CF",
+        "name_en": "Central African Republic",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "CR",
+        "name_en": "Costa Rica",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 5
+      },
+      {
+        "code": "CV",
+        "name_en": "Cape Verde",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "DM",
+        "name_en": "Dominica",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "EC",
+        "name_en": "Ecuador",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "EG",
+        "name_en": "Egypt",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ER",
+        "name_en": "Eritrea",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ES",
+        "name_en": "Spain",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ET",
+        "name_en": "Ethiopia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "FJ",
+        "name_en": "Fiji",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GD",
+        "name_en": "Grenada",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GQ",
+        "name_en": "Equatorial Guinea",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GT",
+        "name_en": "Guatemala",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "GW",
+        "name_en": "Guinea-Bissau",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "HK",
+        "name_en": "Hong Kong",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "HN",
+        "name_en": "Honduras",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "HR",
+        "name_en": "Croatia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "HT",
+        "name_en": "Haiti",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "IN",
+        "name_en": "India",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "IQ",
+        "name_en": "Iraq",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "IR",
+        "name_en": "Iran",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "JO",
+        "name_en": "Jordan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KE",
+        "name_en": "Kenya",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KH",
+        "name_en": "Cambodia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KI",
+        "name_en": "Kiribati",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KM",
+        "name_en": "Comoros",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KN",
+        "name_en": "Saint Kitts and Nevis",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KP",
+        "name_en": "North Korea",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "KR",
+        "name_en": "South Korea",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LB",
+        "name_en": "Lebanon",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LC",
+        "name_en": "Saint Lucia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LI",
+        "name_en": "Liechtenstein",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LK",
+        "name_en": "Sri Lanka",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LR",
+        "name_en": "Liberia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "LS",
+        "name_en": "Lesotho",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MD",
+        "name_en": "Moldova",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ME",
+        "name_en": "Montenegro",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MH",
+        "name_en": "Marshall Islands",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MK",
+        "name_en": "North Macedonia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MM",
+        "name_en": "Myanmar",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MN",
+        "name_en": "Mongolia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MT",
+        "name_en": "Malta",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MW",
+        "name_en": "Malawi",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MX",
+        "name_en": "Mexico",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MY",
+        "name_en": "Malaysia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "MZ",
+        "name_en": "Mozambique",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NA",
+        "name_en": "Namibia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NI",
+        "name_en": "Nicaragua",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NP",
+        "name_en": "Nepal",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "NR",
+        "name_en": "Nauru",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "OM",
+        "name_en": "Oman",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PG",
+        "name_en": "Papua New Guinea",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PT",
+        "name_en": "Portugal",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PY",
+        "name_en": "Paraguay",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "QA",
+        "name_en": "Qatar",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "RS",
+        "name_en": "Serbia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "RW",
+        "name_en": "Rwanda",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SB",
+        "name_en": "Solomon Islands",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SC",
+        "name_en": "Seychelles",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SG",
+        "name_en": "Singapore",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SI",
+        "name_en": "Slovenia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SK",
+        "name_en": "Slovakia",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SM",
+        "name_en": "San Marino",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SR",
+        "name_en": "Suriname",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ST",
+        "name_en": "São Tomé and Príncipe",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SV",
+        "name_en": "El Salvador",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "SZ",
+        "name_en": "Eswatini",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TG",
+        "name_en": "Togo",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TJ",
+        "name_en": "Tajikistan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TL",
+        "name_en": "Timor-Leste",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TM",
+        "name_en": "Turkmenistan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TT",
+        "name_en": "Trinidad and Tobago",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TW",
+        "name_en": "Taiwan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "UG",
+        "name_en": "Uganda",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "US",
+        "name_en": "United States",
+        "stripesTodo": false,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "UY",
+        "name_en": "Uruguay",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "UZ",
+        "name_en": "Uzbekistan",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "VA",
+        "name_en": "Vatican City",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "VC",
+        "name_en": "Saint Vincent and the Grenadines",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "VE",
+        "name_en": "Venezuela",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "VU",
+        "name_en": "Vanuatu",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "WS",
+        "name_en": "Samoa",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "XK",
+        "name_en": "Kosovo",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ZA",
+        "name_en": "South Africa",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "ZW",
+        "name_en": "Zimbabwe",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      }
+    ],
+    "QUARTERED_OR_OTHER": [
+      {
+        "code": "BI",
+        "name_en": "Burundi",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "JM",
+        "name_en": "Jamaica",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "PA",
+        "name_en": "Panama",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      },
+      {
+        "code": "TZ",
+        "name_en": "Tanzania",
+        "stripesTodo": true,
+        "direction": "horizontal",
+        "bandCount": 3
+      }
+    ]
+  },
+  "summary": {
+    "rowsWithStripesTodoTrue": 170,
+    "rowsWithStripesTodoFalse": 30,
+    "expectedWrongSyntheticStripes": [
+      "AD Andorra",
+      "AE United Arab Emirates",
+      "AF Afghanistan",
+      "AG Antigua and Barbuda",
+      "AL Albania",
+      "AM Armenia",
+      "AO Angola",
+      "AR Argentina",
+      "AU Australia",
+      "AZ Azerbaijan",
+      "BA Bosnia and Herzegovina",
+      "BB Barbados",
+      "BD Bangladesh",
+      "BF Burkina Faso",
+      "BG Bulgaria",
+      "BH Bahrain",
+      "BI Burundi",
+      "BJ Benin",
+      "BN Brunei",
+      "BO Bolivia",
+      "BR Brazil",
+      "BS Bahamas",
+      "BT Bhutan",
+      "BW Botswana",
+      "BY Belarus",
+      "BZ Belize",
+      "CA Canada",
+      "CD DR Congo",
+      "CF Central African Republic",
+      "CG Republic of the Congo",
+      "CH Switzerland",
+      "CL Chile",
+      "CM Cameroon",
+      "CN China",
+      "CU Cuba",
+      "CV Cape Verde",
+      "CY Cyprus",
+      "CZ Czechia",
+      "DJ Djibouti",
+      "DK Denmark",
+      "DM Dominica",
+      "DO Dominican Republic",
+      "DZ Algeria",
+      "EC Ecuador",
+      "EG Egypt",
+      "ER Eritrea",
+      "ES Spain",
+      "ET Ethiopia",
+      "FI Finland",
+      "FJ Fiji",
+      "FM Micronesia",
+      "GB United Kingdom",
+      "GD Grenada",
+      "GE Georgia",
+      "GH Ghana",
+      "GL Greenland",
+      "GM Gambia",
+      "GQ Equatorial Guinea",
+      "GR Greece",
+      "GT Guatemala",
+      "GW Guinea-Bissau",
+      "GY Guyana",
+      "HK Hong Kong",
+      "HN Honduras",
+      "HR Croatia",
+      "HT Haiti",
+      "IL Israel",
+      "IN India",
+      "IQ Iraq",
+      "IR Iran",
+      "IS Iceland",
+      "JM Jamaica",
+      "JO Jordan",
+      "KE Kenya",
+      "KG Kyrgyzstan",
+      "KH Cambodia",
+      "KI Kiribati",
+      "KM Comoros",
+      "KN Saint Kitts and Nevis",
+      "KP North Korea",
+      "KR South Korea",
+      "KW Kuwait",
+      "KZ Kazakhstan",
+      "LA Laos",
+      "LB Lebanon",
+      "LC Saint Lucia",
+      "LI Liechtenstein",
+      "LK Sri Lanka",
+      "LR Liberia",
+      "LS Lesotho",
+      "LY Libya",
+      "MA Morocco",
+      "MD Moldova",
+      "ME Montenegro",
+      "MG Madagascar",
+      "MH Marshall Islands",
+      "MK North Macedonia",
+      "MM Myanmar",
+      "MN Mongolia",
+      "MR Mauritania",
+      "MT Malta",
+      "MV Maldives",
+      "MW Malawi",
+      "MX Mexico",
+      "MY Malaysia",
+      "MZ Mozambique",
+      "NA Namibia",
+      "NE Niger",
+      "NI Nicaragua",
+      "NO Norway",
+      "NP Nepal",
+      "NR Nauru",
+      "NZ New Zealand",
+      "OM Oman",
+      "PA Panama",
+      "PE Peru",
+      "PG Papua New Guinea",
+      "PH Philippines",
+      "PK Pakistan",
+      "PR Puerto Rico",
+      "PS Palestine",
+      "PT Portugal",
+      "PW Palau",
+      "PY Paraguay",
+      "QA Qatar",
+      "RO Romania",
+      "RS Serbia",
+      "RW Rwanda",
+      "SA Saudi Arabia",
+      "SB Solomon Islands",
+      "SC Seychelles",
+      "SD Sudan",
+      "SE Sweden",
+      "SG Singapore",
+      "SI Slovenia",
+      "SK Slovakia",
+      "SL Sierra Leone",
+      "SM San Marino",
+      "SN Senegal",
+      "SO Somalia",
+      "SR Suriname",
+      "SS South Sudan",
+      "ST São Tomé and Príncipe",
+      "SV El Salvador",
+      "SY Syria",
+      "SZ Eswatini",
+      "TG Togo",
+      "TJ Tajikistan",
+      "TL Timor-Leste",
+      "TM Turkmenistan",
+      "TN Tunisia",
+      "TO Tonga",
+      "TR Turkey",
+      "TT Trinidad and Tobago",
+      "TV Tuvalu",
+      "TW Taiwan",
+      "TZ Tanzania",
+      "UG Uganda",
+      "UY Uruguay",
+      "UZ Uzbekistan",
+      "VA Vatican City",
+      "VC Saint Vincent and the Grenadines",
+      "VE Venezuela",
+      "VN Vietnam",
+      "VU Vanuatu",
+      "WS Samoa",
+      "XK Kosovo",
+      "ZA South Africa",
+      "ZM Zambia",
+      "ZW Zimbabwe"
+    ],
+    "expectedWrongSynthetic_nonTrueStripes": [
+      "AD Andorra (COMPLEX)",
+      "AE United Arab Emirates (COMPLEX)",
+      "AF Afghanistan (COMPLEX)",
+      "AG Antigua and Barbuda (COMPLEX)",
+      "AL Albania (SOLID_WITH_EMBLEM)",
+      "AO Angola (COMPLEX)",
+      "AR Argentina (COMPLEX)",
+      "AU Australia (COMPLEX)",
+      "BA Bosnia and Herzegovina (TRIANGLE_OR_DIAGONAL)",
+      "BB Barbados (COMPLEX)",
+      "BD Bangladesh (SOLID_WITH_EMBLEM)",
+      "BH Bahrain (COMPLEX)",
+      "BI Burundi (QUARTERED_OR_OTHER)",
+      "BJ Benin (TRIANGLE_OR_DIAGONAL)",
+      "BN Brunei (COMPLEX)",
+      "BO Bolivia (COMPLEX)",
+      "BR Brazil (COMPLEX)",
+      "BS Bahamas (TRIANGLE_OR_DIAGONAL)",
+      "BT Bhutan (COMPLEX)",
+      "BY Belarus (COMPLEX)",
+      "BZ Belize (COMPLEX)",
+      "CA Canada (SOLID_WITH_EMBLEM)",
+      "CD DR Congo (TRIANGLE_OR_DIAGONAL)",
+      "CF Central African Republic (COMPLEX)",
+      "CG Republic of the Congo (TRIANGLE_OR_DIAGONAL)",
+      "CH Switzerland (CROSS)",
+      "CL Chile (SOLID_WITH_EMBLEM)",
+      "CN China (SOLID_WITH_EMBLEM)",
+      "CU Cuba (TRIANGLE_OR_DIAGONAL)",
+      "CV Cape Verde (COMPLEX)",
+      "CY Cyprus (SOLID_WITH_EMBLEM)",
+      "CZ Czechia (TRIANGLE_OR_DIAGONAL)",
+      "DJ Djibouti (TRIANGLE_OR_DIAGONAL)",
+      "DK Denmark (CROSS)",
+      "DM Dominica (COMPLEX)",
+      "DO Dominican Republic (CROSS)",
+      "DZ Algeria (SOLID_WITH_EMBLEM)",
+      "EC Ecuador (COMPLEX)",
+      "EG Egypt (COMPLEX)",
+      "ER Eritrea (COMPLEX)",
+      "ES Spain (COMPLEX)",
+      "ET Ethiopia (COMPLEX)",
+      "FI Finland (CROSS)",
+      "FJ Fiji (COMPLEX)",
+      "FM Micronesia (SOLID_WITH_EMBLEM)",
+      "GB United Kingdom (CROSS)",
+      "GD Grenada (COMPLEX)",
+      "GE Georgia (CROSS)",
+      "GL Greenland (SOLID_WITH_EMBLEM)",
+      "GQ Equatorial Guinea (COMPLEX)",
+      "GR Greece (CROSS)",
+      "GT Guatemala (COMPLEX)",
+      "GW Guinea-Bissau (COMPLEX)",
+      "GY Guyana (TRIANGLE_OR_DIAGONAL)",
+      "HK Hong Kong (COMPLEX)",
+      "HN Honduras (COMPLEX)",
+      "HR Croatia (COMPLEX)",
+      "HT Haiti (COMPLEX)",
+      "IL Israel (CROSS)",
+      "IN India (COMPLEX)",
+      "IQ Iraq (COMPLEX)",
+      "IR Iran (COMPLEX)",
+      "IS Iceland (CROSS)",
+      "JM Jamaica (QUARTERED_OR_OTHER)",
+      "JO Jordan (COMPLEX)",
+      "KE Kenya (COMPLEX)",
+      "KG Kyrgyzstan (SOLID_WITH_EMBLEM)",
+      "KH Cambodia (COMPLEX)",
+      "KI Kiribati (COMPLEX)",
+      "KM Comoros (COMPLEX)",
+      "KN Saint Kitts and Nevis (COMPLEX)",
+      "KP North Korea (COMPLEX)",
+      "KR South Korea (COMPLEX)",
+      "KZ Kazakhstan (SOLID_WITH_EMBLEM)",
+      "LA Laos (SOLID_WITH_EMBLEM)",
+      "LB Lebanon (COMPLEX)",
+      "LC Saint Lucia (COMPLEX)",
+      "LI Liechtenstein (COMPLEX)",
+      "LK Sri Lanka (COMPLEX)",
+      "LR Liberia (COMPLEX)",
+      "LS Lesotho (COMPLEX)",
+      "MA Morocco (SOLID_WITH_EMBLEM)",
+      "MD Moldova (COMPLEX)",
+      "ME Montenegro (COMPLEX)",
+      "MG Madagascar (TRIANGLE_OR_DIAGONAL)",
+      "MH Marshall Islands (COMPLEX)",
+      "MK North Macedonia (COMPLEX)",
+      "MM Myanmar (COMPLEX)",
+      "MN Mongolia (COMPLEX)",
+      "MR Mauritania (SOLID_WITH_EMBLEM)",
+      "MT Malta (COMPLEX)",
+      "MV Maldives (SOLID_WITH_EMBLEM)",
+      "MW Malawi (COMPLEX)",
+      "MX Mexico (COMPLEX)",
+      "MY Malaysia (COMPLEX)",
+      "MZ Mozambique (COMPLEX)",
+      "NA Namibia (COMPLEX)",
+      "NI Nicaragua (COMPLEX)",
+      "NO Norway (CROSS)",
+      "NP Nepal (COMPLEX)",
+      "NR Nauru (COMPLEX)",
+      "NZ New Zealand (CROSS)",
+      "OM Oman (COMPLEX)",
+      "PA Panama (QUARTERED_OR_OTHER)",
+      "PG Papua New Guinea (COMPLEX)",
+      "PH Philippines (TRIANGLE_OR_DIAGONAL)",
+      "PK Pakistan (SOLID_WITH_EMBLEM)",
+      "PR Puerto Rico (TRIANGLE_OR_DIAGONAL)",
+      "PT Portugal (COMPLEX)",
+      "PW Palau (SOLID_WITH_EMBLEM)",
+      "PY Paraguay (COMPLEX)",
+      "QA Qatar (COMPLEX)",
+      "RS Serbia (COMPLEX)",
+      "RW Rwanda (COMPLEX)",
+      "SA Saudi Arabia (SOLID_WITH_EMBLEM)",
+      "SB Solomon Islands (COMPLEX)",
+      "SC Seychelles (COMPLEX)",
+      "SE Sweden (CROSS)",
+      "SG Singapore (COMPLEX)",
+      "SI Slovenia (COMPLEX)",
+      "SK Slovakia (COMPLEX)",
+      "SM San Marino (COMPLEX)",
+      "SO Somalia (SOLID_WITH_EMBLEM)",
+      "SR Suriname (COMPLEX)",
+      "SS South Sudan (TRIANGLE_OR_DIAGONAL)",
+      "ST São Tomé and Príncipe (COMPLEX)",
+      "SV El Salvador (COMPLEX)",
+      "SZ Eswatini (COMPLEX)",
+      "TG Togo (COMPLEX)",
+      "TJ Tajikistan (COMPLEX)",
+      "TL Timor-Leste (COMPLEX)",
+      "TM Turkmenistan (COMPLEX)",
+      "TN Tunisia (SOLID_WITH_EMBLEM)",
+      "TO Tonga (CROSS)",
+      "TR Turkey (SOLID_WITH_EMBLEM)",
+      "TT Trinidad and Tobago (COMPLEX)",
+      "TV Tuvalu (CROSS)",
+      "TW Taiwan (COMPLEX)",
+      "TZ Tanzania (QUARTERED_OR_OTHER)",
+      "UG Uganda (COMPLEX)",
+      "UY Uruguay (COMPLEX)",
+      "UZ Uzbekistan (COMPLEX)",
+      "VA Vatican City (COMPLEX)",
+      "VC Saint Vincent and the Grenadines (COMPLEX)",
+      "VE Venezuela (COMPLEX)",
+      "VN Vietnam (SOLID_WITH_EMBLEM)",
+      "VU Vanuatu (COMPLEX)",
+      "WS Samoa (COMPLEX)",
+      "XK Kosovo (COMPLEX)",
+      "ZA South Africa (COMPLEX)",
+      "ZM Zambia (SOLID_WITH_EMBLEM)",
+      "ZW Zimbabwe (COMPLEX)"
+    ],
+    "trueStripesFlagsButSyntheticBands": [
+      "AM Armenia",
+      "AZ Azerbaijan",
+      "BF Burkina Faso",
+      "BG Bulgaria",
+      "BW Botswana",
+      "CM Cameroon",
+      "GH Ghana",
+      "GM Gambia",
+      "KW Kuwait",
+      "LY Libya",
+      "NE Niger",
+      "PE Peru",
+      "PS Palestine",
+      "RO Romania",
+      "SD Sudan",
+      "SL Sierra Leone",
+      "SN Senegal",
+      "SY Syria"
+    ]
+  },
+  "notes": [
+    "poorFitForHorizontalThreeBandModel: real-world flag is not primarily 3 horizontal color bands (game’s old default).",
+    "syntheticThreeBandLikelyWrong: stripesTodo===true from generate-countries-database.mjs (HSL hash horizontal 3 bands).",
+    "Legacy 30 (stripesTodo false) used hand-authored stripes in Flaglette; some are SOLID/CROSS in reality but were given bespoke SVG/CSS-style bands (e.g. JP center, US special) — review separately under section C."
+  ]
+}

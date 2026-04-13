@@ -35,7 +35,25 @@
         "color": "#89b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#8c20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#229ea0",
+          "ratio": 33
+        },
+        {
+          "color": "#89b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AE",
@@ -73,7 +91,25 @@
         "color": "#6cb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#8e20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#228fa0",
+          "ratio": 33
+        },
+        {
+          "color": "#6cb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AF",
@@ -119,7 +155,25 @@
         "color": "#4fb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#9120b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2280a0",
+          "ratio": 33
+        },
+        {
+          "color": "#4fb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AG",
@@ -151,7 +205,25 @@
         "color": "#31b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#9320b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2272a0",
+          "ratio": 33
+        },
+        {
+          "color": "#31b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AL",
@@ -193,7 +265,25 @@
         "color": "#2dadb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#a020b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2228a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2dadb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AM",
@@ -235,7 +325,25 @@
         "color": "#2d90b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#a220b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2a22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d90b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AO",
@@ -277,7 +385,25 @@
         "color": "#2d55b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#a720b6",
+          "ratio": 34
+        },
+        {
+          "color": "#4822a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d55b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AR",
@@ -321,7 +447,25 @@
         "color": "#5c2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#af20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#7422a0",
+          "ratio": 33
+        },
+        {
+          "color": "#5c2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AT",
@@ -371,7 +515,25 @@
         "color": "#ED2939",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ED2939",
+          "ratio": 33
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 34
+        },
+        {
+          "color": "#ED2939",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "AU",
@@ -403,7 +565,25 @@
         "color": "#b42db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b620b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a022a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "AZ",
@@ -447,7 +627,25 @@
         "color": "#b4382d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b620aa",
+          "ratio": 34
+        },
+        {
+          "color": "#a02256",
+          "ratio": 33
+        },
+        {
+          "color": "#b4382d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BA",
@@ -487,7 +685,25 @@
         "color": "#80b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6209b",
+          "ratio": 34
+        },
+        {
+          "color": "#a04622",
+          "ratio": 33
+        },
+        {
+          "color": "#80b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BB",
@@ -519,7 +735,25 @@
         "color": "#63b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62098",
+          "ratio": 34
+        },
+        {
+          "color": "#a05422",
+          "ratio": 33
+        },
+        {
+          "color": "#63b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BD",
@@ -557,7 +791,25 @@
         "color": "#2db431",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62093",
+          "ratio": 34
+        },
+        {
+          "color": "#a07222",
+          "ratio": 33
+        },
+        {
+          "color": "#2db431",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BE",
@@ -599,7 +851,25 @@
         "color": "#EF3340",
         "ratio": 34
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#000000",
+          "ratio": 33
+        },
+        {
+          "color": "#FDDA24",
+          "ratio": 33
+        },
+        {
+          "color": "#EF3340",
+          "ratio": 34
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "BF",
@@ -645,7 +915,25 @@
         "color": "#2db46c",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6208e",
+          "ratio": 34
+        },
+        {
+          "color": "#a08f22",
+          "ratio": 33
+        },
+        {
+          "color": "#2db46c",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BG",
@@ -689,7 +977,25 @@
         "color": "#2db489",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6208c",
+          "ratio": 34
+        },
+        {
+          "color": "#a09e22",
+          "ratio": 33
+        },
+        {
+          "color": "#2db489",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BH",
@@ -721,7 +1027,25 @@
         "color": "#2db4a6",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62089",
+          "ratio": 34
+        },
+        {
+          "color": "#93a022",
+          "ratio": 33
+        },
+        {
+          "color": "#2db4a6",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BI",
@@ -761,7 +1085,25 @@
         "color": "#2da4b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62087",
+          "ratio": 34
+        },
+        {
+          "color": "#85a022",
+          "ratio": 33
+        },
+        {
+          "color": "#2da4b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BJ",
@@ -803,7 +1145,25 @@
         "color": "#2d87b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62084",
+          "ratio": 34
+        },
+        {
+          "color": "#76a022",
+          "ratio": 33
+        },
+        {
+          "color": "#2d87b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BN",
@@ -839,7 +1199,25 @@
         "color": "#482db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6207a",
+          "ratio": 34
+        },
+        {
+          "color": "#3ba022",
+          "ratio": 33
+        },
+        {
+          "color": "#482db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BO",
@@ -869,7 +1247,7 @@
     "flagUrl": "https://flagcdn.com/w640/bo.png",
     "continent": "South America",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b62078",
@@ -883,7 +1261,25 @@
         "color": "#652db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62078",
+          "ratio": 34
+        },
+        {
+          "color": "#2ca022",
+          "ratio": 33
+        },
+        {
+          "color": "#652db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BR",
@@ -937,7 +1333,25 @@
         "color": "#b42dab",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62070",
+          "ratio": 34
+        },
+        {
+          "color": "#22a044",
+          "ratio": 33
+        },
+        {
+          "color": "#b42dab",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BS",
@@ -969,7 +1383,25 @@
         "color": "#b42d8d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6206e",
+          "ratio": 34
+        },
+        {
+          "color": "#22a052",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d8d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BT",
@@ -1007,7 +1439,25 @@
         "color": "#b42d70",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6206b",
+          "ratio": 34
+        },
+        {
+          "color": "#22a061",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d70",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BW",
@@ -1049,7 +1499,25 @@
         "color": "#b4412d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62064",
+          "ratio": 34
+        },
+        {
+          "color": "#22a08d",
+          "ratio": 33
+        },
+        {
+          "color": "#b4412d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BY",
@@ -1079,7 +1547,7 @@
     "flagUrl": "https://flagcdn.com/w640/by.png",
     "continent": "Europe",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b6205f",
@@ -1093,7 +1561,25 @@
         "color": "#b47b2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6205f",
+          "ratio": 34
+        },
+        {
+          "color": "#2295a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b47b2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "BZ",
@@ -1131,7 +1617,25 @@
         "color": "#b4992d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6205c",
+          "ratio": 34
+        },
+        {
+          "color": "#2287a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b4992d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CA",
@@ -1167,7 +1671,25 @@
         "color": "#2db43a",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6204d",
+          "ratio": 34
+        },
+        {
+          "color": "#222fa0",
+          "ratio": 33
+        },
+        {
+          "color": "#2db43a",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CD",
@@ -1219,7 +1741,25 @@
         "color": "#2db492",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62046",
+          "ratio": 34
+        },
+        {
+          "color": "#4122a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2db492",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CF",
@@ -1251,7 +1791,7 @@
     "flagUrl": "https://flagcdn.com/w640/cf.png",
     "continent": "Africa",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b62041",
@@ -1265,7 +1805,25 @@
         "color": "#2d9bb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62041",
+          "ratio": 34
+        },
+        {
+          "color": "#5f22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d9bb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CG",
@@ -1309,7 +1867,25 @@
         "color": "#2d7eb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6203e",
+          "ratio": 34
+        },
+        {
+          "color": "#6d22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d7eb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CH",
@@ -1353,7 +1929,25 @@
         "color": "#2d60b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6203c",
+          "ratio": 34
+        },
+        {
+          "color": "#7c22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d60b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CI",
@@ -1397,7 +1991,25 @@
         "color": "#009739",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#F77F00",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#009739",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "CL",
@@ -1437,7 +2049,25 @@
         "color": "#6e2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62032",
+          "ratio": 34
+        },
+        {
+          "color": "#a02289",
+          "ratio": 33
+        },
+        {
+          "color": "#6e2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CM",
@@ -1483,7 +2113,25 @@
         "color": "#8b2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6202f",
+          "ratio": 34
+        },
+        {
+          "color": "#a0227a",
+          "ratio": 33
+        },
+        {
+          "color": "#8b2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CN",
@@ -1549,7 +2197,25 @@
         "color": "#a82db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6202d",
+          "ratio": 34
+        },
+        {
+          "color": "#a0226b",
+          "ratio": 33
+        },
+        {
+          "color": "#a82db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CO",
@@ -1593,7 +2259,25 @@
         "color": "#CE1126",
         "ratio": 24
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FCD116",
+          "ratio": 50
+        },
+        {
+          "color": "#003893",
+          "ratio": 25
+        },
+        {
+          "color": "#CE1126",
+          "ratio": 25
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "CR",
@@ -1631,7 +2315,33 @@
         "color": "#CE1126",
         "ratio": 32
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#002B7F",
+          "ratio": 17
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 17
+        },
+        {
+          "color": "#CE1126",
+          "ratio": 32
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 17
+        },
+        {
+          "color": "#002B7F",
+          "ratio": 17
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "CU",
@@ -1663,7 +2373,25 @@
         "color": "#b4672d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62520",
+          "ratio": 34
+        },
+        {
+          "color": "#a03f22",
+          "ratio": 33
+        },
+        {
+          "color": "#b4672d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CV",
@@ -1695,7 +2423,25 @@
         "color": "#b4842d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62820",
+          "ratio": 34
+        },
+        {
+          "color": "#a04e22",
+          "ratio": 33
+        },
+        {
+          "color": "#b4842d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CY",
@@ -1727,7 +2473,25 @@
         "color": "#8bb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62f20",
+          "ratio": 34
+        },
+        {
+          "color": "#a07a22",
+          "ratio": 33
+        },
+        {
+          "color": "#8bb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "CZ",
@@ -1769,7 +2533,25 @@
         "color": "#6eb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b63220",
+          "ratio": 34
+        },
+        {
+          "color": "#a08922",
+          "ratio": 33
+        },
+        {
+          "color": "#6eb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "DE",
@@ -1821,7 +2603,25 @@
         "color": "#FFCE00",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#000000",
+          "ratio": 34
+        },
+        {
+          "color": "#DD0000",
+          "ratio": 33
+        },
+        {
+          "color": "#FFCE00",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "DJ",
@@ -1861,7 +2661,25 @@
         "color": "#942db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b65720",
+          "ratio": 34
+        },
+        {
+          "color": "#22a069",
+          "ratio": 33
+        },
+        {
+          "color": "#942db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "DK",
@@ -1897,7 +2715,25 @@
         "color": "#b12db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b65a20",
+          "ratio": 34
+        },
+        {
+          "color": "#22a078",
+          "ratio": 33
+        },
+        {
+          "color": "#b12db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "DM",
@@ -1929,7 +2765,25 @@
         "color": "#b42d7b",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b65f20",
+          "ratio": 34
+        },
+        {
+          "color": "#22a095",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d7b",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "DO",
@@ -1965,7 +2819,25 @@
         "color": "#b42d41",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b66420",
+          "ratio": 34
+        },
+        {
+          "color": "#228da0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d41",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "DZ",
@@ -2013,7 +2885,25 @@
         "color": "#2db44c",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b67f20",
+          "ratio": 34
+        },
+        {
+          "color": "#5922a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2db44c",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "EC",
@@ -2051,7 +2941,25 @@
         "color": "#2d31b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b69320",
+          "ratio": 34
+        },
+        {
+          "color": "#a02272",
+          "ratio": 33
+        },
+        {
+          "color": "#2d31b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "EE",
@@ -2089,7 +2997,25 @@
         "color": "#FFFFFF",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#0072CE",
+          "ratio": 34
+        },
+        {
+          "color": "#000000",
+          "ratio": 33
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "EG",
@@ -2131,7 +3057,25 @@
         "color": "#9d2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b69d20",
+          "ratio": 34
+        },
+        {
+          "color": "#a02237",
+          "ratio": 33
+        },
+        {
+          "color": "#9d2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ER",
@@ -2171,7 +3115,25 @@
         "color": "#96b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b4b620",
+          "ratio": 34
+        },
+        {
+          "color": "#91a022",
+          "ratio": 33
+        },
+        {
+          "color": "#96b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ES",
@@ -2215,7 +3177,25 @@
         "color": "#79b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b1b620",
+          "ratio": 34
+        },
+        {
+          "color": "#82a022",
+          "ratio": 33
+        },
+        {
+          "color": "#79b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ET",
@@ -2261,7 +3241,25 @@
         "color": "#5cb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#afb620",
+          "ratio": 34
+        },
+        {
+          "color": "#74a022",
+          "ratio": 33
+        },
+        {
+          "color": "#5cb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "FI",
@@ -2301,7 +3299,25 @@
         "color": "#b42d2f",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#7db620",
+          "ratio": 34
+        },
+        {
+          "color": "#224aa0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d2f",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "FJ",
@@ -2333,7 +3349,25 @@
         "color": "#b4482d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#7ab620",
+          "ratio": 34
+        },
+        {
+          "color": "#223ba0",
+          "ratio": 33
+        },
+        {
+          "color": "#b4482d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "FM",
@@ -2365,7 +3399,25 @@
         "color": "#b49f2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#73b620",
+          "ratio": 34
+        },
+        {
+          "color": "#3522a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b49f2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "FR",
@@ -2415,7 +3467,25 @@
         "color": "#EF4135",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#0055A4",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#EF4135",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "GA",
@@ -2455,7 +3525,25 @@
         "color": "#3A75C4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#009E60",
+          "ratio": 34
+        },
+        {
+          "color": "#FCD116",
+          "ratio": 33
+        },
+        {
+          "color": "#3A75C4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "GB",
@@ -2491,7 +3579,25 @@
         "color": "#b42d9b",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#41b620",
+          "ratio": 34
+        },
+        {
+          "color": "#a05f22",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d9b",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GD",
@@ -2523,7 +3629,25 @@
         "color": "#b42d60",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#3cb620",
+          "ratio": 34
+        },
+        {
+          "color": "#a07c22",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d60",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GE",
@@ -2565,7 +3689,25 @@
         "color": "#b42d43",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#39b620",
+          "ratio": 34
+        },
+        {
+          "color": "#a08b22",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d43",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GH",
@@ -2605,7 +3747,25 @@
         "color": "#b46e2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#32b620",
+          "ratio": 34
+        },
+        {
+          "color": "#89a022",
+          "ratio": 33
+        },
+        {
+          "color": "#b46e2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GL",
@@ -2637,7 +3797,25 @@
         "color": "#84b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#28b620",
+          "ratio": 34
+        },
+        {
+          "color": "#4ea022",
+          "ratio": 33
+        },
+        {
+          "color": "#84b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GM",
@@ -2673,7 +3851,25 @@
         "color": "#67b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#25b620",
+          "ratio": 34
+        },
+        {
+          "color": "#3fa022",
+          "ratio": 33
+        },
+        {
+          "color": "#67b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GN",
@@ -2719,7 +3915,25 @@
         "color": "#009460",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#CE1126",
+          "ratio": 34
+        },
+        {
+          "color": "#FCD116",
+          "ratio": 33
+        },
+        {
+          "color": "#009460",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "GQ",
@@ -2757,7 +3971,25 @@
         "color": "#2db467",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b625",
+          "ratio": 34
+        },
+        {
+          "color": "#22a03f",
+          "ratio": 33
+        },
+        {
+          "color": "#2db467",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GR",
@@ -2799,7 +4031,25 @@
         "color": "#2db484",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b628",
+          "ratio": 34
+        },
+        {
+          "color": "#22a04e",
+          "ratio": 33
+        },
+        {
+          "color": "#2db484",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GT",
@@ -2827,7 +4077,7 @@
     "flagUrl": "https://flagcdn.com/w640/gt.png",
     "continent": "North America",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b62d",
@@ -2841,7 +4091,25 @@
         "color": "#2da8b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b62d",
+          "ratio": 34
+        },
+        {
+          "color": "#22a06b",
+          "ratio": 33
+        },
+        {
+          "color": "#2da8b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GW",
@@ -2879,7 +4147,25 @@
         "color": "#2d51b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b634",
+          "ratio": 34
+        },
+        {
+          "color": "#22a097",
+          "ratio": 33
+        },
+        {
+          "color": "#2d51b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "GY",
@@ -2919,7 +4205,25 @@
         "color": "#432db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b639",
+          "ratio": 34
+        },
+        {
+          "color": "#228ba0",
+          "ratio": 33
+        },
+        {
+          "color": "#432db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "HK",
@@ -2941,7 +4245,7 @@
     "flagUrl": "https://flagcdn.com/w640/hk.png",
     "continent": "Asia",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b664",
@@ -2955,7 +4259,25 @@
         "color": "#41b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b664",
+          "ratio": 34
+        },
+        {
+          "color": "#a0228d",
+          "ratio": 33
+        },
+        {
+          "color": "#41b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "HN",
@@ -2981,7 +4303,7 @@
     "flagUrl": "https://flagcdn.com/w640/hn.png",
     "continent": "North America",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b66b",
@@ -2995,7 +4317,25 @@
         "color": "#2db470",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b66b",
+          "ratio": 34
+        },
+        {
+          "color": "#a02261",
+          "ratio": 33
+        },
+        {
+          "color": "#2db470",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "HR",
@@ -3039,7 +4379,25 @@
         "color": "#2d82b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b675",
+          "ratio": 34
+        },
+        {
+          "color": "#a02226",
+          "ratio": 33
+        },
+        {
+          "color": "#2d82b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "HT",
@@ -3061,7 +4419,7 @@
     "flagUrl": "https://flagcdn.com/w640/ht.png",
     "continent": "North America",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b67a",
@@ -3075,7 +4433,25 @@
         "color": "#2d48b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b67a",
+          "ratio": 34
+        },
+        {
+          "color": "#a03b22",
+          "ratio": 33
+        },
+        {
+          "color": "#2d48b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "HU",
@@ -3123,7 +4499,25 @@
         "color": "#477050",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#CE2939",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#477050",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "ID",
@@ -3159,7 +4553,21 @@
         "color": "#FFFFFF",
         "ratio": 50
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FF0000",
+          "ratio": 50
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "IE",
@@ -3195,7 +4603,25 @@
         "color": "#FF883E",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#169B62",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#FF883E",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "IL",
@@ -3239,7 +4665,25 @@
         "color": "#2db496",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b6b4",
+          "ratio": 34
+        },
+        {
+          "color": "#22a091",
+          "ratio": 33
+        },
+        {
+          "color": "#2db496",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "IN",
@@ -3285,7 +4729,25 @@
         "color": "#2d96b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b4b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2291a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d96b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "IQ",
@@ -3331,7 +4793,25 @@
         "color": "#2d3fb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20acb6",
+          "ratio": 34
+        },
+        {
+          "color": "#2265a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d3fb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "IR",
@@ -3379,7 +4859,25 @@
         "color": "#382db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20aab6",
+          "ratio": 34
+        },
+        {
+          "color": "#2256a0",
+          "ratio": 33
+        },
+        {
+          "color": "#382db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "IS",
@@ -3411,7 +4909,25 @@
         "color": "#552db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20a7b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2248a0",
+          "ratio": 33
+        },
+        {
+          "color": "#552db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "IT",
@@ -3457,7 +4973,25 @@
         "color": "#CE2B37",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#009246",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#CE2B37",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "JM",
@@ -3489,7 +5023,25 @@
         "color": "#2d53b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2069b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a07022",
+          "ratio": 33
+        },
+        {
+          "color": "#2d53b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "JO",
@@ -3533,7 +5085,25 @@
         "color": "#412db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2064b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a08d22",
+          "ratio": 33
+        },
+        {
+          "color": "#412db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "JP",
@@ -3561,7 +5131,21 @@
         "color": "#BC002D",
         "ratio": 8
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "center",
+      "bands": [
+        {
+          "color": "#FFFFFF",
+          "ratio": 92
+        },
+        {
+          "color": "#BC002D",
+          "ratio": 8
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "KE",
@@ -3605,7 +5189,25 @@
         "color": "#2db48b",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#202fb6",
+          "ratio": 34
+        },
+        {
+          "color": "#227aa0",
+          "ratio": 33
+        },
+        {
+          "color": "#2db48b",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KG",
@@ -3647,7 +5249,25 @@
         "color": "#2da2b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#202ab6",
+          "ratio": 34
+        },
+        {
+          "color": "#225da0",
+          "ratio": 33
+        },
+        {
+          "color": "#2da2b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KH",
@@ -3687,7 +5307,25 @@
         "color": "#2d84b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2028b6",
+          "ratio": 34
+        },
+        {
+          "color": "#224ea0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d84b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KI",
@@ -3719,7 +5357,25 @@
         "color": "#2d67b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2025b6",
+          "ratio": 34
+        },
+        {
+          "color": "#223fa0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d67b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KM",
@@ -3751,7 +5407,25 @@
         "color": "#672db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2520b6",
+          "ratio": 34
+        },
+        {
+          "color": "#3f22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#672db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KN",
@@ -3783,7 +5457,25 @@
         "color": "#842db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2820b6",
+          "ratio": 34
+        },
+        {
+          "color": "#4e22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#842db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KP",
@@ -3809,7 +5501,7 @@
     "flagUrl": "https://flagcdn.com/w640/kp.png",
     "continent": "Asia",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#2d20b6",
@@ -3823,7 +5515,25 @@
         "color": "#b42da8",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2d20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#6b22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42da8",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KR",
@@ -3859,7 +5569,25 @@
         "color": "#b42d6e",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#3220b6",
+          "ratio": 34
+        },
+        {
+          "color": "#8922a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d6e",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KW",
@@ -3897,7 +5625,25 @@
         "color": "#b47e2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#3e20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a0226d",
+          "ratio": 33
+        },
+        {
+          "color": "#b47e2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "KZ",
@@ -3941,7 +5687,25 @@
         "color": "#92b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#4620b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a02241",
+          "ratio": 33
+        },
+        {
+          "color": "#92b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LA",
@@ -3985,7 +5749,25 @@
         "color": "#2db477",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#5520b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a05b22",
+          "ratio": 33
+        },
+        {
+          "color": "#2db477",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LB",
@@ -4023,7 +5805,25 @@
         "color": "#2db494",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#5720b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a06922",
+          "ratio": 33
+        },
+        {
+          "color": "#2db494",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LC",
@@ -4055,7 +5855,25 @@
         "color": "#2db4b1",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#5a20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a07822",
+          "ratio": 33
+        },
+        {
+          "color": "#2db4b1",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LI",
@@ -4093,7 +5911,25 @@
         "color": "#532db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#6920b6",
+          "ratio": 34
+        },
+        {
+          "color": "#70a022",
+          "ratio": 33
+        },
+        {
+          "color": "#532db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LK",
@@ -4125,7 +5961,25 @@
         "color": "#8d2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#6e20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#52a022",
+          "ratio": 33
+        },
+        {
+          "color": "#8d2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LR",
@@ -4165,7 +6019,25 @@
         "color": "#b44c2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#7f20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#22a059",
+          "ratio": 33
+        },
+        {
+          "color": "#b44c2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LS",
@@ -4201,7 +6073,25 @@
         "color": "#b4692d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#8220b6",
+          "ratio": 34
+        },
+        {
+          "color": "#22a067",
+          "ratio": 33
+        },
+        {
+          "color": "#b4692d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "LT",
@@ -4243,7 +6133,25 @@
         "color": "#C1272D",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FDB913",
+          "ratio": 34
+        },
+        {
+          "color": "#006A44",
+          "ratio": 33
+        },
+        {
+          "color": "#C1272D",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "LU",
@@ -4283,7 +6191,25 @@
         "color": "#00A1DE",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ED2939",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#00A1DE",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "LV",
@@ -4325,7 +6251,25 @@
         "color": "#9E1B34",
         "ratio": 25
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#9E1B34",
+          "ratio": 25
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        },
+        {
+          "color": "#9E1B34",
+          "ratio": 25
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "LY",
@@ -4371,7 +6315,25 @@
         "color": "#4fb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#9120b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2280a0",
+          "ratio": 33
+        },
+        {
+          "color": "#4fb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MA",
@@ -4411,7 +6373,25 @@
         "color": "#2d90b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#a220b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2a22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d90b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MC",
@@ -4443,7 +6423,21 @@
         "color": "#FFFFFF",
         "ratio": 50
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#C8102E",
+          "ratio": 50
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "MD",
@@ -4481,7 +6475,25 @@
         "color": "#2d38b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#aa20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#5622a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d38b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ME",
@@ -4525,7 +6537,25 @@
         "color": "#3f2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ac20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#6522a0",
+          "ratio": 33
+        },
+        {
+          "color": "#3f2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MG",
@@ -4557,7 +6587,25 @@
         "color": "#792db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b120b6",
+          "ratio": 34
+        },
+        {
+          "color": "#8222a0",
+          "ratio": 33
+        },
+        {
+          "color": "#792db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MH",
@@ -4589,7 +6637,25 @@
         "color": "#962db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b420b6",
+          "ratio": 34
+        },
+        {
+          "color": "#9122a0",
+          "ratio": 33
+        },
+        {
+          "color": "#962db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MK",
@@ -4633,7 +6699,25 @@
         "color": "#b42d79",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b620b1",
+          "ratio": 34
+        },
+        {
+          "color": "#a02282",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d79",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ML",
@@ -4681,7 +6765,25 @@
         "color": "#CE1126",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#14B53A",
+          "ratio": 34
+        },
+        {
+          "color": "#FCD116",
+          "ratio": 33
+        },
+        {
+          "color": "#CE1126",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "MM",
@@ -4725,7 +6827,25 @@
         "color": "#b42d3f",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b620ac",
+          "ratio": 34
+        },
+        {
+          "color": "#a02265",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d3f",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MN",
@@ -4763,7 +6883,25 @@
         "color": "#b4382d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b620aa",
+          "ratio": 34
+        },
+        {
+          "color": "#a02256",
+          "ratio": 33
+        },
+        {
+          "color": "#b4382d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MR",
@@ -4805,7 +6943,25 @@
         "color": "#b4ad2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b620a0",
+          "ratio": 34
+        },
+        {
+          "color": "#a02822",
+          "ratio": 33
+        },
+        {
+          "color": "#b4ad2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MT",
@@ -4837,7 +6993,25 @@
         "color": "#80b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6209b",
+          "ratio": 34
+        },
+        {
+          "color": "#a04622",
+          "ratio": 33
+        },
+        {
+          "color": "#80b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MU",
@@ -4873,7 +7047,29 @@
         "color": "#00A551",
         "ratio": 25
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#EA2839",
+          "ratio": 25
+        },
+        {
+          "color": "#1A206E",
+          "ratio": 25
+        },
+        {
+          "color": "#FFD500",
+          "ratio": 25
+        },
+        {
+          "color": "#00A551",
+          "ratio": 25
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "MV",
@@ -4905,7 +7101,25 @@
         "color": "#46b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62096",
+          "ratio": 34
+        },
+        {
+          "color": "#a06322",
+          "ratio": 33
+        },
+        {
+          "color": "#46b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MW",
@@ -4931,7 +7145,7 @@
     "flagUrl": "https://flagcdn.com/w640/mw.png",
     "continent": "Africa",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b62093",
@@ -4945,7 +7159,25 @@
         "color": "#2db431",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62093",
+          "ratio": 34
+        },
+        {
+          "color": "#a07222",
+          "ratio": 33
+        },
+        {
+          "color": "#2db431",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MX",
@@ -4985,7 +7217,25 @@
         "color": "#2db44f",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62091",
+          "ratio": 34
+        },
+        {
+          "color": "#a08022",
+          "ratio": 33
+        },
+        {
+          "color": "#2db44f",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MY",
@@ -5025,7 +7275,25 @@
         "color": "#2db46c",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6208e",
+          "ratio": 34
+        },
+        {
+          "color": "#a08f22",
+          "ratio": 33
+        },
+        {
+          "color": "#2db46c",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "MZ",
@@ -5071,7 +7339,25 @@
         "color": "#2db489",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6208c",
+          "ratio": 34
+        },
+        {
+          "color": "#a09e22",
+          "ratio": 33
+        },
+        {
+          "color": "#2db489",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NA",
@@ -5113,7 +7399,25 @@
         "color": "#2d2fb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6207d",
+          "ratio": 34
+        },
+        {
+          "color": "#4aa022",
+          "ratio": 33
+        },
+        {
+          "color": "#2d2fb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NE",
@@ -5161,7 +7465,25 @@
         "color": "#9f2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62073",
+          "ratio": 34
+        },
+        {
+          "color": "#22a035",
+          "ratio": 33
+        },
+        {
+          "color": "#9f2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NG",
@@ -5199,7 +7521,25 @@
         "color": "#FFFFFF",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#008751",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#008751",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "NI",
@@ -5223,7 +7563,7 @@
     "flagUrl": "https://flagcdn.com/w640/ni.png",
     "continent": "North America",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b62069",
@@ -5237,7 +7577,25 @@
         "color": "#b42d53",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62069",
+          "ratio": 34
+        },
+        {
+          "color": "#22a070",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d53",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NL",
@@ -5275,7 +7633,25 @@
         "color": "#21468B",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#AE1C28",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#21468B",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "NO",
@@ -5315,7 +7691,25 @@
         "color": "#b1b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6205a",
+          "ratio": 34
+        },
+        {
+          "color": "#2278a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b1b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NP",
@@ -5353,7 +7747,25 @@
         "color": "#94b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62057",
+          "ratio": 34
+        },
+        {
+          "color": "#2269a0",
+          "ratio": 33
+        },
+        {
+          "color": "#94b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NR",
@@ -5385,7 +7797,25 @@
         "color": "#5ab42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62052",
+          "ratio": 34
+        },
+        {
+          "color": "#224ca0",
+          "ratio": 33
+        },
+        {
+          "color": "#5ab42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "NZ",
@@ -5417,7 +7847,25 @@
         "color": "#2d7eb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6203e",
+          "ratio": 34
+        },
+        {
+          "color": "#6d22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d7eb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "OM",
@@ -5457,7 +7905,25 @@
         "color": "#8bb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62f20",
+          "ratio": 34
+        },
+        {
+          "color": "#a07a22",
+          "ratio": 33
+        },
+        {
+          "color": "#8bb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PA",
@@ -5495,7 +7961,25 @@
         "color": "#b42d7b",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b65f20",
+          "ratio": 34
+        },
+        {
+          "color": "#22a095",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d7b",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PE",
@@ -5539,7 +8023,25 @@
         "color": "#b4532d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b66920",
+          "ratio": 34
+        },
+        {
+          "color": "#2270a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b4532d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PG",
@@ -5561,7 +8063,7 @@
     "flagUrl": "https://flagcdn.com/w640/pg.png",
     "continent": "Oceania",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b66e20",
@@ -5575,7 +8077,25 @@
         "color": "#b48d2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b66e20",
+          "ratio": 34
+        },
+        {
+          "color": "#2252a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b48d2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PH",
@@ -5607,7 +8127,25 @@
         "color": "#b4ab2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b67020",
+          "ratio": 34
+        },
+        {
+          "color": "#2244a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b4ab2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PK",
@@ -5649,7 +8187,25 @@
         "color": "#65b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b67820",
+          "ratio": 34
+        },
+        {
+          "color": "#2c22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#65b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PL",
@@ -5693,7 +8249,21 @@
         "color": "#DC143C",
         "ratio": 50
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        },
+        {
+          "color": "#DC143C",
+          "ratio": 50
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "PR",
@@ -5725,7 +8295,25 @@
         "color": "#2da6b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b68920",
+          "ratio": 34
+        },
+        {
+          "color": "#9322a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2da6b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PS",
@@ -5765,7 +8353,25 @@
         "color": "#2d89b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b68c20",
+          "ratio": 34
+        },
+        {
+          "color": "#a0229e",
+          "ratio": 33
+        },
+        {
+          "color": "#2d89b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PT",
@@ -5801,7 +8407,25 @@
         "color": "#2d6cb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b68e20",
+          "ratio": 34
+        },
+        {
+          "color": "#a0228f",
+          "ratio": 33
+        },
+        {
+          "color": "#2d6cb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PW",
@@ -5833,7 +8457,25 @@
         "color": "#462db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b69620",
+          "ratio": 34
+        },
+        {
+          "color": "#a02263",
+          "ratio": 33
+        },
+        {
+          "color": "#462db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "PY",
@@ -5873,7 +8515,25 @@
         "color": "#802db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b69b20",
+          "ratio": 34
+        },
+        {
+          "color": "#a02246",
+          "ratio": 33
+        },
+        {
+          "color": "#802db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "QA",
@@ -5909,7 +8569,25 @@
         "color": "#b43f2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6ac20",
+          "ratio": 34
+        },
+        {
+          "color": "#a06522",
+          "ratio": 33
+        },
+        {
+          "color": "#b43f2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "RO",
@@ -5953,7 +8631,25 @@
         "color": "#2d3db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#50b620",
+          "ratio": 34
+        },
+        {
+          "color": "#a0223d",
+          "ratio": 33
+        },
+        {
+          "color": "#2d3db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "RS",
@@ -5989,7 +8685,7 @@
     "flagUrl": "https://flagcdn.com/w640/rs.png",
     "continent": "Europe",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#46b620",
@@ -6003,7 +8699,25 @@
         "color": "#922db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#46b620",
+          "ratio": 34
+        },
+        {
+          "color": "#a04122",
+          "ratio": 33
+        },
+        {
+          "color": "#922db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "RU",
@@ -6065,7 +8779,25 @@
         "color": "#D52B1E",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#0039A6",
+          "ratio": 34
+        },
+        {
+          "color": "#D52B1E",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "RW",
@@ -6093,7 +8825,7 @@
     "flagUrl": "https://flagcdn.com/w640/rw.png",
     "continent": "Africa",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#3cb620",
@@ -6107,7 +8839,25 @@
         "color": "#b42d60",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#3cb620",
+          "ratio": 34
+        },
+        {
+          "color": "#a07c22",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d60",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SA",
@@ -6155,7 +8905,25 @@
         "color": "#67b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#25b620",
+          "ratio": 34
+        },
+        {
+          "color": "#3fa022",
+          "ratio": 33
+        },
+        {
+          "color": "#67b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SB",
@@ -6187,7 +8955,25 @@
         "color": "#4ab42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#23b620",
+          "ratio": 34
+        },
+        {
+          "color": "#31a022",
+          "ratio": 33
+        },
+        {
+          "color": "#4ab42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SC",
@@ -6219,7 +9005,25 @@
         "color": "#2db42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b620",
+          "ratio": 34
+        },
+        {
+          "color": "#22a022",
+          "ratio": 33
+        },
+        {
+          "color": "#2db42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SD",
@@ -6267,7 +9071,25 @@
         "color": "#2db44a",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b623",
+          "ratio": 34
+        },
+        {
+          "color": "#22a031",
+          "ratio": 33
+        },
+        {
+          "color": "#2db44a",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SE",
@@ -6305,7 +9127,25 @@
         "color": "#2db467",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b625",
+          "ratio": 34
+        },
+        {
+          "color": "#22a03f",
+          "ratio": 33
+        },
+        {
+          "color": "#2db467",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SG",
@@ -6337,7 +9177,25 @@
         "color": "#2db4a2",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b62a",
+          "ratio": 34
+        },
+        {
+          "color": "#22a05d",
+          "ratio": 33
+        },
+        {
+          "color": "#2db4a2",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SI",
@@ -6379,7 +9237,25 @@
         "color": "#2d8bb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b62f",
+          "ratio": 34
+        },
+        {
+          "color": "#22a07a",
+          "ratio": 33
+        },
+        {
+          "color": "#2d8bb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SK",
@@ -6423,7 +9299,25 @@
         "color": "#2d51b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b634",
+          "ratio": 34
+        },
+        {
+          "color": "#22a097",
+          "ratio": 33
+        },
+        {
+          "color": "#2d51b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SL",
@@ -6461,7 +9355,25 @@
         "color": "#2d34b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b637",
+          "ratio": 34
+        },
+        {
+          "color": "#229aa0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d34b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SM",
@@ -6497,7 +9409,25 @@
         "color": "#432db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b639",
+          "ratio": 34
+        },
+        {
+          "color": "#228ba0",
+          "ratio": 33
+        },
+        {
+          "color": "#432db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SN",
@@ -6541,7 +9471,25 @@
         "color": "#602db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b63c",
+          "ratio": 34
+        },
+        {
+          "color": "#227ca0",
+          "ratio": 33
+        },
+        {
+          "color": "#602db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SO",
@@ -6581,7 +9529,25 @@
         "color": "#7e2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b63e",
+          "ratio": 34
+        },
+        {
+          "color": "#226da0",
+          "ratio": 33
+        },
+        {
+          "color": "#7e2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SR",
@@ -6621,7 +9587,25 @@
         "color": "#b42d92",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b646",
+          "ratio": 34
+        },
+        {
+          "color": "#2241a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d92",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SS",
@@ -6667,7 +9651,25 @@
         "color": "#b42d75",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b648",
+          "ratio": 34
+        },
+        {
+          "color": "#2233a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d75",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ST",
@@ -6699,7 +9701,25 @@
         "color": "#b42d58",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b64b",
+          "ratio": 34
+        },
+        {
+          "color": "#2224a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d58",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SV",
@@ -6737,7 +9757,25 @@
         "color": "#b43d2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b650",
+          "ratio": 34
+        },
+        {
+          "color": "#3d22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b43d2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SY",
@@ -6781,7 +9819,25 @@
         "color": "#b4942d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b657",
+          "ratio": 34
+        },
+        {
+          "color": "#6922a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b4942d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "SZ",
@@ -6819,7 +9875,25 @@
         "color": "#b4b12d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b65a",
+          "ratio": 34
+        },
+        {
+          "color": "#7822a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b4b12d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TD",
@@ -6865,7 +9939,25 @@
         "color": "#C60C30",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#002664",
+          "ratio": 34
+        },
+        {
+          "color": "#FECB00",
+          "ratio": 33
+        },
+        {
+          "color": "#C60C30",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "TG",
@@ -6891,7 +9983,7 @@
     "flagUrl": "https://flagcdn.com/w640/tg.png",
     "continent": "Africa",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b678",
@@ -6905,7 +9997,25 @@
         "color": "#2d65b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b678",
+          "ratio": 34
+        },
+        {
+          "color": "#a02c22",
+          "ratio": 33
+        },
+        {
+          "color": "#2d65b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TH",
@@ -6947,7 +10057,33 @@
         "color": "#241D4F",
         "ratio": 34
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ED1C24",
+          "ratio": 17
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 14
+        },
+        {
+          "color": "#241D4F",
+          "ratio": 38
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 14
+        },
+        {
+          "color": "#ED1C24",
+          "ratio": 17
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "TJ",
@@ -6975,7 +10111,7 @@
     "flagUrl": "https://flagcdn.com/w640/tj.png",
     "continent": "Asia",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b67f",
@@ -6989,7 +10125,25 @@
         "color": "#4c2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b67f",
+          "ratio": 34
+        },
+        {
+          "color": "#a05922",
+          "ratio": 33
+        },
+        {
+          "color": "#4c2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TL",
@@ -7025,7 +10179,25 @@
         "color": "#872db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b684",
+          "ratio": 34
+        },
+        {
+          "color": "#a07622",
+          "ratio": 33
+        },
+        {
+          "color": "#872db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TM",
@@ -7053,7 +10225,7 @@
     "flagUrl": "https://flagcdn.com/w640/tm.png",
     "continent": "Asia",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#20b687",
@@ -7067,7 +10239,25 @@
         "color": "#a42db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b687",
+          "ratio": 34
+        },
+        {
+          "color": "#a08522",
+          "ratio": 33
+        },
+        {
+          "color": "#a42db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TN",
@@ -7105,7 +10295,25 @@
         "color": "#b42da6",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b689",
+          "ratio": 34
+        },
+        {
+          "color": "#a09322",
+          "ratio": 33
+        },
+        {
+          "color": "#b42da6",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TO",
@@ -7137,7 +10345,25 @@
         "color": "#b42d89",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b68c",
+          "ratio": 34
+        },
+        {
+          "color": "#9ea022",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d89",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TR",
@@ -7187,7 +10413,25 @@
         "color": "#b42d31",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b693",
+          "ratio": 34
+        },
+        {
+          "color": "#72a022",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d31",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TT",
@@ -7219,7 +10463,25 @@
         "color": "#b4632d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b698",
+          "ratio": 34
+        },
+        {
+          "color": "#54a022",
+          "ratio": 33
+        },
+        {
+          "color": "#b4632d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TV",
@@ -7251,7 +10513,25 @@
         "color": "#b49d2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b69d",
+          "ratio": 34
+        },
+        {
+          "color": "#37a022",
+          "ratio": 33
+        },
+        {
+          "color": "#b49d2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TW",
@@ -7283,7 +10563,25 @@
         "color": "#adb42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b6a0",
+          "ratio": 34
+        },
+        {
+          "color": "#28a022",
+          "ratio": 33
+        },
+        {
+          "color": "#adb42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "TZ",
@@ -7333,7 +10631,25 @@
         "color": "#55b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20b6a7",
+          "ratio": 34
+        },
+        {
+          "color": "#22a048",
+          "ratio": 33
+        },
+        {
+          "color": "#55b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "UA",
@@ -7377,7 +10693,21 @@
         "color": "#FFD700",
         "ratio": 50
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#0057B8",
+          "ratio": 50
+        },
+        {
+          "color": "#FFD700",
+          "ratio": 50
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "UG",
@@ -7421,7 +10751,25 @@
         "color": "#552db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#20a7b6",
+          "ratio": 34
+        },
+        {
+          "color": "#2248a0",
+          "ratio": 33
+        },
+        {
+          "color": "#552db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "US",
@@ -7459,7 +10807,25 @@
         "color": "#3C3B6E",
         "ratio": 24
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#B22234",
+          "ratio": 38
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 38
+        },
+        {
+          "color": "#3C3B6E",
+          "ratio": 24
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "UY",
@@ -7497,7 +10863,25 @@
         "color": "#2db448",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#207ab6",
+          "ratio": 34
+        },
+        {
+          "color": "#a0223b",
+          "ratio": 33
+        },
+        {
+          "color": "#2db448",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "UZ",
@@ -7541,7 +10925,25 @@
         "color": "#2db465",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2078b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a0222c",
+          "ratio": 33
+        },
+        {
+          "color": "#2db465",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "VA",
@@ -7577,7 +10979,25 @@
         "color": "#2d53b4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2069b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a07022",
+          "ratio": 33
+        },
+        {
+          "color": "#2d53b4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "VC",
@@ -7609,7 +11029,25 @@
         "color": "#412db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2064b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a08d22",
+          "ratio": 33
+        },
+        {
+          "color": "#412db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "VE",
@@ -7649,7 +11087,25 @@
         "color": "#7b2db4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#205fb6",
+          "ratio": 34
+        },
+        {
+          "color": "#95a022",
+          "ratio": 33
+        },
+        {
+          "color": "#7b2db4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "VN",
@@ -7689,7 +11145,25 @@
         "color": "#b4752d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2048b6",
+          "ratio": 34
+        },
+        {
+          "color": "#22a033",
+          "ratio": 33
+        },
+        {
+          "color": "#b4752d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "VU",
@@ -7721,7 +11195,25 @@
         "color": "#2db434",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#2037b6",
+          "ratio": 34
+        },
+        {
+          "color": "#22a09a",
+          "ratio": 33
+        },
+        {
+          "color": "#2db434",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "WS",
@@ -7753,7 +11245,25 @@
         "color": "#2db45a",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#5220b6",
+          "ratio": 34
+        },
+        {
+          "color": "#a04c22",
+          "ratio": 33
+        },
+        {
+          "color": "#2db45a",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "XK",
@@ -7795,7 +11305,25 @@
         "color": "#89b42d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#8c20b6",
+          "ratio": 34
+        },
+        {
+          "color": "#229ea0",
+          "ratio": 33
+        },
+        {
+          "color": "#89b42d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "YE",
@@ -7833,7 +11361,25 @@
         "color": "#000000",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#CE1126",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#000000",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": false
   },
   {
     "code": "ZA",
@@ -7879,7 +11425,25 @@
         "color": "#b47b2d",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b6205f",
+          "ratio": 34
+        },
+        {
+          "color": "#2295a0",
+          "ratio": 33
+        },
+        {
+          "color": "#b47b2d",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ZM",
@@ -7929,7 +11493,25 @@
         "color": "#2d9bb4",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62041",
+          "ratio": 34
+        },
+        {
+          "color": "#5f22a0",
+          "ratio": 33
+        },
+        {
+          "color": "#2d9bb4",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   },
   {
     "code": "ZW",
@@ -7957,7 +11539,7 @@
     "flagUrl": "https://flagcdn.com/w640/zw.png",
     "continent": "Africa",
     "difficulty": 3,
-    "tier": "archive",
+    "tier": "daily",
     "palette": [
       {
         "color": "#b62028",
@@ -7971,6 +11553,24 @@
         "color": "#b42d84",
         "ratio": 33
       }
-    ]
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#b62028",
+          "ratio": 34
+        },
+        {
+          "color": "#a0224e",
+          "ratio": 33
+        },
+        {
+          "color": "#b42d84",
+          "ratio": 33
+        }
+      ]
+    },
+    "stripesTodo": true
   }
 ]

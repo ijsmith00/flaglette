@@ -2,10 +2,26 @@ let currentCountry = null;
 let attempts = 0;
 const maxAttempts = 6;
 const SAVE_SCHEMA_VERSION = 2;
-const HOWTO_STORAGE_KEY = "flaglette_howto_seen_v1";
+const HOWTO_STORAGE_KEY = "flaglette_howto_seen_v2";
 let isGameOver = false;
 /** Filled after persist and when restoring the complete screen for share text. */
 let shareSnapshot = null;
+/** Set when URL has ?play=XX / ?country=XX / ?test=XX (ISO2) — no daily save, skips today’s complete gate. */
+let practiceModeCode = null;
+
+/** Optional ISO2 code from query (?play=PT&…). */
+function getPracticeModeCodeFromUrl() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const v = p.get("play") || p.get("country") || p.get("test");
+    if (!v || typeof v !== "string") return null;
+    const code = v.trim().toUpperCase();
+    if (!/^[A-Z]{2}$/.test(code)) return null;
+    return code;
+  } catch (_) {
+    return null;
+  }
+}
 
 /** V1.1 practice mode: random country from list (unused for now). */
 function pickRandomCountry(countries) {
@@ -35,7 +51,7 @@ function getDailyStorageKey() {
 
 /**
  * Daily answer: local date as a number, modulo pool length.
- * @param {object[]} coreCountries countries with tier === "core"
+ * @param {object[]} coreCountries countries with tier === "daily"
  */
 function getDailyCountry(coreCountries) {
   const n = getLocalDateSeedNumber();
@@ -138,15 +154,13 @@ function letterCountFromName(nameEn) {
   return String(nameEn || "").replace(/\s/g, "").length;
 }
 
-/** Neighboring countries hint line (English only). */
+/** Neighboring countries hint line (English only). Empty = no land borders in REST data (e.g. islands). */
 function formatNeighborsHint(country) {
   const n = country.neighbors_en ?? [];
-  if (n.length === 0) return "No bordering countries";
-  const joined = n.join(", ");
-  if (joined === "Island nation") {
-    return "Island nation (no land borders)";
+  if (n.length === 0) {
+    return "🏝️ No bordering countries in dataset";
   }
-  return joined;
+  return n.join(", ");
 }
 
 /** Restore share snapshot from localStorage for today’s key */
@@ -441,14 +455,12 @@ function startMidnightCountdown() {
   midnightCountdownTimerId = setInterval(tick, 1000);
 }
 
-/** Save progress for today’s key on win/loss (attempts, hints, stripe emojis) */
+/** Save progress for today’s key on win/loss (attempts, hints, palette emoji line for share) */
 function persistDailyComplete(won) {
   const totalAttempts = won ? attempts + 1 : maxAttempts;
   const wrongBeforeEnd = won ? attempts : maxAttempts;
   const hintsUsed = won ? Math.min(wrongBeforeEnd, 5) : 5;
-  const stripeEmojiLine = currentCountry.stripes.bands
-    .map((b) => colorToEmoji(b.color))
-    .join("");
+  const stripeEmojiLine = sharePaletteEmojiLine(currentCountry);
   shareSnapshot = {
     won,
     attempts: totalAttempts,
@@ -456,6 +468,9 @@ function persistDailyComplete(won) {
     maxGuesses: maxAttempts,
     stripeEmojiLine,
   };
+  if (practiceModeCode) {
+    return;
+  }
   const payload = {
     schemaVersion: SAVE_SCHEMA_VERSION,
     completed: true,
@@ -511,270 +526,30 @@ function isCorrectGuess(guess, country) {
   return g === normalize(country.name_en);
 }
 
-const NS = "http://www.w3.org/2000/svg";
-
-/** Trigram bars: three rows (solid / broken). Origin: top-left of trigram box. */
-function appendGwaeSolid(g, x, y, w, barH, gap) {
-  for (let i = 0; i < 3; i++) {
-    const r = document.createElementNS(NS, "rect");
-    r.setAttribute("x", String(x));
-    r.setAttribute("y", String(y + i * (barH + gap)));
-    r.setAttribute("width", String(w));
-    r.setAttribute("height", String(barH));
-    r.setAttribute("fill", "#000000");
-    g.appendChild(r);
-  }
+/** Wordle-style share line from palette colors (storage field name kept: stripeEmojiLine). */
+function sharePaletteEmojiLine(country) {
+  const pal = country?.palette;
+  if (!Array.isArray(pal) || pal.length === 0) return "🌍";
+  return pal.map((p) => colorToEmoji(p.color)).join("");
 }
 
-/** Three broken bars (center gap) */
-function appendGwaeBroken(g, x, y, w, barH, gap, midGap) {
-  const half = (w - midGap) / 2;
-  for (let i = 0; i < 3; i++) {
-    const yy = y + i * (barH + gap);
-    const a = document.createElementNS(NS, "rect");
-    a.setAttribute("x", String(x));
-    a.setAttribute("y", String(yy));
-    a.setAttribute("width", String(half));
-    a.setAttribute("height", String(barH));
-    a.setAttribute("fill", "#000000");
-    const b = document.createElementNS(NS, "rect");
-    b.setAttribute("x", String(x + half + midGap));
-    b.setAttribute("y", String(yy));
-    b.setAttribute("width", String(half));
-    b.setAttribute("height", String(barH));
-    b.setAttribute("fill", "#000000");
-    g.appendChild(a);
-    g.appendChild(b);
-  }
-}
-
-/** Three rows mixing solid and broken bars */
-function appendGwaeMixed(g, x, y, w, barH, gap, midGap, pattern) {
-  const half = (w - midGap) / 2;
-  for (let row = 0; row < 3; row++) {
-    const yy = y + row * (barH + gap);
-    if (pattern[row] === "y") {
-      const r = document.createElementNS(NS, "rect");
-      r.setAttribute("x", String(x));
-      r.setAttribute("y", String(yy));
-      r.setAttribute("width", String(w));
-      r.setAttribute("height", String(barH));
-      r.setAttribute("fill", "#000000");
-      g.appendChild(r);
-    } else {
-      const a = document.createElementNS(NS, "rect");
-      a.setAttribute("x", String(x));
-      a.setAttribute("y", String(yy));
-      a.setAttribute("width", String(half));
-      a.setAttribute("height", String(barH));
-      a.setAttribute("fill", "#000000");
-      const b = document.createElementNS(NS, "rect");
-      b.setAttribute("x", String(x + half + midGap));
-      b.setAttribute("y", String(yy));
-      b.setAttribute("width", String(half));
-      b.setAttribute("height", String(barH));
-      b.setAttribute("fill", "#000000");
-      g.appendChild(a);
-      g.appendChild(b);
-    }
-  }
-}
-
-/**
- * White field + SVG taegeuk (yin-yang) + four trigrams. Proportions are symbolic.
- */
-function renderSouthKoreaStripes(frame) {
-  frame.style.backgroundColor = "#FFFFFF";
-  frame.style.position = "relative";
-
-  const svg = document.createElementNS(NS, "svg");
-  svg.setAttribute("viewBox", "0 0 300 200");
-  svg.setAttribute("xmlns", NS);
-  svg.setAttribute("aria-hidden", "true");
-  svg.style.cssText =
-    "position:absolute;left:0;top:0;width:100%;height:100%;display:block;";
-
-  const blue = "#0047A0";
-  const red = "#CD2E3A";
-
-  const gTg = document.createElementNS(NS, "g");
-  gTg.setAttribute(
-    "transform",
-    "translate(150,100) scale(0.72) translate(-50,-50)"
-  );
-
-  const pBlue = document.createElementNS(NS, "path");
-  pBlue.setAttribute("fill", blue);
-  pBlue.setAttribute(
-    "d",
-    "M50,0 A50,50 0 0,0 50,100 A25,25 0 0,1 50,0 Z"
-  );
-
-  const pRed = document.createElementNS(NS, "path");
-  pRed.setAttribute("fill", red);
-  pRed.setAttribute(
-    "d",
-    "M50,100 A50,50 0 0,0 50,0 A25,25 0 0,0 50,100 Z"
-  );
-
-  const eyeBlue = document.createElementNS(NS, "circle");
-  eyeBlue.setAttribute("cx", "50");
-  eyeBlue.setAttribute("cy", "25");
-  eyeBlue.setAttribute("r", "12.5");
-  eyeBlue.setAttribute("fill", blue);
-
-  const eyeRed = document.createElementNS(NS, "circle");
-  eyeRed.setAttribute("cx", "50");
-  eyeRed.setAttribute("cy", "75");
-  eyeRed.setAttribute("r", "12.5");
-  eyeRed.setAttribute("fill", red);
-
-  gTg.appendChild(pBlue);
-  gTg.appendChild(pRed);
-  gTg.appendChild(eyeBlue);
-  gTg.appendChild(eyeRed);
-
-  const gw = 30;
-  const bh = 4;
-  const gsp = 3;
-  const mg = 4;
-
-  const gGw = document.createElementNS(NS, "g");
-  gGw.setAttribute("fill", "#000000");
-  appendGwaeSolid(gGw, 22, 20, gw, bh, gsp);
-  appendGwaeBroken(gGw, 300 - 22 - gw, 20, gw, bh, gsp, mg);
-  appendGwaeMixed(gGw, 22, 200 - 20 - (3 * bh + 2 * gsp), gw, bh, gsp, mg, [
-    "n",
-    "y",
-    "n",
-  ]);
-  appendGwaeMixed(gGw, 300 - 22 - gw, 200 - 20 - (3 * bh + 2 * gsp), gw, bh, gsp, mg, [
-    "y",
-    "n",
-    "y",
-  ]);
-
-  svg.appendChild(gTg);
-  svg.appendChild(gGw);
-  frame.appendChild(svg);
-}
-
-/** Simplified US flag: 13 red/white stripes + blue canton (~40% wide, top 7/13). Stars omitted. */
-function renderUnitedStatesStripes(frame) {
-  const red = "#B22234";
-  const white = "#FFFFFF";
-  const blue = "#3C3B6E";
-  for (let i = 0; i < 13; i++) {
-    const seg = document.createElement("div");
-    seg.style.flex = "1 1 0";
-    seg.style.minHeight = "0";
-    seg.style.width = "100%";
-    seg.style.backgroundColor = i % 2 === 0 ? red : white;
-    frame.appendChild(seg);
-  }
-  const canton = document.createElement("div");
-  canton.style.position = "absolute";
-  canton.style.left = "0";
-  canton.style.top = "0";
-  canton.style.width = "40%";
-  canton.style.height = `${(7 / 13) * 100}%`;
-  canton.style.backgroundColor = blue;
-  frame.appendChild(canton);
-}
-
-/** Background (bands[0]) + concentric circles (bands[1]…). Outer circle ~40% of frame height. */
-function renderCenterStripes(frame, bands) {
-  frame.style.backgroundColor = bands[0].color;
-  if (bands.length < 2) return;
-
-  let parent = frame;
-  for (let i = 1; i < bands.length; i++) {
-    const circle = document.createElement("div");
-    circle.style.borderRadius = "50%";
-    circle.style.backgroundColor = bands[i].color;
-    circle.style.boxSizing = "border-box";
-    circle.style.display = "flex";
-    circle.style.alignItems = "center";
-    circle.style.justifyContent = "center";
-    if (i === 1) {
-      circle.style.position = "absolute";
-      circle.style.height = "40%";
-      circle.style.aspectRatio = "1";
-      circle.style.width = "auto";
-      circle.style.left = "50%";
-      circle.style.top = "50%";
-      circle.style.transform = "translate(-50%, -50%)";
-    } else {
-      circle.style.width = "50%";
-      circle.style.height = "50%";
-      circle.style.flexShrink = "0";
-      circle.style.minWidth = "0";
-      circle.style.minHeight = "0";
-    }
-    parent.appendChild(circle);
-    parent = circle;
-  }
-}
-
-/** Render flag frame in #flag-display from country.stripes */
-function renderStripes(country) {
+/** Show daily flag image (flagcdn); round 1 hint is visual only. */
+function renderFlagImage(country) {
   const display = document.getElementById("flag-display");
+  if (!display) return;
   display.innerHTML = "";
-
-  const { direction, bands } = country.stripes;
-
+  const url = country?.flagUrl;
+  if (!url) return;
   const frame = document.createElement("div");
-  frame.style.width = "400px";
-  frame.style.maxWidth = "100%";
-  if (country.code === "LV") {
-    frame.style.height = "200px";
-  } else {
-    frame.style.height = "250px";
-  }
-  frame.style.margin = "0 auto";
-  frame.style.borderRadius = "8px";
-  frame.style.overflow = "hidden";
-  frame.style.boxShadow = "0 6px 22px rgba(0, 0, 0, 0.4)";
-
-  if (direction === "vertical") {
-    frame.style.display = "flex";
-    frame.style.flexDirection = "row";
-    for (const band of bands) {
-      const seg = document.createElement("div");
-      seg.style.flex = `0 0 ${band.ratio}%`;
-      seg.style.height = "100%";
-      seg.style.backgroundColor = band.color;
-      frame.appendChild(seg);
-    }
-  } else if (direction === "horizontal") {
-    frame.style.display = "flex";
-    frame.style.flexDirection = "column";
-    if (country.code === "US") {
-      frame.style.position = "relative";
-      renderUnitedStatesStripes(frame);
-    } else {
-      for (const band of bands) {
-        const seg = document.createElement("div");
-        seg.style.flex = `0 0 ${band.ratio}%`;
-        seg.style.width = "100%";
-        seg.style.backgroundColor = band.color;
-        frame.appendChild(seg);
-      }
-    }
-  } else if (direction === "center") {
-    frame.style.display = "block";
-    frame.style.position = "relative";
-    if (country.code === "KR") {
-      renderSouthKoreaStripes(frame);
-    } else {
-      renderCenterStripes(frame, bands);
-    }
-  } else {
-    frame.style.display = "block";
-    console.warn("Unimplemented stripes direction:", direction);
-    frame.style.backgroundColor = bands[0] ? bands[0].color : "#333333";
-  }
-
+  frame.className = "flag-display-frame";
+  const img = document.createElement("img");
+  img.className = "flag-display-img";
+  img.src = url;
+  img.alt = "";
+  img.setAttribute("role", "presentation");
+  img.loading = "eager";
+  img.decoding = "async";
+  frame.appendChild(img);
   display.appendChild(frame);
 }
 
@@ -905,50 +680,69 @@ function initHowToPlay() {
     if (e.target === dlg) close();
   });
   try {
-    if (!localStorage.getItem(HOWTO_STORAGE_KEY) && typeof dlg.showModal === "function") {
+    if (
+      !practiceModeCode &&
+      !localStorage.getItem(HOWTO_STORAGE_KEY) &&
+      typeof dlg.showModal === "function"
+    ) {
       dlg.showModal();
       localStorage.setItem(HOWTO_STORAGE_KEY, "1");
     }
   } catch (_) {
-    if (typeof dlg.showModal === "function") dlg.showModal();
+    if (!practiceModeCode && typeof dlg.showModal === "function") dlg.showModal();
   }
 }
 
 /** Page load: if today not done, pick daily country and wire events */
 async function init() {
+  practiceModeCode = getPracticeModeCodeFromUrl();
+
   initShareDialog();
   initHowToPlay();
-  /* Sync check before await — avoid flashing game zone if already complete */
-  try {
-    const raw = localStorage.getItem(getDailyStorageKey());
-    if (raw) {
-      const st = migrateDailyPayload(JSON.parse(raw));
-      if (st && st.completed === true) {
-        showDailyCompleteScreen(st);
-        return;
+  if (!practiceModeCode) {
+    /* Sync check before await — avoid flashing game zone if already complete */
+    try {
+      const raw = localStorage.getItem(getDailyStorageKey());
+      if (raw) {
+        const st = migrateDailyPayload(JSON.parse(raw));
+        if (st && st.completed === true) {
+          showDailyCompleteScreen(st);
+          return;
+        }
       }
+    } catch (_) {
+      /* new game */
     }
-  } catch (_) {
-    /* new game */
   }
 
   const gameZone = document.getElementById("game-zone");
   if (gameZone) gameZone.hidden = false;
 
   const countries = await loadCountries();
-  const pool = countries.filter((c) => c.tier === "core");
+  const pool = countries.filter((c) => c.tier === "daily");
   if (pool.length === 0) {
-    throw new Error('No country has tier "core".');
+    throw new Error('No country has tier "daily".');
   }
 
-  // currentCountry = pickRandomCountry(pool);
-  // V1.1 practice mode could use pickRandomCountry(pool) here
-  currentCountry = getDailyCountry(pool);
+  if (practiceModeCode) {
+    const found = countries.find((c) => c.code === practiceModeCode);
+    if (!found) {
+      throw new Error(`No country with code "${practiceModeCode}" in database.`);
+    }
+    currentCountry = found;
+    const banner = document.createElement("p");
+    banner.className = "play-mode-banner";
+    banner.setAttribute("role", "status");
+    banner.textContent = `Practice — ${found.name_en} (${found.code}). Daily save is off. Remove ?play= from the URL for the real puzzle.`;
+    gameZone.insertBefore(banner, gameZone.firstChild);
+  } else {
+    currentCountry = getDailyCountry(pool);
+  }
 
   shareSnapshot = null;
   hideShareRow();
 
-  renderStripes(currentCountry);
+  renderFlagImage(currentCountry);
   updateAttemptsDisplay();
   clearHints();
 

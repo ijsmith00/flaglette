@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-04-13T23:46:27.045Z",
+  "backupWritten": "countries.backup.migrate-2026-04-13T23-46-27-036Z.json",
+  "countriesJson": "countries.json",
+  "removedFields": {
+    "stripes": 200,
+    "stripesTodo": 200
+  },
+  "tierChangeCount": 17,
+  "tierChanges": [
+    {
+      "code": "BO",
+      "name_en": "Bolivia",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "BY",
+      "name_en": "Belarus",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "CF",
+      "name_en": "Central African Republic",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "GT",
+      "name_en": "Guatemala",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "HK",
+      "name_en": "Hong Kong",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "HN",
+      "name_en": "Honduras",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "HT",
+      "name_en": "Haiti",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "KP",
+      "name_en": "North Korea",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "MW",
+      "name_en": "Malawi",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "NI",
+      "name_en": "Nicaragua",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "PG",
+      "name_en": "Papua New Guinea",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "RS",
+      "name_en": "Serbia",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "RW",
+      "name_en": "Rwanda",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "TG",
+      "name_en": "Togo",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "TJ",
+      "name_en": "Tajikistan",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "TM",
+      "name_en": "Turkmenistan",
+      "before": "daily",
+      "after": "archive"
+    },
+    {
+      "code": "ZW",
+      "name_en": "Zimbabwe",
+      "before": "daily",
+      "after": "archive"
+    }
+  ],
+  "finalDailyCount": 103,
+  "finalArchiveCount": 97,
+  "difficultyInDailyPool": {
+    "1": 30,
+    "2": 40,
+    "3": 33,
+    "4": 0,
+    "5": 0
+  },
+  "flagCategoryInDailyPool": {
+    "COMPLEX": 31,
+    "TRUE_STRIPES": 40,
+    "SOLID_WITH_EMBLEM": 17,
+    "QUARTERED_OR_OTHER": 2,
+    "TRIANGLE_OR_DIAGONAL": 7,
+    "CROSS": 6
+  },
+  "continentInDailyPool": {
+    "Asia": 29,
+    "Africa": 33,
+    "South America": 7,
+    "Europe": 27,
+    "Oceania": 1,
+    "North America": 6
+  },
+  "countriesWithNoNeighborsListedCount": 42,
+  "countriesWithNoNeighborsListed": [
+    "AG Antigua and Barbuda",
+    "AU Australia",
+    "BB Barbados",
+    "BH Bahrain",
+    "BS Bahamas",
+    "CU Cuba",
+    "CV Cape Verde",
+    "CY Cyprus",
+    "DM Dominica",
+    "FJ Fiji",
+    "FM Micronesia",
+    "GD Grenada",
+    "GL Greenland",
+    "IS Iceland",
+    "JM Jamaica",
+    "JP Japan",
+    "KI Kiribati",
+    "KM Comoros",
+    "KN Saint Kitts and Nevis",
+    "LC Saint Lucia",
+    "LK Sri Lanka",
+    "MG Madagascar",
+    "MH Marshall Islands",
+    "MT Malta",
+    "MU Mauritius",
+    "MV Maldives",
+    "NR Nauru",
+    "NZ New Zealand",
+    "PH Philippines",
+    "PR Puerto Rico",
+    "PW Palau",
+    "SB Solomon Islands",
+    "SC Seychelles",
+    "SG Singapore",
+    "ST São Tomé and Príncipe",
+    "TO Tonga",
+    "TT Trinidad and Tobago",
+    "TV Tuvalu",
+    "TW Taiwan",
+    "VC Saint Vincent and the Grenadines",
+    "VU Vanuatu",
+    "WS Samoa"
+  ],
+  "dailySelectionLogic": "Same calendar day → same local date integer → index = (YYYYMMDD seed) mod (daily pool length). No historical deduplication; pool order is stable (sorted by code in JSON).",
+  "taiwanNeighborNote": "TW uses REST Countries borders (typically empty). Hint shows generic no-land-borders message; not a political label.",
+  "complexDiff3Allowlist": [
+    "AE",
+    "EC",
+    "JO",
+    "KH",
+    "LK",
+    "PT",
+    "TW"
+  ]
+}
