@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flaglette</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <!-- file:// 로 열 때는 브라우저가 countries.json fetch를 막으므로, 아래 내용을 countries.json 과 맞춰 두세요. -->
+  <script type="application/json" id="countries-embedded">
+[
+  {
+    "code": "JP",
+    "name_ko": "일본",
+    "name_en": "Japan",
+    "population": "약 1억 2,500만",
+    "neighbors": [
+      "섬나라"
+    ],
+    "population_en": "~125 million",
+    "neighbors_en": [
+      "Island nation"
+    ],
+    "first_letter_ko": "일",
+    "first_letter_en": "J",
+    "palette": [
+      {
+        "color": "#FFFFFF",
+        "ratio": 92
+      },
+      {
+        "color": "#BC002D",
+        "ratio": 8
+      }
+    ],
+    "stripes": {
+      "direction": "center",
+      "bands": [
+        {
+          "color": "#FFFFFF",
+          "ratio": 92
+        },
+        {
+          "color": "#BC002D",
+          "ratio": 8
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "US",
+    "name_ko": "미국",
+    "name_en": "United States",
+    "population": "약 3억 3,000만",
+    "neighbors": [
+      "캐나다",
+      "멕시코"
+    ],
+    "population_en": "~330 million",
+    "neighbors_en": [
+      "Canada",
+      "Mexico"
+    ],
+    "first_letter_ko": "미",
+    "first_letter_en": "U",
+    "palette": [
+      {
+        "color": "#B22234",
+        "ratio": 38
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 38
+      },
+      {
+        "color": "#3C3B6E",
+        "ratio": 24
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#B22234",
+          "ratio": 38
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 38
+        },
+        {
+          "color": "#3C3B6E",
+          "ratio": 24
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "FR",
+    "name_ko": "프랑스",
+    "name_en": "France",
+    "population": "약 6,800만",
+    "neighbors": [
+      "독일",
+      "이탈리아",
+      "벨기에",
+      "스페인"
+    ],
+    "population_en": "~68 million",
+    "neighbors_en": [
+      "Germany",
+      "Italy",
+      "Belgium",
+      "Spain"
+    ],
+    "first_letter_ko": "프",
+    "first_letter_en": "F",
+    "palette": [
+      {
+        "color": "#0055A4",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#EF4135",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#0055A4",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#EF4135",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "DE",
+    "name_ko": "독일",
+    "name_en": "Germany",
+    "population": "약 8,400만",
+    "neighbors": [
+      "프랑스",
+      "폴란드",
+      "네덜란드",
+      "오스트리아"
+    ],
+    "population_en": "~84 million",
+    "neighbors_en": [
+      "France",
+      "Poland",
+      "Netherlands",
+      "Austria"
+    ],
+    "first_letter_ko": "독",
+    "first_letter_en": "G",
+    "palette": [
+      {
+        "color": "#000000",
+        "ratio": 34
+      },
+      {
+        "color": "#DD0000",
+        "ratio": 33
+      },
+      {
+        "color": "#FFCE00",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#000000",
+          "ratio": 34
+        },
+        {
+          "color": "#DD0000",
+          "ratio": 33
+        },
+        {
+          "color": "#FFCE00",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "IT",
+    "name_ko": "이탈리아",
+    "name_en": "Italy",
+    "population": "약 5,900만",
+    "neighbors": [
+      "프랑스",
+      "오스트리아",
+      "스위스",
+      "슬로베니아"
+    ],
+    "population_en": "~59 million",
+    "neighbors_en": [
+      "France",
+      "Austria",
+      "Switzerland",
+      "Slovenia"
+    ],
+    "first_letter_ko": "이",
+    "first_letter_en": "I",
+    "palette": [
+      {
+        "color": "#009246",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#CE2B37",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#009246",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#CE2B37",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "NL",
+    "name_ko": "네덜란드",
+    "name_en": "Netherlands",
+    "population": "약 1,800만",
+    "neighbors": [
+      "벨기에",
+      "독일"
+    ],
+    "population_en": "~18 million",
+    "neighbors_en": [
+      "Belgium",
+      "Germany"
+    ],
+    "first_letter_ko": "네",
+    "first_letter_en": "N",
+    "palette": [
+      {
+        "color": "#AE1C28",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#21468B",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#AE1C28",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#21468B",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "BE",
+    "name_ko": "벨기에",
+    "name_en": "Belgium",
+    "population": "약 1,200만",
+    "neighbors": [
+      "프랑스",
+      "네덜란드",
+      "독일",
+      "룩셈부르크"
+    ],
+    "population_en": "~12 million",
+    "neighbors_en": [
+      "France",
+      "Netherlands",
+      "Germany",
+      "Luxembourg"
+    ],
+    "first_letter_ko": "벨",
+    "first_letter_en": "B",
+    "palette": [
+      {
+        "color": "#000000",
+        "ratio": 33
+      },
+      {
+        "color": "#FDDA24",
+        "ratio": 33
+      },
+      {
+        "color": "#EF3340",
+        "ratio": 34
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#000000",
+          "ratio": 33
+        },
+        {
+          "color": "#FDDA24",
+          "ratio": 33
+        },
+        {
+          "color": "#EF3340",
+          "ratio": 34
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "AT",
+    "name_ko": "오스트리아",
+    "name_en": "Austria",
+    "population": "약 910만",
+    "neighbors": [
+      "독일",
+      "이탈리아",
+      "슬로바키아",
+      "헝가리"
+    ],
+    "population_en": "~9.1 million",
+    "neighbors_en": [
+      "Germany",
+      "Italy",
+      "Slovakia",
+      "Hungary"
+    ],
+    "first_letter_ko": "오",
+    "first_letter_en": "A",
+    "palette": [
+      {
+        "color": "#ED2939",
+        "ratio": 33
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 34
+      },
+      {
+        "color": "#ED2939",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ED2939",
+          "ratio": 33
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 34
+        },
+        {
+          "color": "#ED2939",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "RU",
+    "name_ko": "러시아",
+    "name_en": "Russia",
+    "population": "약 1억 4,400만",
+    "neighbors": [
+      "우크라이나",
+      "핀란드",
+      "노르웨이",
+      "에스토니아"
+    ],
+    "population_en": "~144 million",
+    "neighbors_en": [
+      "Ukraine",
+      "Finland",
+      "Norway",
+      "Estonia"
+    ],
+    "first_letter_ko": "러",
+    "first_letter_en": "R",
+    "palette": [
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#0039A6",
+        "ratio": 34
+      },
+      {
+        "color": "#D52B1E",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#0039A6",
+          "ratio": 34
+        },
+        {
+          "color": "#D52B1E",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "UA",
+    "name_ko": "우크라이나",
+    "name_en": "Ukraine",
+    "population": "약 3,800만",
+    "neighbors": [
+      "폴란드",
+      "슬로바키아",
+      "헝가리",
+      "루마니아"
+    ],
+    "population_en": "~38 million",
+    "neighbors_en": [
+      "Poland",
+      "Slovakia",
+      "Hungary",
+      "Romania"
+    ],
+    "first_letter_ko": "우",
+    "first_letter_en": "U",
+    "palette": [
+      {
+        "color": "#0057B8",
+        "ratio": 50
+      },
+      {
+        "color": "#FFD700",
+        "ratio": 50
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#0057B8",
+          "ratio": 50
+        },
+        {
+          "color": "#FFD700",
+          "ratio": 50
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "PL",
+    "name_ko": "폴란드",
+    "name_en": "Poland",
+    "population": "약 3,800만",
+    "neighbors": [
+      "독일",
+      "체코",
+      "슬로바키아",
+      "우크라이나"
+    ],
+    "population_en": "~38 million",
+    "neighbors_en": [
+      "Germany",
+      "Czechia",
+      "Slovakia",
+      "Ukraine"
+    ],
+    "first_letter_ko": "폴",
+    "first_letter_en": "P",
+    "palette": [
+      {
+        "color": "#FFFFFF",
+        "ratio": 50
+      },
+      {
+        "color": "#DC143C",
+        "ratio": 50
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        },
+        {
+          "color": "#DC143C",
+          "ratio": 50
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "CO",
+    "name_ko": "콜롬비아",
+    "name_en": "Colombia",
+    "population": "약 5,200만",
+    "neighbors": [
+      "베네수엘라",
+      "에콰도르",
+      "브라질",
+      "페루"
+    ],
+    "population_en": "~52 million",
+    "neighbors_en": [
+      "Venezuela",
+      "Ecuador",
+      "Brazil",
+      "Peru"
+    ],
+    "first_letter_ko": "콜",
+    "first_letter_en": "C",
+    "palette": [
+      {
+        "color": "#FCD116",
+        "ratio": 52
+      },
+      {
+        "color": "#003893",
+        "ratio": 24
+      },
+      {
+        "color": "#CE1126",
+        "ratio": 24
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FCD116",
+          "ratio": 50
+        },
+        {
+          "color": "#003893",
+          "ratio": 25
+        },
+        {
+          "color": "#CE1126",
+          "ratio": 25
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "TH",
+    "name_ko": "태국",
+    "name_en": "Thailand",
+    "population": "약 7,100만",
+    "neighbors": [
+      "미얀마",
+      "라오스",
+      "말레이시아",
+      "캄보디아"
+    ],
+    "population_en": "~71 million",
+    "neighbors_en": [
+      "Myanmar",
+      "Laos",
+      "Malaysia",
+      "Cambodia"
+    ],
+    "first_letter_ko": "태",
+    "first_letter_en": "T",
+    "palette": [
+      {
+        "color": "#ED1C24",
+        "ratio": 38
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 28
+      },
+      {
+        "color": "#241D4F",
+        "ratio": 34
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ED1C24",
+          "ratio": 17
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 14
+        },
+        {
+          "color": "#241D4F",
+          "ratio": 38
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 14
+        },
+        {
+          "color": "#ED1C24",
+          "ratio": 17
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "HU",
+    "name_ko": "헝가리",
+    "name_en": "Hungary",
+    "population": "약 970만",
+    "neighbors": [
+      "오스트리아",
+      "슬로바키아",
+      "루마니아",
+      "세르비아"
+    ],
+    "population_en": "~9.7 million",
+    "neighbors_en": [
+      "Austria",
+      "Slovakia",
+      "Romania",
+      "Serbia"
+    ],
+    "first_letter_ko": "헝",
+    "first_letter_en": "H",
+    "palette": [
+      {
+        "color": "#CE2939",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#477050",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#CE2939",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#477050",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "GA",
+    "name_ko": "가봉",
+    "name_en": "Gabon",
+    "population": "약 240만",
+    "neighbors": [
+      "카메룬",
+      "적도기니",
+      "콩고"
+    ],
+    "population_en": "~2.4 million",
+    "neighbors_en": [
+      "Cameroon",
+      "Equatorial Guinea",
+      "Congo"
+    ],
+    "first_letter_ko": "가",
+    "first_letter_en": "G",
+    "palette": [
+      {
+        "color": "#009E60",
+        "ratio": 34
+      },
+      {
+        "color": "#FCD116",
+        "ratio": 33
+      },
+      {
+        "color": "#3A75C4",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#009E60",
+          "ratio": 34
+        },
+        {
+          "color": "#FCD116",
+          "ratio": 33
+        },
+        {
+          "color": "#3A75C4",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "ID",
+    "name_ko": "인도네시아",
+    "name_en": "Indonesia",
+    "population": "약 2억 7,800만",
+    "neighbors": [
+      "섬나라"
+    ],
+    "population_en": "~278 million",
+    "neighbors_en": [
+      "Island nation"
+    ],
+    "first_letter_ko": "인",
+    "first_letter_en": "I",
+    "palette": [
+      {
+        "color": "#FF0000",
+        "ratio": 50
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 50
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FF0000",
+          "ratio": 50
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "IE",
+    "name_ko": "아일랜드",
+    "name_en": "Ireland",
+    "population": "약 510만",
+    "neighbors": [
+      "섬나라"
+    ],
+    "population_en": "~5.1 million",
+    "neighbors_en": [
+      "Island nation"
+    ],
+    "first_letter_ko": "아",
+    "first_letter_en": "I",
+    "palette": [
+      {
+        "color": "#169B62",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#FF883E",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#169B62",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#FF883E",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "MC",
+    "name_ko": "모나코",
+    "name_en": "Monaco",
+    "population": "약 4만",
+    "neighbors": [
+      "프랑스"
+    ],
+    "population_en": "~40,000",
+    "neighbors_en": [
+      "France"
+    ],
+    "first_letter_ko": "모",
+    "first_letter_en": "M",
+    "palette": [
+      {
+        "color": "#C8102E",
+        "ratio": 50
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 50
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#C8102E",
+          "ratio": 50
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "YE",
+    "name_ko": "예멘",
+    "name_en": "Yemen",
+    "population": "약 3,400만",
+    "neighbors": [
+      "오만",
+      "사우디아라비아"
+    ],
+    "population_en": "~34 million",
+    "neighbors_en": [
+      "Oman",
+      "Saudi Arabia"
+    ],
+    "first_letter_ko": "예",
+    "first_letter_en": "Y",
+    "palette": [
+      {
+        "color": "#CE1126",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#000000",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#CE1126",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#000000",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "NG",
+    "name_ko": "나이지리아",
+    "name_en": "Nigeria",
+    "population": "약 2억 2,300만",
+    "neighbors": [
+      "베넹",
+      "니제르",
+      "카메룬"
+    ],
+    "population_en": "~223 million",
+    "neighbors_en": [
+      "Benin",
+      "Niger",
+      "Cameroon"
+    ],
+    "first_letter_ko": "나",
+    "first_letter_en": "N",
+    "palette": [
+      {
+        "color": "#008751",
+        "ratio": 67
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#008751",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#008751",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "ML",
+    "name_ko": "말리",
+    "name_en": "Mali",
+    "population": "약 2,300만",
+    "neighbors": [
+      "니제르",
+      "세네갈",
+      "기니",
+      "부르키나파소"
+    ],
+    "population_en": "~23 million",
+    "neighbors_en": [
+      "Niger",
+      "Senegal",
+      "Guinea",
+      "Burkina Faso"
+    ],
+    "first_letter_ko": "말",
+    "first_letter_en": "M",
+    "palette": [
+      {
+        "color": "#14B53A",
+        "ratio": 34
+      },
+      {
+        "color": "#FCD116",
+        "ratio": 33
+      },
+      {
+        "color": "#CE1126",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#14B53A",
+          "ratio": 34
+        },
+        {
+          "color": "#FCD116",
+          "ratio": 33
+        },
+        {
+          "color": "#CE1126",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "EE",
+    "name_ko": "에스토니아",
+    "name_en": "Estonia",
+    "population": "약 130만",
+    "neighbors": [
+      "라트비아",
+      "러시아"
+    ],
+    "population_en": "~1.3 million",
+    "neighbors_en": [
+      "Latvia",
+      "Russia"
+    ],
+    "first_letter_ko": "에",
+    "first_letter_en": "E",
+    "palette": [
+      {
+        "color": "#0072CE",
+        "ratio": 34
+      },
+      {
+        "color": "#000000",
+        "ratio": 33
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#0072CE",
+          "ratio": 34
+        },
+        {
+          "color": "#000000",
+          "ratio": 33
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "LU",
+    "name_ko": "룩셈부르크",
+    "name_en": "Luxembourg",
+    "population": "약 65만",
+    "neighbors": [
+      "벨기에",
+      "프랑스",
+      "독일"
+    ],
+    "population_en": "~650,000",
+    "neighbors_en": [
+      "Belgium",
+      "France",
+      "Germany"
+    ],
+    "first_letter_ko": "룩",
+    "first_letter_en": "L",
+    "palette": [
+      {
+        "color": "#ED2939",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#00A1DE",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#ED2939",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#00A1DE",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "LV",
+    "name_ko": "라트비아",
+    "name_en": "Latvia",
+    "population": "약 190만",
+    "neighbors": [
+      "에스토니아",
+      "리투아니아",
+      "러시아"
+    ],
+    "population_en": "~1.9 million",
+    "neighbors_en": [
+      "Estonia",
+      "Lithuania",
+      "Russia"
+    ],
+    "first_letter_ko": "라",
+    "first_letter_en": "L",
+    "palette": [
+      {
+        "color": "#9E1B34",
+        "ratio": 25
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 50
+      },
+      {
+        "color": "#9E1B34",
+        "ratio": 25
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#9E1B34",
+          "ratio": 25
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 50
+        },
+        {
+          "color": "#9E1B34",
+          "ratio": 25
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "LT",
+    "name_ko": "리투아니아",
+    "name_en": "Lithuania",
+    "population": "약 290만",
+    "neighbors": [
+      "라트비아",
+      "폴란드",
+      "벨라루스"
+    ],
+    "population_en": "~2.9 million",
+    "neighbors_en": [
+      "Latvia",
+      "Poland",
+      "Belarus"
+    ],
+    "first_letter_ko": "리",
+    "first_letter_en": "L",
+    "palette": [
+      {
+        "color": "#FDB913",
+        "ratio": 34
+      },
+      {
+        "color": "#006A44",
+        "ratio": 33
+      },
+      {
+        "color": "#C1272D",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#FDB913",
+          "ratio": 34
+        },
+        {
+          "color": "#006A44",
+          "ratio": 33
+        },
+        {
+          "color": "#C1272D",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "core"
+  },
+  {
+    "code": "TD",
+    "name_ko": "차드",
+    "name_en": "Chad",
+    "population": "약 1,860만",
+    "neighbors": [
+      "니제르",
+      "리비아",
+      "수단",
+      "카메룬"
+    ],
+    "population_en": "~18.6 million",
+    "neighbors_en": [
+      "Niger",
+      "Libya",
+      "Sudan",
+      "Cameroon"
+    ],
+    "first_letter_ko": "차",
+    "first_letter_en": "C",
+    "palette": [
+      {
+        "color": "#002664",
+        "ratio": 34
+      },
+      {
+        "color": "#FECB00",
+        "ratio": 33
+      },
+      {
+        "color": "#C60C30",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#002664",
+          "ratio": 34
+        },
+        {
+          "color": "#FECB00",
+          "ratio": 33
+        },
+        {
+          "color": "#C60C30",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "GN",
+    "name_ko": "기니",
+    "name_en": "Guinea",
+    "population": "약 1,400만",
+    "neighbors": [
+      "기니비사우",
+      "시에라리온",
+      "말리",
+      "코트디부아르"
+    ],
+    "population_en": "~14 million",
+    "neighbors_en": [
+      "Guinea-Bissau",
+      "Sierra Leone",
+      "Mali",
+      "Côte d'Ivoire"
+    ],
+    "first_letter_ko": "기",
+    "first_letter_en": "G",
+    "palette": [
+      {
+        "color": "#CE1126",
+        "ratio": 34
+      },
+      {
+        "color": "#FCD116",
+        "ratio": 33
+      },
+      {
+        "color": "#009460",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#CE1126",
+          "ratio": 34
+        },
+        {
+          "color": "#FCD116",
+          "ratio": 33
+        },
+        {
+          "color": "#009460",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "CI",
+    "name_ko": "코트디부아르",
+    "name_en": "Côte d'Ivoire",
+    "population": "약 2,850만",
+    "neighbors": [
+      "기니",
+      "말리",
+      "가나",
+      "부르키나파소"
+    ],
+    "population_en": "~28.5 million",
+    "neighbors_en": [
+      "Guinea",
+      "Mali",
+      "Ghana",
+      "Burkina Faso"
+    ],
+    "first_letter_ko": "코",
+    "first_letter_en": "C",
+    "palette": [
+      {
+        "color": "#F77F00",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 33
+      },
+      {
+        "color": "#009739",
+        "ratio": 33
+      }
+    ],
+    "stripes": {
+      "direction": "vertical",
+      "bands": [
+        {
+          "color": "#F77F00",
+          "ratio": 34
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 33
+        },
+        {
+          "color": "#009739",
+          "ratio": 33
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "MU",
+    "name_ko": "모리셔스",
+    "name_en": "Mauritius",
+    "population": "약 130만",
+    "neighbors": [
+      "섬나라"
+    ],
+    "population_en": "~1.3 million",
+    "neighbors_en": [
+      "Island nation"
+    ],
+    "first_letter_ko": "모",
+    "first_letter_en": "M",
+    "palette": [
+      {
+        "color": "#EA2839",
+        "ratio": 25
+      },
+      {
+        "color": "#1A206E",
+        "ratio": 25
+      },
+      {
+        "color": "#FFD500",
+        "ratio": 25
+      },
+      {
+        "color": "#00A551",
+        "ratio": 25
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#EA2839",
+          "ratio": 25
+        },
+        {
+          "color": "#1A206E",
+          "ratio": 25
+        },
+        {
+          "color": "#FFD500",
+          "ratio": 25
+        },
+        {
+          "color": "#00A551",
+          "ratio": 25
+        }
+      ]
+    },
+    "tier": "expansion"
+  },
+  {
+    "code": "CR",
+    "name_ko": "코스타리카",
+    "name_en": "Costa Rica",
+    "population": "약 520만",
+    "neighbors": [
+      "니카라과",
+      "파나마"
+    ],
+    "population_en": "~5.2 million",
+    "neighbors_en": [
+      "Nicaragua",
+      "Panama"
+    ],
+    "first_letter_ko": "코",
+    "first_letter_en": "C",
+    "palette": [
+      {
+        "color": "#002B7F",
+        "ratio": 34
+      },
+      {
+        "color": "#FFFFFF",
+        "ratio": 34
+      },
+      {
+        "color": "#CE1126",
+        "ratio": 32
+      }
+    ],
+    "stripes": {
+      "direction": "horizontal",
+      "bands": [
+        {
+          "color": "#002B7F",
+          "ratio": 17
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 17
+        },
+        {
+          "color": "#CE1126",
+          "ratio": 32
+        },
+        {
+          "color": "#FFFFFF",
+          "ratio": 17
+        },
+        {
+          "color": "#002B7F",
+          "ratio": 17
+        }
+      ]
+    },
+    "tier": "expansion"
+  }
+]
+  </script>
+</head>
+<body>
+  <main>
+    <header class="title-block">
+      <h1 class="app-title"><span class="app-title__flag">Flag</span><span class="app-title__lette">lette</span><span class="title-emoji" aria-hidden="true"> 🌍</span></h1>
+      <p class="tagline">A daily flag puzzle.</p>
+    </header>
+    <section id="daily-complete" class="daily-complete" hidden>
+      <p class="daily-complete__title">✅ Today's Flaglette complete!</p>
+      <p class="daily-complete__result">Result: <span id="daily-result-label"></span></p>
+      <p class="daily-complete__attempts">Guesses: <span id="daily-result-attempts"></span> / 3</p>
+      <p class="daily-complete__bye">See you tomorrow ☀️</p>
+      <p class="daily-complete__countdown">Next puzzle in: <span id="daily-countdown">--:--:--</span></p>
+      <p class="daily-complete__note" id="daily-midnight-note" hidden></p>
+      <button type="button" class="share-btn" id="share-btn-daily">Share result</button>
+    </section>
+    <div id="game-zone" hidden>
+    <div id="flag-display"></div>
+    <div class="guess-row">
+      <input type="text" id="guess-input" placeholder="Enter a country name" autocomplete="off" inputmode="text" lang="en">
+      <button type="button" id="submit-btn">Guess</button>
+    </div>
+    <div id="hints" aria-live="polite"></div>
+    <div id="attempts">Guesses: 0 / 3</div>
+    <div id="feedback"></div>
+    <div id="share-row" class="share-row" hidden>
+      <button type="button" class="share-btn" id="share-btn-game">Share result</button>
+    </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

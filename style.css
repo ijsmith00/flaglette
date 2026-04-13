@@ -1,0 +1,358 @@
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-hover: #252525;
+  --text: #ffffff;
+  --text-muted: #888888;
+  --text-subtle: #555555;
+  --accent: #fbbf24;
+  --accent-hover: #fcd34d;
+  --success: #4ade80;
+  --error: #ef4444;
+  --border: #2a2a2a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 30px;
+  padding: 48px 24px;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 워드마크: 본문과 동일 Pretendard (Day 8 영어화 직후 스펙 — Outfit 아님) */
+.app-title {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.app-title__flag {
+  color: var(--text);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 32px rgba(0, 0, 0, 0.55);
+}
+
+.app-title__lette {
+  background: linear-gradient(165deg, #fde68a 0%, #fbbf24 42%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .app-title__lette {
+    color: var(--accent);
+    -webkit-text-fill-color: unset;
+  }
+}
+
+.title-emoji {
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
+.tagline {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  margin-top: 8px;
+}
+
+.daily-complete {
+  width: 100%;
+  padding: 1.25rem 1rem;
+  background: var(--surface);
+  border-radius: 12px;
+  border-left: 3px solid var(--accent);
+  text-align: center;
+}
+
+.daily-complete__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.daily-complete__result,
+.daily-complete__attempts,
+.daily-complete__bye,
+.daily-complete__countdown {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.4rem 0;
+  line-height: 1.5;
+}
+
+.daily-complete__note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+#daily-countdown {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+#game-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 28px;
+  width: 100%;
+}
+
+#game-zone[hidden] {
+  display: none !important;
+}
+
+#flag-display {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#flag-display > div {
+  width: 100% !important;
+  max-width: 400px !important;
+  height: auto !important;
+  aspect-ratio: 3 / 2 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  overflow: hidden !important;
+}
+
+#hints {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  min-height: 0;
+}
+
+#hints:empty {
+  display: none;
+}
+
+.hint-line {
+  background-color: var(--surface);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: left;
+  animation: hintFadeIn 0.3s ease;
+}
+
+@keyframes hintFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .hint-line {
+    font-size: 0.8rem;
+    padding: 10px 14px;
+  }
+}
+
+.guess-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.guess-row #guess-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#guess-input {
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+#guess-input::placeholder {
+  color: var(--text-subtle);
+}
+
+#guess-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15);
+}
+
+#guess-input:disabled {
+  opacity: 0.55;
+}
+
+#submit-btn {
+  flex: 0 0 auto;
+  min-width: 5.5rem;
+  min-height: 44px;
+  background-color: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#submit-btn:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+#submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.share-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#share-row[hidden] {
+  display: none !important;
+}
+
+.share-btn {
+  width: auto;
+  max-width: 14rem;
+  min-height: 44px;
+  background-color: var(--surface);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.share-btn:hover {
+  background-color: var(--surface-hover);
+  border-color: rgba(251, 191, 36, 0.4);
+  color: var(--text);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.share-btn:active {
+  transform: translateY(0);
+}
+
+.daily-complete .share-btn {
+  margin-top: 0.65rem;
+}
+
+#attempts {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+#feedback {
+  min-height: 2.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+}
+
+#feedback.feedback-success {
+  color: var(--success);
+  animation: feedbackSuccessPop 0.4s ease;
+}
+
+#feedback.feedback-error {
+  color: var(--error);
+}
+
+@keyframes feedbackSuccessPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
