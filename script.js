@@ -1,17 +1,19 @@
 let currentCountry = null;
 let attempts = 0;
-const maxAttempts = 3;
+const maxAttempts = 6;
+const SAVE_SCHEMA_VERSION = 2;
+const HOWTO_STORAGE_KEY = "flaglette_howto_seen_v1";
 let isGameOver = false;
-/** 공유 텍스트용 — persist 직후·완료 화면 복원 시 채움 */
+/** Filled after persist and when restoring the complete screen for share text. */
 let shareSnapshot = null;
 
-/** V1.1 연습 모드용 — 목록에서 무작위 국가 (현재 미사용) */
+/** V1.1 practice mode: random country from list (unused for now). */
 function pickRandomCountry(countries) {
   const i = Math.floor(Math.random() * countries.length);
   return countries[i];
 }
 
-/** 로컬 기준 오늘 날짜 문자열 YYYYMMDD (저장 키용) */
+/** Local calendar date as YYYYMMDD (storage key). */
 function getLocalDateKeyString() {
   const d = new Date();
   const y = d.getFullYear();
@@ -20,20 +22,20 @@ function getLocalDateKeyString() {
   return `${y}${m}${day}`;
 }
 
-/** YYYYMMDD 정수 — 같은 날이면 항상 같은 시드 */
+/** YYYYMMDD as integer — same day always yields the same seed. */
 function getLocalDateSeedNumber() {
   const d = new Date();
   return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
 }
 
-/** localStorage 키: flaglette_daily_YYYYMMDD */
+/** localStorage key: flaglette_daily_YYYYMMDD */
 function getDailyStorageKey() {
   return `flaglette_daily_${getLocalDateKeyString()}`;
 }
 
 /**
- * 데일리 정답: 오늘 날짜(로컬)를 숫자로 → % 풀 길이.
- * @param {object[]} coreCountries tier === "core" 배열
+ * Daily answer: local date as a number, modulo pool length.
+ * @param {object[]} coreCountries countries with tier === "core"
  */
 function getDailyCountry(coreCountries) {
   const n = getLocalDateSeedNumber();
@@ -41,7 +43,7 @@ function getDailyCountry(coreCountries) {
   return coreCountries[idx];
 }
 
-/** RGB 거리로 가장 가까운 색 이모지 (Wordle 스타일 공유용) */
+/** Nearest square emoji by RGB distance (Wordle-style share). */
 const EMOJI_RGB_ANCHORS = [
   ["🟥", 255, 0, 0],
   ["🟧", 255, 165, 0],
@@ -54,7 +56,7 @@ const EMOJI_RGB_ANCHORS = [
   ["🟫", 139, 69, 19],
 ];
 
-/** HEX 색 문자열 → {r,g,b} */
+/** HEX string → {r,g,b} */
 function hexToRgb(hex) {
   if (typeof hex !== "string") return { r: 128, g: 128, b: 128 };
   let h = hex.trim().replace(/^#/, "");
@@ -67,7 +69,7 @@ function hexToRgb(hex) {
   return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
 }
 
-/** 공유용: 국기 색에 가장 가까운 사각 이모지 */
+/** Share: square emoji closest to flag color. */
 function colorToEmoji(hexColor) {
   const rgb = hexToRgb(hexColor);
   const { r, g, b } = rgb;
@@ -75,23 +77,23 @@ function colorToEmoji(hexColor) {
   const min = Math.min(r, g, b);
   const spread = max - min;
 
-  // 거의 흰색
+  // Near white
   if (min > 238 && spread < 22) {
     return "⬜";
   }
-  /* 짙은 남색·네이비(#241D4F 등): RGB 거리상 ⬛에 붙는 오분류 방지 — 파랑 성분이 크면 🟦 */
+  /* Dark navy (#241D4F etc.): avoid misclassifying as black when blue dominates */
   if (b > r && b > g && b > 48 && r < 130 && g < 130) {
     return "🟦";
   }
-  // 짙은 녹색·올리브
+  // Dark green / olive
   if (g > r && g > b && g > 52 && r < 140 && b < 140) {
     return "🟩";
   }
-  // 짙은 적색·자주
+  // Dark red / maroon
   if (r > g && r > b && r > 72 && g < 130 && b < 130) {
     return "🟥";
   }
-  // 거의 순검·중성 어두운 회색
+  // Near black / neutral dark gray
   if (max < 52 && spread < 28) {
     return "⬛";
   }
@@ -111,7 +113,7 @@ function colorToEmoji(hexColor) {
   return best[0];
 }
 
-/** 기준일 2026-01-01(로컬)부터의 일수 + 1 */
+/** Days since local 2026-01-01, plus 1 */
 function getDailyGameNumber() {
   const epoch = new Date(2026, 0, 1);
   const t = new Date();
@@ -124,17 +126,41 @@ function getDailyGameNumber() {
   return Math.floor((t0 - e0) / 864e5) + 1;
 }
 
-/** 오늘 날짜 키의 localStorage에서 공유 스냅샷 복원 */
+/** Legacy save (3 guesses): normalize maxGuesses and schemaVersion */
+function migrateDailyPayload(p) {
+  if (!p || typeof p !== "object") return p;
+  const maxGuesses = p.maxGuesses ?? (p.schemaVersion >= 2 ? 6 : 3);
+  return { ...p, maxGuesses, schemaVersion: p.schemaVersion ?? 1 };
+}
+
+/** Letter count of English country name (spaces excluded) */
+function letterCountFromName(nameEn) {
+  return String(nameEn || "").replace(/\s/g, "").length;
+}
+
+/** Neighboring countries hint line (English only). */
+function formatNeighborsHint(country) {
+  const n = country.neighbors_en ?? [];
+  if (n.length === 0) return "No bordering countries";
+  const joined = n.join(", ");
+  if (joined === "Island nation") {
+    return "Island nation (no land borders)";
+  }
+  return joined;
+}
+
+/** Restore share snapshot from localStorage for today’s key */
 function loadShareSnapshotFromStorage() {
   try {
     const raw = localStorage.getItem(getDailyStorageKey());
     if (!raw) return null;
-    const p = JSON.parse(raw);
+    const p = migrateDailyPayload(JSON.parse(raw));
     if (!p || !p.completed) return null;
     return {
       won: p.won,
       attempts: p.attempts,
       hintsUsed: p.hintsUsed ?? 0,
+      maxGuesses: p.maxGuesses ?? 3,
       stripeEmojiLine: p.stripeEmojiLine || "",
     };
   } catch (_) {
@@ -142,7 +168,7 @@ function loadShareSnapshotFromStorage() {
   }
 }
 
-/** https 페이지에서만 — 소셜 공유·페이스북 u 파라미터용 */
+/** Only on http(s) — social share / Facebook u parameter */
 function getSharePageUrl() {
   try {
     const { protocol, host, pathname } = window.location;
@@ -153,32 +179,35 @@ function getSharePageUrl() {
   }
 }
 
-/** 클립보드에 넣을 Wordle 스타일 결과 문자열 */
+/** Wordle-style result string for the clipboard */
 function generateShareText() {
   const snap = shareSnapshot || loadShareSnapshotFromStorage();
   if (!snap) return "";
   const n = getDailyGameNumber();
   const resultEmoji = snap.won ? "✅" : "❌";
   const stripeLine = snap.stripeEmojiLine || "";
+  const maxG = snap.maxGuesses ?? 3;
+  const totalAttempts = snap.attempts;
   const hintSuffix = snap.hintsUsed > 0 ? " 💡" : "";
-  const body = `Flaglette #${n} 🌍 ${resultEmoji}\n\n${stripeLine}\n\nGuesses ${snap.attempts}/3${hintSuffix}`;
+  const line1 = `Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
+  const body = `${line1}\n\n${stripeLine}${hintSuffix}\n`;
   const pageUrl = getSharePageUrl();
   return pageUrl ? `${body}\n\n${pageUrl}\n` : `${body}\n\n`;
 }
 
-/** 게임 종료 직후 인라인 공유 버튼 표시 */
+/** Show inline share row right after the game ends */
 function showShareRow() {
   const row = document.getElementById("share-row");
   if (row) row.hidden = false;
 }
 
-/** 인라인 공유 버튼 숨김 (새 판 시작 시) */
+/** Hide inline share row (e.g. when starting a new round) */
 function hideShareRow() {
   const row = document.getElementById("share-row");
   if (row) row.hidden = true;
 }
 
-/** 공유 문자열을 클립보드에 복사 (성공 여부) */
+/** Copy share string to clipboard; returns success */
 async function copyShareTextToClipboard() {
   const text = generateShareText();
   if (!text.trim()) return false;
@@ -186,7 +215,7 @@ async function copyShareTextToClipboard() {
     await navigator.clipboard.writeText(text);
     return true;
   } catch (e) {
-    console.warn("클립보드 복사 실패", e);
+    console.warn("Clipboard copy failed", e);
     return false;
   }
 }
@@ -208,7 +237,7 @@ function setShareDialogStatus(message) {
   }
 }
 
-/** 공유 다이얼로그: 인스타·틱톡 등은 웹에서 직접 글 게시 API가 없어 복사 후 앱/사이트로 연결 */
+/** Share dialog: Instagram/TikTok have no web post API — copy then open app/site */
 function openShareDialog() {
   const text = generateShareText();
   if (!text.trim()) return;
@@ -341,7 +370,7 @@ function initShareDialog() {
   if (closeBtn) closeBtn.addEventListener("click", () => dlg.close());
 }
 
-/** 공유 텍스트를 클립보드에 복사하고 버튼 라벨 잠깐 변경 */
+/** Copy share text and briefly change the button label */
 async function copyShareText(button) {
   if (!(await copyShareTextToClipboard())) return;
   if (!button.dataset.labelDefault) {
@@ -354,7 +383,7 @@ async function copyShareText(button) {
   }, 1500);
 }
 
-/** 로컬 자정까지 남은 시간(ms) */
+/** Milliseconds until local midnight */
 function msUntilNextLocalMidnight() {
   const now = new Date();
   const next = new Date(
@@ -371,7 +400,7 @@ function msUntilNextLocalMidnight() {
 
 let midnightCountdownTimerId = null;
 
-/** 완료 화면 자정 카운트다운 interval 정리 */
+/** Clear midnight countdown interval on complete screen */
 function clearMidnightCountdown() {
   if (midnightCountdownTimerId != null) {
     clearInterval(midnightCountdownTimerId);
@@ -379,7 +408,7 @@ function clearMidnightCountdown() {
   }
 }
 
-/** 초 길이를 HH:MM:SS 문자열로 */
+/** Format seconds as HH:MM:SS */
 function formatCountdownHMS(totalSeconds) {
   const s = Math.max(0, Math.floor(totalSeconds));
   const h = Math.floor(s / 3600);
@@ -388,7 +417,7 @@ function formatCountdownHMS(totalSeconds) {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 }
 
-/** 완료 패널: 다음 자정까지 HH:MM:SS */
+/** Complete panel: countdown to next midnight */
 function startMidnightCountdown() {
   clearMidnightCountdown();
   const el = document.getElementById("daily-countdown");
@@ -412,10 +441,11 @@ function startMidnightCountdown() {
   midnightCountdownTimerId = setInterval(tick, 1000);
 }
 
-/** 정답/실패 시 오늘 날짜 키로 진행 저장 (총 시도·힌트 단계 수·줄무늬 이모지) */
+/** Save progress for today’s key on win/loss (attempts, hints, stripe emojis) */
 function persistDailyComplete(won) {
   const totalAttempts = won ? attempts + 1 : maxAttempts;
-  const hintsUsed = won ? attempts : maxAttempts;
+  const wrongBeforeEnd = won ? attempts : maxAttempts;
+  const hintsUsed = won ? Math.min(wrongBeforeEnd, 5) : 5;
   const stripeEmojiLine = currentCountry.stripes.bands
     .map((b) => colorToEmoji(b.color))
     .join("");
@@ -423,38 +453,46 @@ function persistDailyComplete(won) {
     won,
     attempts: totalAttempts,
     hintsUsed,
+    maxGuesses: maxAttempts,
     stripeEmojiLine,
   };
   const payload = {
+    schemaVersion: SAVE_SCHEMA_VERSION,
     completed: true,
     won,
     attempts: totalAttempts,
+    maxGuesses: maxAttempts,
     hintsUsed,
     stripeEmojiLine,
   };
   try {
     localStorage.setItem(getDailyStorageKey(), JSON.stringify(payload));
   } catch (e) {
-    console.warn("localStorage 저장 실패", e);
+    console.warn("localStorage save failed", e);
   }
 }
 
-/** 이미 완료한 오늘 판 — 완료 카드만 표시 */
-function showDailyCompleteScreen(saved) {
+/** Today’s puzzle already finished — show complete card only */
+function showDailyCompleteScreen(savedRaw) {
+  const saved = migrateDailyPayload(savedRaw);
+  const maxG = saved.maxGuesses ?? 3;
   const gameZone = document.getElementById("game-zone");
   const panel = document.getElementById("daily-complete");
   const label = document.getElementById("daily-result-label");
   const att = document.getElementById("daily-result-attempts");
+  const attMax = document.getElementById("daily-result-max");
   shareSnapshot = {
     won: saved.won,
     attempts: saved.attempts,
     hintsUsed: saved.hintsUsed ?? 0,
+    maxGuesses: maxG,
     stripeEmojiLine: saved.stripeEmojiLine || "",
   };
   if (gameZone) gameZone.hidden = true;
   if (panel) panel.hidden = false;
   if (label) label.textContent = saved.won ? "Solved" : "Failed";
   if (att) att.textContent = String(saved.attempts ?? "—");
+  if (attMax) attMax.textContent = String(maxG);
   const shareDaily = document.getElementById("share-btn-daily");
   if (shareDaily) {
     shareDaily.onclick = () => openShareDialog();
@@ -462,12 +500,12 @@ function showDailyCompleteScreen(saved) {
   startMidnightCountdown();
 }
 
-/** 정답 비교용 문자열 정규화 */
+/** Normalize guess string for comparison */
 function normalize(str) {
   return str.trim().toLowerCase();
 }
 
-/** 영문 국가명과 일치하면 정답 (V1.1에서 한글 인정 예정) */
+/** Correct if guess matches English country name */
 function isCorrectGuess(guess, country) {
   const g = normalize(guess);
   return g === normalize(country.name_en);
@@ -475,7 +513,7 @@ function isCorrectGuess(guess, country) {
 
 const NS = "http://www.w3.org/2000/svg";
 
-/** 건·곤·감·이 — 막대 3줄 (실선 / 절선). 좌표는 괘 박스 왼쪽 위 기준. */
+/** Trigram bars: three rows (solid / broken). Origin: top-left of trigram box. */
 function appendGwaeSolid(g, x, y, w, barH, gap) {
   for (let i = 0; i < 3; i++) {
     const r = document.createElementNS(NS, "rect");
@@ -488,7 +526,7 @@ function appendGwaeSolid(g, x, y, w, barH, gap) {
   }
 }
 
-/** 괘 막대 3줄 — 가운데 끊긴(절선) 패턴 */
+/** Three broken bars (center gap) */
 function appendGwaeBroken(g, x, y, w, barH, gap, midGap) {
   const half = (w - midGap) / 2;
   for (let i = 0; i < 3; i++) {
@@ -510,7 +548,7 @@ function appendGwaeBroken(g, x, y, w, barH, gap, midGap) {
   }
 }
 
-/** 괘 막대 3줄 — 행마다 실선/절선 혼합 */
+/** Three rows mixing solid and broken bars */
 function appendGwaeMixed(g, x, y, w, barH, gap, midGap, pattern) {
   const half = (w - midGap) / 2;
   for (let row = 0; row < 3; row++) {
@@ -543,7 +581,7 @@ function appendGwaeMixed(g, x, y, w, barH, gap, midGap, pattern) {
 }
 
 /**
- * 흰 바탕 + SVG 태극(음양 곡선·소원) + 사괘. 비율은 상징적 단순화.
+ * White field + SVG taegeuk (yin-yang) + four trigrams. Proportions are symbolic.
  */
 function renderSouthKoreaStripes(frame) {
   frame.style.backgroundColor = "#FFFFFF";
@@ -621,7 +659,7 @@ function renderSouthKoreaStripes(frame) {
   frame.appendChild(svg);
 }
 
-/** 성조기 단순화: 13줄 빨/흰 번갈아 + 좌상단 청색 canton(너비 약 40%, 높이 위쪽 7/13). 별은 생략. */
+/** Simplified US flag: 13 red/white stripes + blue canton (~40% wide, top 7/13). Stars omitted. */
 function renderUnitedStatesStripes(frame) {
   const red = "#B22234";
   const white = "#FFFFFF";
@@ -644,7 +682,7 @@ function renderUnitedStatesStripes(frame) {
   frame.appendChild(canton);
 }
 
-/** 배경(bands[0]) + 동심원(bands[1]…). 바깥 원 지름 ≈ 프레임 높이의 40%. */
+/** Background (bands[0]) + concentric circles (bands[1]…). Outer circle ~40% of frame height. */
 function renderCenterStripes(frame, bands) {
   frame.style.backgroundColor = bands[0].color;
   if (bands.length < 2) return;
@@ -678,7 +716,7 @@ function renderCenterStripes(frame, bands) {
   }
 }
 
-/** country.stripes에 맞춰 #flag-display에 국기 프레임 렌더 */
+/** Render flag frame in #flag-display from country.stripes */
 function renderStripes(country) {
   const display = document.getElementById("flag-display");
   display.innerHTML = "";
@@ -733,42 +771,45 @@ function renderStripes(country) {
     }
   } else {
     frame.style.display = "block";
-    console.warn("아직 처리 안 된 direction:", direction);
+    console.warn("Unimplemented stripes direction:", direction);
     frame.style.backgroundColor = bands[0] ? bands[0].color : "#333333";
   }
 
   display.appendChild(frame);
 }
 
-/** #attempts 텍스트 갱신 */
+/** Update #attempts label */
 function updateAttemptsDisplay() {
   document.getElementById("attempts").textContent =
     `Guesses: ${attempts} / ${maxAttempts}`;
 }
 
-/** 힌트 영역 비우기 */
+/** Clear hints container */
 function clearHints() {
   const el = document.getElementById("hints");
   if (el) el.innerHTML = "";
 }
 
-/** 힌트 한 줄 추가 (누적) */
+/** Append one hint line (stacked, enter animation) */
 function appendHintLine(text) {
   const root = document.getElementById("hints");
   if (!root) return;
   const line = document.createElement("div");
-  line.className = "hint-line";
+  line.className = "hint-line hint-line--enter";
   line.textContent = text;
   root.appendChild(line);
+  requestAnimationFrame(() => {
+    line.classList.add("hint-line--visible");
+  });
 }
 
-/** 입력·확인 버튼 활성/비활성 */
+/** Enable/disable input and submit */
 function setInputsDisabled(disabled) {
   document.getElementById("guess-input").disabled = disabled;
   document.getElementById("submit-btn").disabled = disabled;
 }
 
-/** 추측 제출: 정답·오답·힌트·데일리 저장·공유 버튼 */
+/** Submit guess: win/lose, hints, daily save, share row */
 function handleGuess() {
   if (isGameOver) return;
 
@@ -793,14 +834,19 @@ function handleGuess() {
 
   if (attempts === 1) {
     appendHintLine(
-      `💡 Population: ${currentCountry.population_en ?? currentCountry.population}`
+      `Population: ${currentCountry.population_en ?? "—"}`
     );
   } else if (attempts === 2) {
-    appendHintLine(
-      `💡 Borders: ${(currentCountry.neighbors_en ?? currentCountry.neighbors).join(", ")}`
-    );
+    appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
   } else if (attempts === 3) {
-    appendHintLine(`💡 Starts with ${currentCountry.first_letter_en}`);
+    appendHintLine(`Continent: ${currentCountry.continent ?? "—"}`);
+  } else if (attempts === 4) {
+    appendHintLine(`Starts with: ${currentCountry.first_letter_en}`);
+  } else if (attempts === 5) {
+    appendHintLine(
+      `Name length (letters): ${letterCountFromName(currentCountry.name_en)}`
+    );
+  } else if (attempts === 6) {
     feedback.textContent = `Game over. The answer was ${currentCountry.name_en}.`;
     feedback.className = "feedback-error";
     isGameOver = true;
@@ -816,13 +862,13 @@ function handleGuess() {
   input.value = "";
 }
 
-/** #countries-embedded 또는 countries.json에서 데이터 로드 */
+/** Load data from #countries-embedded or countries.json */
 async function loadCountries() {
   const embedded = document.getElementById("countries-embedded");
 
   if (window.location.protocol === "file:") {
     if (!embedded) {
-      throw new Error("file:// 에서는 #countries-embedded 가 필요합니다.");
+      throw new Error("file:// URLs require embedded #countries-embedded data.");
     }
     return JSON.parse(embedded.textContent);
   }
@@ -839,21 +885,51 @@ async function loadCountries() {
   }
 }
 
-/** 페이지 로드: 오늘 완료 여부 → 데일리 국가 선정·이벤트 연결 */
+function initHowToPlay() {
+  const dlg = document.getElementById("howto-dialog");
+  const openBtn = document.getElementById("howto-open-btn");
+  const closeBtn = document.getElementById("howto-close-btn");
+  if (!dlg || !openBtn) return;
+  const close = () => {
+    try {
+      dlg.close();
+    } catch (_) {
+      /* noop */
+    }
+  };
+  openBtn.addEventListener("click", () => {
+    if (typeof dlg.showModal === "function") dlg.showModal();
+  });
+  closeBtn?.addEventListener("click", close);
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) close();
+  });
+  try {
+    if (!localStorage.getItem(HOWTO_STORAGE_KEY) && typeof dlg.showModal === "function") {
+      dlg.showModal();
+      localStorage.setItem(HOWTO_STORAGE_KEY, "1");
+    }
+  } catch (_) {
+    if (typeof dlg.showModal === "function") dlg.showModal();
+  }
+}
+
+/** Page load: if today not done, pick daily country and wire events */
 async function init() {
   initShareDialog();
-  /* await 전에 동기 확인 — 완료 시 게임 영역이 잠깐이라도 보이지 않게 */
+  initHowToPlay();
+  /* Sync check before await — avoid flashing game zone if already complete */
   try {
     const raw = localStorage.getItem(getDailyStorageKey());
     if (raw) {
-      const st = JSON.parse(raw);
+      const st = migrateDailyPayload(JSON.parse(raw));
       if (st && st.completed === true) {
         showDailyCompleteScreen(st);
         return;
       }
     }
   } catch (_) {
-    /* 새 게임 */
+    /* new game */
   }
 
   const gameZone = document.getElementById("game-zone");
@@ -862,11 +938,11 @@ async function init() {
   const countries = await loadCountries();
   const pool = countries.filter((c) => c.tier === "core");
   if (pool.length === 0) {
-    throw new Error("tier가 core인 나라가 없습니다.");
+    throw new Error('No country has tier "core".');
   }
 
   // currentCountry = pickRandomCountry(pool);
-  // V1.1에서 연습 모드용 랜덤 — 위 pickRandomCountry(pool) 사용
+  // V1.1 practice mode could use pickRandomCountry(pool) here
   currentCountry = getDailyCountry(pool);
 
   shareSnapshot = null;

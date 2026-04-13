@@ -4,7 +4,8 @@
   "scripts": {
     "start": "serve -l 3000 .",
     "dev": "serve -l 3000 .",
-    "prepare:og": "node scripts/resolve-og.mjs"
+    "prepare:og": "node scripts/resolve-og.mjs",
+    "sync:countries": "node scripts/sync-countries-embedded.mjs"
   },
   "devDependencies": {
     "serve": "^14.2.4"

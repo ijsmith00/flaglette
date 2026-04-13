@@ -1,7 +1,7 @@
 /**
- * site-origin.txt 또는 SITE_ORIGIN 환경 변수의 공개 HTTPS origin으로
- * og:image, twitter:image, og:url, canonical 등을 절대 URL로 맞춥니다.
- * 카카오톡·페이스북 등 링크 미리보기에 필요합니다.
+ * Resolves absolute URLs for og:image, twitter:image, og:url, canonical from
+ * site-origin.txt or SITE_ORIGIN (public HTTPS origin).
+ * Needed for Kakao, Facebook, and other link previews.
  *
  * npm run prepare:og
  */
@@ -106,6 +106,6 @@ if (origin) {
   console.log("  origin:", origin);
   console.log("  og:image →", imageUrl);
 } else {
-  console.log("prepare:og: site-origin.txt에 HTTPS 주소 없음 → og:image 상대 경로 유지");
-  console.log("  카카오 미리보기: site-origin.txt에 배포 URL을 넣고 npm run prepare:og 실행");
+  console.log("prepare:og: no HTTPS URL in site-origin.txt — keeping relative og:image");
+  console.log("  For Kakao preview: put your deploy URL in site-origin.txt and run npm run prepare:og");
 }

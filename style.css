@@ -53,7 +53,152 @@ main {
   align-items: center;
 }
 
-/* 워드마크: 본문과 동일 Pretendard (Day 8 영어화 직후 스펙 — Outfit 아님) */
+.title-block__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.howto-btn {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.howto-btn:hover {
+  background: var(--surface-hover);
+  border-color: rgba(251, 191, 36, 0.45);
+  transform: translateY(-1px);
+}
+
+.howto-dialog {
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  max-width: calc(100vw - 32px);
+  width: min(22rem, 100%);
+  max-height: min(85vh, 28rem);
+  overflow: auto;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(165deg, #242424 0%, #1a1a1a 55%, #171717 100%);
+  color: var(--text);
+  border: 1px solid rgba(253, 224, 71, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.12),
+    0 20px 56px rgba(0, 0, 0, 0.55),
+    0 0 48px rgba(251, 191, 36, 0.08);
+}
+
+.howto-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.howto-dialog__inner {
+  padding: 1.25rem 1.35rem 1.3rem;
+  text-align: left;
+}
+
+.howto-dialog__title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+  line-height: 1.2;
+  background: linear-gradient(165deg, #fffbeb 0%, #fde68a 28%, #fbbf24 55%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .howto-dialog__title {
+    color: #fcd34d;
+    -webkit-text-fill-color: unset;
+  }
+}
+
+.howto-dialog__list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: howto-step;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.howto-dialog__list li {
+  position: relative;
+  margin-bottom: 0.55rem;
+  padding-left: 2.35rem;
+  min-height: 1.55rem;
+  counter-increment: howto-step;
+}
+
+.howto-dialog__list li::before {
+  content: counter(howto-step);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #1c1917;
+  background: linear-gradient(155deg, #fef9c3 0%, #fde047 35%, #fbbf24 72%, #ea580c 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.howto-dialog__close {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  background: linear-gradient(180deg, #2a2418 0%, #1f1c14 100%);
+  color: #fef3c7;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.howto-dialog__close:hover {
+  background: linear-gradient(180deg, #352e22 0%, #2a2418 100%);
+  border-color: rgba(253, 224, 71, 0.55);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
+}
+
+/* Wordmark: same Pretendard as body (Day 8 spec — not Outfit) */
 .app-title {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, sans-serif;
@@ -185,16 +330,17 @@ main {
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.92);
   text-align: left;
-  animation: hintFadeIn 0.3s ease;
 }
 
-@keyframes hintFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.hint-line--enter {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.38s ease, transform 0.38s ease;
+}
+
+.hint-line--enter.hint-line--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 480px) {

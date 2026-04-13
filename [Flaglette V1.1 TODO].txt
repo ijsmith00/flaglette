@@ -1,6 +1,5 @@
 [Flaglette V1.1 TODO]
-- script.js의 KR 분기 코드 정리
-- _day7-hints.mjs 배포에서 제외
-- 게임 번호 기준일 배포일로 재설정
-- 연습 모드 (무제한 플레이) — Day 7에 본인이 발견한 
-  "한 판 끝나면 할 게 없다" 문제 해결
+- Clean up KR branch code in script.js
+- Exclude _day7-hints.mjs from deploy
+- Reset game number epoch to deploy date
+- Practice mode (unlimited play) — address “nothing to do after one game” from Day 7

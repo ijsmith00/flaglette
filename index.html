@@ -15,8 +15,8 @@
   <title>Flaglette</title>
   <meta name="description" content="Guess a new flag every day!">
   <meta name="theme-color" content="#0f0f0f">
-  <!-- 카톡 캐시 초기화는 https://developers.kakao.com/tool/clear/og 에서 할 수 있음 -->
-  <!-- Open Graph · Twitter Card (링크 공유 미리보기). 정적 HTML: <head>에 직접 기술 -->
+  <!-- Kakao OG cache: https://developers.kakao.com/tool/clear/og -->
+  <!-- Open Graph / Twitter Card (link previews). Static HTML in <head> -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Flaglette">
   <meta property="og:url" content="https://flaglette.vercel.app/">
@@ -36,22 +36,22 @@
   <link rel="canonical" href="https://flaglette.vercel.app/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="style.css">
-  <!-- file:// 로 열 때는 브라우저가 countries.json fetch를 막으므로, 아래 내용을 countries.json 과 맞춰 두세요. -->
+  <!-- With file://, the browser blocks fetching countries.json; keep this in sync with countries.json. -->
   <script type="application/json" id="countries-embedded">
 [
   {
     "code": "JP",
-    "name_ko": "일본",
+    "name_ko": "Japan",
     "name_en": "Japan",
-    "population": "약 1억 2,500만",
+    "population": "~125 million",
     "neighbors": [
-      "섬나라"
+      "Island nation"
     ],
     "population_en": "~125 million",
     "neighbors_en": [
       "Island nation"
     ],
-    "first_letter_ko": "일",
+    "first_letter_ko": "J",
     "first_letter_en": "J",
     "palette": [
       {
@@ -76,23 +76,24 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Asia"
   },
   {
     "code": "US",
-    "name_ko": "미국",
+    "name_ko": "United States",
     "name_en": "United States",
-    "population": "약 3억 3,000만",
+    "population": "~330 million",
     "neighbors": [
-      "캐나다",
-      "멕시코"
+      "Canada",
+      "Mexico"
     ],
     "population_en": "~330 million",
     "neighbors_en": [
       "Canada",
       "Mexico"
     ],
-    "first_letter_ko": "미",
+    "first_letter_ko": "U",
     "first_letter_en": "U",
     "palette": [
       {
@@ -125,18 +126,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "North America"
   },
   {
     "code": "FR",
-    "name_ko": "프랑스",
+    "name_ko": "France",
     "name_en": "France",
-    "population": "약 6,800만",
+    "population": "~68 million",
     "neighbors": [
-      "독일",
-      "이탈리아",
-      "벨기에",
-      "스페인"
+      "Germany",
+      "Italy",
+      "Belgium",
+      "Spain"
     ],
     "population_en": "~68 million",
     "neighbors_en": [
@@ -145,7 +147,7 @@
       "Belgium",
       "Spain"
     ],
-    "first_letter_ko": "프",
+    "first_letter_ko": "F",
     "first_letter_en": "F",
     "palette": [
       {
@@ -178,18 +180,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "DE",
-    "name_ko": "독일",
+    "name_ko": "Germany",
     "name_en": "Germany",
-    "population": "약 8,400만",
+    "population": "~84 million",
     "neighbors": [
-      "프랑스",
-      "폴란드",
-      "네덜란드",
-      "오스트리아"
+      "France",
+      "Poland",
+      "Netherlands",
+      "Austria"
     ],
     "population_en": "~84 million",
     "neighbors_en": [
@@ -198,7 +201,7 @@
       "Netherlands",
       "Austria"
     ],
-    "first_letter_ko": "독",
+    "first_letter_ko": "G",
     "first_letter_en": "G",
     "palette": [
       {
@@ -231,18 +234,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "IT",
-    "name_ko": "이탈리아",
+    "name_ko": "Italy",
     "name_en": "Italy",
-    "population": "약 5,900만",
+    "population": "~59 million",
     "neighbors": [
-      "프랑스",
-      "오스트리아",
-      "스위스",
-      "슬로베니아"
+      "France",
+      "Austria",
+      "Switzerland",
+      "Slovenia"
     ],
     "population_en": "~59 million",
     "neighbors_en": [
@@ -251,7 +255,7 @@
       "Switzerland",
       "Slovenia"
     ],
-    "first_letter_ko": "이",
+    "first_letter_ko": "I",
     "first_letter_en": "I",
     "palette": [
       {
@@ -284,23 +288,24 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "NL",
-    "name_ko": "네덜란드",
+    "name_ko": "Netherlands",
     "name_en": "Netherlands",
-    "population": "약 1,800만",
+    "population": "~18 million",
     "neighbors": [
-      "벨기에",
-      "독일"
+      "Belgium",
+      "Germany"
     ],
     "population_en": "~18 million",
     "neighbors_en": [
       "Belgium",
       "Germany"
     ],
-    "first_letter_ko": "네",
+    "first_letter_ko": "N",
     "first_letter_en": "N",
     "palette": [
       {
@@ -333,18 +338,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "BE",
-    "name_ko": "벨기에",
+    "name_ko": "Belgium",
     "name_en": "Belgium",
-    "population": "약 1,200만",
+    "population": "~12 million",
     "neighbors": [
-      "프랑스",
-      "네덜란드",
-      "독일",
-      "룩셈부르크"
+      "France",
+      "Netherlands",
+      "Germany",
+      "Luxembourg"
     ],
     "population_en": "~12 million",
     "neighbors_en": [
@@ -353,7 +359,7 @@
       "Germany",
       "Luxembourg"
     ],
-    "first_letter_ko": "벨",
+    "first_letter_ko": "B",
     "first_letter_en": "B",
     "palette": [
       {
@@ -386,18 +392,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "AT",
-    "name_ko": "오스트리아",
+    "name_ko": "Austria",
     "name_en": "Austria",
-    "population": "약 910만",
+    "population": "~9.1 million",
     "neighbors": [
-      "독일",
-      "이탈리아",
-      "슬로바키아",
-      "헝가리"
+      "Germany",
+      "Italy",
+      "Slovakia",
+      "Hungary"
     ],
     "population_en": "~9.1 million",
     "neighbors_en": [
@@ -406,7 +413,7 @@
       "Slovakia",
       "Hungary"
     ],
-    "first_letter_ko": "오",
+    "first_letter_ko": "A",
     "first_letter_en": "A",
     "palette": [
       {
@@ -439,18 +446,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "RU",
-    "name_ko": "러시아",
+    "name_ko": "Russia",
     "name_en": "Russia",
-    "population": "약 1억 4,400만",
+    "population": "~144 million",
     "neighbors": [
-      "우크라이나",
-      "핀란드",
-      "노르웨이",
-      "에스토니아"
+      "Ukraine",
+      "Finland",
+      "Norway",
+      "Estonia"
     ],
     "population_en": "~144 million",
     "neighbors_en": [
@@ -459,7 +467,7 @@
       "Norway",
       "Estonia"
     ],
-    "first_letter_ko": "러",
+    "first_letter_ko": "R",
     "first_letter_en": "R",
     "palette": [
       {
@@ -492,18 +500,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "UA",
-    "name_ko": "우크라이나",
+    "name_ko": "Ukraine",
     "name_en": "Ukraine",
-    "population": "약 3,800만",
+    "population": "~38 million",
     "neighbors": [
-      "폴란드",
-      "슬로바키아",
-      "헝가리",
-      "루마니아"
+      "Poland",
+      "Slovakia",
+      "Hungary",
+      "Romania"
     ],
     "population_en": "~38 million",
     "neighbors_en": [
@@ -512,7 +521,7 @@
       "Hungary",
       "Romania"
     ],
-    "first_letter_ko": "우",
+    "first_letter_ko": "U",
     "first_letter_en": "U",
     "palette": [
       {
@@ -537,18 +546,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "PL",
-    "name_ko": "폴란드",
+    "name_ko": "Poland",
     "name_en": "Poland",
-    "population": "약 3,800만",
+    "population": "~38 million",
     "neighbors": [
-      "독일",
-      "체코",
-      "슬로바키아",
-      "우크라이나"
+      "Germany",
+      "Czechia",
+      "Slovakia",
+      "Ukraine"
     ],
     "population_en": "~38 million",
     "neighbors_en": [
@@ -557,7 +567,7 @@
       "Slovakia",
       "Ukraine"
     ],
-    "first_letter_ko": "폴",
+    "first_letter_ko": "P",
     "first_letter_en": "P",
     "palette": [
       {
@@ -582,18 +592,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "CO",
-    "name_ko": "콜롬비아",
+    "name_ko": "Colombia",
     "name_en": "Colombia",
-    "population": "약 5,200만",
+    "population": "~52 million",
     "neighbors": [
-      "베네수엘라",
-      "에콰도르",
-      "브라질",
-      "페루"
+      "Venezuela",
+      "Ecuador",
+      "Brazil",
+      "Peru"
     ],
     "population_en": "~52 million",
     "neighbors_en": [
@@ -602,7 +613,7 @@
       "Brazil",
       "Peru"
     ],
-    "first_letter_ko": "콜",
+    "first_letter_ko": "C",
     "first_letter_en": "C",
     "palette": [
       {
@@ -635,18 +646,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "South America"
   },
   {
     "code": "TH",
-    "name_ko": "태국",
+    "name_ko": "Thailand",
     "name_en": "Thailand",
-    "population": "약 7,100만",
+    "population": "~71 million",
     "neighbors": [
-      "미얀마",
-      "라오스",
-      "말레이시아",
-      "캄보디아"
+      "Myanmar",
+      "Laos",
+      "Malaysia",
+      "Cambodia"
     ],
     "population_en": "~71 million",
     "neighbors_en": [
@@ -655,7 +667,7 @@
       "Malaysia",
       "Cambodia"
     ],
-    "first_letter_ko": "태",
+    "first_letter_ko": "T",
     "first_letter_en": "T",
     "palette": [
       {
@@ -696,18 +708,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Asia"
   },
   {
     "code": "HU",
-    "name_ko": "헝가리",
+    "name_ko": "Hungary",
     "name_en": "Hungary",
-    "population": "약 970만",
+    "population": "~9.7 million",
     "neighbors": [
-      "오스트리아",
-      "슬로바키아",
-      "루마니아",
-      "세르비아"
+      "Austria",
+      "Slovakia",
+      "Romania",
+      "Serbia"
     ],
     "population_en": "~9.7 million",
     "neighbors_en": [
@@ -716,7 +729,7 @@
       "Romania",
       "Serbia"
     ],
-    "first_letter_ko": "헝",
+    "first_letter_ko": "H",
     "first_letter_en": "H",
     "palette": [
       {
@@ -749,17 +762,18 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "GA",
-    "name_ko": "가봉",
+    "name_ko": "Gabon",
     "name_en": "Gabon",
-    "population": "약 240만",
+    "population": "~2.4 million",
     "neighbors": [
-      "카메룬",
-      "적도기니",
-      "콩고"
+      "Cameroon",
+      "Equatorial Guinea",
+      "Congo"
     ],
     "population_en": "~2.4 million",
     "neighbors_en": [
@@ -767,7 +781,7 @@
       "Equatorial Guinea",
       "Congo"
     ],
-    "first_letter_ko": "가",
+    "first_letter_ko": "G",
     "first_letter_en": "G",
     "palette": [
       {
@@ -804,17 +818,17 @@
   },
   {
     "code": "ID",
-    "name_ko": "인도네시아",
+    "name_ko": "Indonesia",
     "name_en": "Indonesia",
-    "population": "약 2억 7,800만",
+    "population": "~278 million",
     "neighbors": [
-      "섬나라"
+      "Island nation"
     ],
     "population_en": "~278 million",
     "neighbors_en": [
       "Island nation"
     ],
-    "first_letter_ko": "인",
+    "first_letter_ko": "I",
     "first_letter_en": "I",
     "palette": [
       {
@@ -839,21 +853,22 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Asia"
   },
   {
     "code": "IE",
-    "name_ko": "아일랜드",
+    "name_ko": "Ireland",
     "name_en": "Ireland",
-    "population": "약 510만",
+    "population": "~5.1 million",
     "neighbors": [
-      "섬나라"
+      "Island nation"
     ],
     "population_en": "~5.1 million",
     "neighbors_en": [
       "Island nation"
     ],
-    "first_letter_ko": "아",
+    "first_letter_ko": "I",
     "first_letter_en": "I",
     "palette": [
       {
@@ -886,21 +901,22 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "MC",
-    "name_ko": "모나코",
+    "name_ko": "Monaco",
     "name_en": "Monaco",
-    "population": "약 4만",
+    "population": "~40,000",
     "neighbors": [
-      "프랑스"
+      "France"
     ],
     "population_en": "~40,000",
     "neighbors_en": [
       "France"
     ],
-    "first_letter_ko": "모",
+    "first_letter_ko": "M",
     "first_letter_en": "M",
     "palette": [
       {
@@ -929,19 +945,19 @@
   },
   {
     "code": "YE",
-    "name_ko": "예멘",
+    "name_ko": "Yemen",
     "name_en": "Yemen",
-    "population": "약 3,400만",
+    "population": "~34 million",
     "neighbors": [
-      "오만",
-      "사우디아라비아"
+      "Oman",
+      "Saudi Arabia"
     ],
     "population_en": "~34 million",
     "neighbors_en": [
       "Oman",
       "Saudi Arabia"
     ],
-    "first_letter_ko": "예",
+    "first_letter_ko": "Y",
     "first_letter_en": "Y",
     "palette": [
       {
@@ -978,13 +994,13 @@
   },
   {
     "code": "NG",
-    "name_ko": "나이지리아",
+    "name_ko": "Nigeria",
     "name_en": "Nigeria",
-    "population": "약 2억 2,300만",
+    "population": "~223 million",
     "neighbors": [
-      "베넹",
-      "니제르",
-      "카메룬"
+      "Benin",
+      "Niger",
+      "Cameroon"
     ],
     "population_en": "~223 million",
     "neighbors_en": [
@@ -992,7 +1008,7 @@
       "Niger",
       "Cameroon"
     ],
-    "first_letter_ko": "나",
+    "first_letter_ko": "N",
     "first_letter_en": "N",
     "palette": [
       {
@@ -1025,14 +1041,14 @@
   },
   {
     "code": "ML",
-    "name_ko": "말리",
+    "name_ko": "Mali",
     "name_en": "Mali",
-    "population": "약 2,300만",
+    "population": "~23 million",
     "neighbors": [
-      "니제르",
-      "세네갈",
-      "기니",
-      "부르키나파소"
+      "Niger",
+      "Senegal",
+      "Guinea",
+      "Burkina Faso"
     ],
     "population_en": "~23 million",
     "neighbors_en": [
@@ -1041,7 +1057,7 @@
       "Guinea",
       "Burkina Faso"
     ],
-    "first_letter_ko": "말",
+    "first_letter_ko": "M",
     "first_letter_en": "M",
     "palette": [
       {
@@ -1078,19 +1094,19 @@
   },
   {
     "code": "EE",
-    "name_ko": "에스토니아",
+    "name_ko": "Estonia",
     "name_en": "Estonia",
-    "population": "약 130만",
+    "population": "~1.3 million",
     "neighbors": [
-      "라트비아",
-      "러시아"
+      "Latvia",
+      "Russia"
     ],
     "population_en": "~1.3 million",
     "neighbors_en": [
       "Latvia",
       "Russia"
     ],
-    "first_letter_ko": "에",
+    "first_letter_ko": "E",
     "first_letter_en": "E",
     "palette": [
       {
@@ -1123,17 +1139,18 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "LU",
-    "name_ko": "룩셈부르크",
+    "name_ko": "Luxembourg",
     "name_en": "Luxembourg",
-    "population": "약 65만",
+    "population": "~650,000",
     "neighbors": [
-      "벨기에",
-      "프랑스",
-      "독일"
+      "Belgium",
+      "France",
+      "Germany"
     ],
     "population_en": "~650,000",
     "neighbors_en": [
@@ -1141,7 +1158,7 @@
       "France",
       "Germany"
     ],
-    "first_letter_ko": "룩",
+    "first_letter_ko": "L",
     "first_letter_en": "L",
     "palette": [
       {
@@ -1174,17 +1191,18 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "LV",
-    "name_ko": "라트비아",
+    "name_ko": "Latvia",
     "name_en": "Latvia",
-    "population": "약 190만",
+    "population": "~1.9 million",
     "neighbors": [
-      "에스토니아",
-      "리투아니아",
-      "러시아"
+      "Estonia",
+      "Lithuania",
+      "Russia"
     ],
     "population_en": "~1.9 million",
     "neighbors_en": [
@@ -1192,7 +1210,7 @@
       "Lithuania",
       "Russia"
     ],
-    "first_letter_ko": "라",
+    "first_letter_ko": "L",
     "first_letter_en": "L",
     "palette": [
       {
@@ -1225,17 +1243,18 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "LT",
-    "name_ko": "리투아니아",
+    "name_ko": "Lithuania",
     "name_en": "Lithuania",
-    "population": "약 290만",
+    "population": "~2.9 million",
     "neighbors": [
-      "라트비아",
-      "폴란드",
-      "벨라루스"
+      "Latvia",
+      "Poland",
+      "Belarus"
     ],
     "population_en": "~2.9 million",
     "neighbors_en": [
@@ -1243,7 +1262,7 @@
       "Poland",
       "Belarus"
     ],
-    "first_letter_ko": "리",
+    "first_letter_ko": "L",
     "first_letter_en": "L",
     "palette": [
       {
@@ -1276,18 +1295,19 @@
         }
       ]
     },
-    "tier": "core"
+    "tier": "core",
+    "continent": "Europe"
   },
   {
     "code": "TD",
-    "name_ko": "차드",
+    "name_ko": "Chad",
     "name_en": "Chad",
-    "population": "약 1,860만",
+    "population": "~18.6 million",
     "neighbors": [
-      "니제르",
-      "리비아",
-      "수단",
-      "카메룬"
+      "Niger",
+      "Libya",
+      "Sudan",
+      "Cameroon"
     ],
     "population_en": "~18.6 million",
     "neighbors_en": [
@@ -1296,7 +1316,7 @@
       "Sudan",
       "Cameroon"
     ],
-    "first_letter_ko": "차",
+    "first_letter_ko": "C",
     "first_letter_en": "C",
     "palette": [
       {
@@ -1333,14 +1353,14 @@
   },
   {
     "code": "GN",
-    "name_ko": "기니",
+    "name_ko": "Guinea",
     "name_en": "Guinea",
-    "population": "약 1,400만",
+    "population": "~14 million",
     "neighbors": [
-      "기니비사우",
-      "시에라리온",
-      "말리",
-      "코트디부아르"
+      "Guinea-Bissau",
+      "Sierra Leone",
+      "Mali",
+      "Côte d'Ivoire"
     ],
     "population_en": "~14 million",
     "neighbors_en": [
@@ -1349,7 +1369,7 @@
       "Mali",
       "Côte d'Ivoire"
     ],
-    "first_letter_ko": "기",
+    "first_letter_ko": "G",
     "first_letter_en": "G",
     "palette": [
       {
@@ -1386,14 +1406,14 @@
   },
   {
     "code": "CI",
-    "name_ko": "코트디부아르",
+    "name_ko": "Côte d'Ivoire",
     "name_en": "Côte d'Ivoire",
-    "population": "약 2,850만",
+    "population": "~28.5 million",
     "neighbors": [
-      "기니",
-      "말리",
-      "가나",
-      "부르키나파소"
+      "Guinea",
+      "Mali",
+      "Ghana",
+      "Burkina Faso"
     ],
     "population_en": "~28.5 million",
     "neighbors_en": [
@@ -1402,7 +1422,7 @@
       "Ghana",
       "Burkina Faso"
     ],
-    "first_letter_ko": "코",
+    "first_letter_ko": "C",
     "first_letter_en": "C",
     "palette": [
       {
@@ -1439,17 +1459,17 @@
   },
   {
     "code": "MU",
-    "name_ko": "모리셔스",
+    "name_ko": "Mauritius",
     "name_en": "Mauritius",
-    "population": "약 130만",
+    "population": "~1.3 million",
     "neighbors": [
-      "섬나라"
+      "Island nation"
     ],
     "population_en": "~1.3 million",
     "neighbors_en": [
       "Island nation"
     ],
-    "first_letter_ko": "모",
+    "first_letter_ko": "M",
     "first_letter_en": "M",
     "palette": [
       {
@@ -1494,19 +1514,19 @@
   },
   {
     "code": "CR",
-    "name_ko": "코스타리카",
+    "name_ko": "Costa Rica",
     "name_en": "Costa Rica",
-    "population": "약 520만",
+    "population": "~5.2 million",
     "neighbors": [
-      "니카라과",
-      "파나마"
+      "Nicaragua",
+      "Panama"
     ],
     "population_en": "~5.2 million",
     "neighbors_en": [
       "Nicaragua",
       "Panama"
     ],
-    "first_letter_ko": "코",
+    "first_letter_ko": "C",
     "first_letter_en": "C",
     "palette": [
       {
@@ -1555,13 +1575,16 @@
 <body>
   <main>
     <header class="title-block">
-      <h1 class="app-title"><span class="app-title__flag">Flag</span><span class="app-title__lette">lette</span><span class="title-emoji" aria-hidden="true"> 🌍</span></h1>
+      <div class="title-block__row">
+        <h1 class="app-title"><span class="app-title__flag">Flag</span><span class="app-title__lette">lette</span><span class="title-emoji" aria-hidden="true"> 🌍</span></h1>
+        <button type="button" class="howto-btn" id="howto-open-btn" aria-label="How to play" title="How to play">?</button>
+      </div>
       <p class="tagline">A daily flag puzzle.</p>
     </header>
     <section id="daily-complete" class="daily-complete" hidden>
       <p class="daily-complete__title">✅ Today's Flaglette complete!</p>
       <p class="daily-complete__result">Result: <span id="daily-result-label"></span></p>
-      <p class="daily-complete__attempts">Guesses: <span id="daily-result-attempts"></span> / 3</p>
+      <p class="daily-complete__attempts">Guesses: <span id="daily-result-attempts"></span> / <span id="daily-result-max">6</span></p>
       <p class="daily-complete__bye">See you tomorrow ☀️</p>
       <p class="daily-complete__countdown">Next puzzle in: <span id="daily-countdown">--:--:--</span></p>
       <p class="daily-complete__note" id="daily-midnight-note" hidden></p>
@@ -1574,13 +1597,24 @@
       <button type="button" id="submit-btn">Guess</button>
     </div>
     <div id="hints" aria-live="polite"></div>
-    <div id="attempts">Guesses: 0 / 3</div>
+    <div id="attempts">Guesses: 0 / 6</div>
     <div id="feedback"></div>
     <div id="share-row" class="share-row" hidden>
       <button type="button" class="share-btn" id="share-btn-game">Share result</button>
     </div>
     </div>
   </main>
+  <dialog id="howto-dialog" class="howto-dialog" aria-labelledby="howto-dialog-title">
+    <div class="howto-dialog__inner">
+      <h2 id="howto-dialog-title" class="howto-dialog__title">How to play</h2>
+      <ol class="howto-dialog__list">
+        <li>Guess the country from the flag — up to <strong>6</strong> tries per day.</li>
+        <li>Round 1: flag only. Each wrong guess unlocks the next hint (population → neighbors → continent → first letter → name length).</li>
+        <li>Hints stay on screen; answer in <strong>English</strong> (country name).</li>
+      </ol>
+      <button type="button" class="howto-dialog__close" id="howto-close-btn">Got it</button>
+    </div>
+  </dialog>
   <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-dialog-title">
     <div class="share-dialog__inner">
       <div class="share-dialog__top">

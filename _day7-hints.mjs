@@ -4,7 +4,7 @@ import { HINT_EN } from "./hint-en.mjs";
 const pathJson = new URL("countries.json", import.meta.url);
 const pathHtml = new URL("index.html", import.meta.url);
 
-/** 대략 인구(명) — 한국어 표기용 */
+/** Rough population counts (names) — kept for scripts that diff against PEOPLE */
 const PEOPLE = {
   JP: 125_000_000,
   US: 330_000_000,
@@ -38,63 +38,20 @@ const PEOPLE = {
   CR: 5_200_000,
 };
 
-/** 인구 n명 → "약 …" 한국어 문자열 (만 단위 반올림) */
-function formatPopulationKr(n) {
-  const man = Math.round(n / 10000);
-  if (man >= 10000) {
-    const eok = Math.floor(man / 10000);
-    const rest = man % 10000;
-    if (rest === 0) return `약 ${eok}억`;
-    return `약 ${eok}억 ${rest.toLocaleString("en-US")}만`;
-  }
-  if (man >= 1000) {
-    return `약 ${man.toLocaleString("en-US")}만`;
-  }
-  return `약 ${man}만`;
-}
+const HINT = Object.fromEntries(
+  Object.entries(HINT_EN).map(([code, en]) => [
+    code,
+    { neighbors: [...en.neighbors_en] },
+  ])
+);
 
-/** 국경 이웃(한국어 2~4개 또는 ["섬나라"]) */
-const HINT = {
-  JP: { neighbors: ["섬나라"] },
-  US: { neighbors: ["캐나다", "멕시코"] },
-  FR: { neighbors: ["독일", "이탈리아", "벨기에", "스페인"] },
-  DE: { neighbors: ["프랑스", "폴란드", "네덜란드", "오스트리아"] },
-  IT: { neighbors: ["프랑스", "오스트리아", "스위스", "슬로베니아"] },
-  NL: { neighbors: ["벨기에", "독일"] },
-  BE: { neighbors: ["프랑스", "네덜란드", "독일", "룩셈부르크"] },
-  AT: { neighbors: ["독일", "이탈리아", "슬로바키아", "헝가리"] },
-  RU: { neighbors: ["우크라이나", "핀란드", "노르웨이", "에스토니아"] },
-  UA: { neighbors: ["폴란드", "슬로바키아", "헝가리", "루마니아"] },
-  PL: { neighbors: ["독일", "체코", "슬로바키아", "우크라이나"] },
-  CO: { neighbors: ["베네수엘라", "에콰도르", "브라질", "페루"] },
-  TH: { neighbors: ["미얀마", "라오스", "말레이시아", "캄보디아"] },
-  HU: { neighbors: ["오스트리아", "슬로바키아", "루마니아", "세르비아"] },
-  GA: { neighbors: ["카메룬", "적도기니", "콩고"] },
-  ID: { neighbors: ["섬나라"] },
-  IE: { neighbors: ["섬나라"] },
-  MC: { neighbors: ["프랑스"] },
-  YE: { neighbors: ["오만", "사우디아라비아"] },
-  NG: { neighbors: ["베넹", "니제르", "카메룬"] },
-  ML: { neighbors: ["니제르", "세네갈", "기니", "부르키나파소"] },
-  EE: { neighbors: ["라트비아", "러시아"] },
-  LU: { neighbors: ["벨기에", "프랑스", "독일"] },
-  LV: { neighbors: ["에스토니아", "리투아니아", "러시아"] },
-  LT: { neighbors: ["라트비아", "폴란드", "벨라루스"] },
-  TD: { neighbors: ["니제르", "리비아", "수단", "카메룬"] },
-  GN: { neighbors: ["기니비사우", "시에라리온", "말리", "코트디부아르"] },
-  CI: { neighbors: ["기니", "말리", "가나", "부르키나파소"] },
-  MU: { neighbors: ["섬나라"] },
-  CR: { neighbors: ["니카라과", "파나마"] },
-};
-
-function firstLetterKo(nameKo) {
-  const s = nameKo.trim();
-  return [...s][0];
+function firstLetterFromName(name) {
+  const s = String(name || "").trim();
+  return [...s][0] || "";
 }
 
 function firstLetterEn(nameEn) {
-  const s = nameEn.trim();
-  const ch = [...s][0];
+  const ch = firstLetterFromName(nameEn);
   return ch.toUpperCase();
 }
 
@@ -106,15 +63,15 @@ const out = raw.map((c) => {
   if (!h) throw new Error(`missing HINT for ${c.code}`);
   const people = PEOPLE[c.code];
   if (people == null) throw new Error(`missing PEOPLE for ${c.code}`);
-  const flKo = firstLetterKo(c.name_ko);
-  const flEn = firstLetterEn(c.name_en);
   const en = HINT_EN[c.code];
   if (!en) throw new Error(`missing HINT_EN for ${c.code}`);
+  const flKo = firstLetterFromName(c.name_ko);
+  const flEn = firstLetterEn(c.name_en);
   return {
     code: c.code,
     name_ko: c.name_ko,
     name_en: c.name_en,
-    population: formatPopulationKr(people),
+    population: en.population_en,
     neighbors: h.neighbors,
     population_en: en.population_en,
     neighbors_en: en.neighbors_en,
@@ -127,10 +84,10 @@ const out = raw.map((c) => {
 });
 
 ambiguous.push(
-  "MC 등: 인구 10만 미만은 '약 N만' 형태",
-  "GA/MU/EE 등: 인구·국경은 대략값",
-  "ID/IE/JP/MU: 이웃 ['섬나라'] 단일 표기",
-  "GN↔기니비사우 등 국명 유사, 이웃 나열은 대표적인 것만"
+  "MC: population under ~100k shown as ~N thousand",
+  "GA/MU/EE: population and borders are approximate",
+  "ID/IE/JP/MU: neighbors ['Island nation'] for no land borders",
+  "GN vs Guinea-Bissau: similar names; neighbors are representative only"
 );
 
 fs.writeFileSync(pathJson, JSON.stringify(out, null, 2) + "\n", "utf8");

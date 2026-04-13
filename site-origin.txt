@@ -1,4 +1,4 @@
-# 공개 HTTPS origin (끝에 / 없음). npm run prepare:og 시 메타와 동기화할 때 사용.
-# 카톡 캐시 초기화: https://developers.kakao.com/tool/clear/og
+# Public HTTPS origin (no trailing slash). Used by npm run prepare:og to sync meta tags.
+# Kakao OG cache clear: https://developers.kakao.com/tool/clear/og
 
 https://flaglette.vercel.app

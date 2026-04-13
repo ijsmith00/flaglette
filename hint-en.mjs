@@ -1,4 +1,4 @@
-/** 힌트 UI용 영어 인구 문구·이웃 나라 (_day7-hints.mjs와 동기화) */
+/** English population / neighbor strings for hints (keep in sync with _day7-hints.mjs) */
 export const HINT_EN = {
   JP: {
     population_en: "~125 million",
