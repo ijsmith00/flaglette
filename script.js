@@ -1,7 +1,10 @@
 let currentCountry = null;
 let attempts = 0;
 const maxAttempts = 6;
-const SAVE_SCHEMA_VERSION = 2;
+const SAVE_SCHEMA_VERSION = 3;
+/** Share body line 3 — no protocol (spec). Link fields use SHARE_SITE_LINK_URL. */
+const SHARE_SITE_TEXT_LINE = "flaglette.com";
+const SHARE_SITE_LINK_URL = "https://flaglette.com/";
 const HOWTO_STORAGE_KEY = "flaglette_howto_seen_v2";
 let isGameOver = false;
 /** Filled after persist and when restoring the complete screen for share text. */
@@ -59,76 +62,6 @@ function getDailyCountry(coreCountries) {
   return coreCountries[idx];
 }
 
-/** Nearest square emoji by RGB distance (Wordle-style share). */
-const EMOJI_RGB_ANCHORS = [
-  ["🟥", 255, 0, 0],
-  ["🟧", 255, 165, 0],
-  ["🟨", 255, 255, 0],
-  ["🟩", 0, 128, 0],
-  ["🟦", 0, 0, 255],
-  ["🟪", 128, 0, 128],
-  ["⬜", 255, 255, 255],
-  ["⬛", 0, 0, 0],
-  ["🟫", 139, 69, 19],
-];
-
-/** HEX string → {r,g,b} */
-function hexToRgb(hex) {
-  if (typeof hex !== "string") return { r: 128, g: 128, b: 128 };
-  let h = hex.trim().replace(/^#/, "");
-  if (h.length === 3) {
-    h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
-  }
-  if (h.length !== 6) return { r: 128, g: 128, b: 128 };
-  const n = parseInt(h, 16);
-  if (Number.isNaN(n)) return { r: 128, g: 128, b: 128 };
-  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
-}
-
-/** Share: square emoji closest to flag color. */
-function colorToEmoji(hexColor) {
-  const rgb = hexToRgb(hexColor);
-  const { r, g, b } = rgb;
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const spread = max - min;
-
-  // Near white
-  if (min > 238 && spread < 22) {
-    return "⬜";
-  }
-  /* Dark navy (#241D4F etc.): avoid misclassifying as black when blue dominates */
-  if (b > r && b > g && b > 48 && r < 130 && g < 130) {
-    return "🟦";
-  }
-  // Dark green / olive
-  if (g > r && g > b && g > 52 && r < 140 && b < 140) {
-    return "🟩";
-  }
-  // Dark red / maroon
-  if (r > g && r > b && r > 72 && g < 130 && b < 130) {
-    return "🟥";
-  }
-  // Near black / neutral dark gray
-  if (max < 52 && spread < 28) {
-    return "⬛";
-  }
-
-  let best = EMOJI_RGB_ANCHORS[0];
-  let bestD = Infinity;
-  for (const row of EMOJI_RGB_ANCHORS) {
-    const dr = rgb.r - row[1];
-    const dg = rgb.g - row[2];
-    const db = rgb.b - row[3];
-    const d = dr * dr + dg * dg + db * db;
-    if (d < bestD) {
-      bestD = d;
-      best = row;
-    }
-  }
-  return best[0];
-}
-
 /** Days since local 2026-01-01, plus 1 */
 function getDailyGameNumber() {
   const epoch = new Date(2026, 0, 1);
@@ -142,11 +75,40 @@ function getDailyGameNumber() {
   return Math.floor((t0 - e0) / 864e5) + 1;
 }
 
-/** Legacy save (3 guesses): normalize maxGuesses and schemaVersion */
+/**
+ * Legacy save (3 guesses): normalize maxGuesses and schemaVersion.
+ * v3: drop stripeEmojiLine; share grid is derived from won + attempts only.
+ */
 function migrateDailyPayload(p) {
   if (!p || typeof p !== "object") return p;
   const maxGuesses = p.maxGuesses ?? (p.schemaVersion >= 2 ? 6 : 3);
-  return { ...p, maxGuesses, schemaVersion: p.schemaVersion ?? 1 };
+  let out = { ...p, maxGuesses, schemaVersion: p.schemaVersion ?? 1 };
+
+  if (out.schemaVersion < SAVE_SCHEMA_VERSION && out.completed === true) {
+    try {
+      const maxG = out.maxGuesses;
+      const won = out.won === true;
+      let att = out.attempts;
+      if (typeof att !== "number" || Number.isNaN(att)) {
+        att = won ? 1 : maxG;
+      } else {
+        att = Math.min(Math.max(1, Math.floor(att)), maxG);
+      }
+      const next = {
+        ...out,
+        won,
+        attempts: att,
+        hintsUsed: out.hintsUsed ?? 0,
+        schemaVersion: SAVE_SCHEMA_VERSION,
+      };
+      delete next.stripeEmojiLine;
+      return next;
+    } catch (_) {
+      return { ...out, completed: false };
+    }
+  }
+
+  return out;
 }
 
 /** Letter count of English country name (spaces excluded) */
@@ -175,38 +137,39 @@ function loadShareSnapshotFromStorage() {
       attempts: p.attempts,
       hintsUsed: p.hintsUsed ?? 0,
       maxGuesses: p.maxGuesses ?? 3,
-      stripeEmojiLine: p.stripeEmojiLine || "",
     };
   } catch (_) {
     return null;
   }
 }
 
-/** Only on http(s) — social share / Facebook u parameter */
-function getSharePageUrl() {
-  try {
-    const { protocol, host, pathname } = window.location;
-    if (protocol !== "http:" && protocol !== "https:") return "";
-    return `${protocol}//${host}${pathname}`;
-  } catch (_) {
-    return "";
+/** Wordle-style attempt grid: wrong = 🟥, winning guess = 🟩 */
+function buildShareAttemptPatternLine(snap) {
+  const maxG = snap.maxGuesses ?? maxAttempts;
+  const total = snap.attempts;
+  if (snap.won) {
+    const reds = Math.max(0, total - 1);
+    return `${"🟥".repeat(reds)}🟩`;
   }
+  return "🟥".repeat(maxG);
 }
 
-/** Wordle-style result string for the clipboard */
+/** Three-line result string (same for clipboard and social quote text). */
 function generateShareText() {
   const snap = shareSnapshot || loadShareSnapshotFromStorage();
   if (!snap) return "";
   const n = getDailyGameNumber();
-  const resultEmoji = snap.won ? "✅" : "❌";
-  const stripeLine = snap.stripeEmojiLine || "";
-  const maxG = snap.maxGuesses ?? 3;
+  const maxG = snap.maxGuesses ?? maxAttempts;
   const totalAttempts = snap.attempts;
-  const hintSuffix = snap.hintsUsed > 0 ? " 💡" : "";
+  let resultEmoji;
+  if (snap.won) {
+    resultEmoji = totalAttempts === 1 ? "🎯" : "✅";
+  } else {
+    resultEmoji = "❌";
+  }
   const line1 = `Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
-  const body = `${line1}\n\n${stripeLine}${hintSuffix}\n`;
-  const pageUrl = getSharePageUrl();
-  return pageUrl ? `${body}\n\n${pageUrl}\n` : `${body}\n\n`;
+  const line2 = buildShareAttemptPatternLine(snap);
+  return `${line1}\n${line2}\n${SHARE_SITE_TEXT_LINE}`;
 }
 
 /** Show inline share row right after the game ends */
@@ -268,7 +231,7 @@ function openShareDialog() {
 }
 
 async function shareToFacebookFromDialog() {
-  const pageUrl = getSharePageUrl() || window.location.href.split("#")[0];
+  const pageUrl = SHARE_SITE_LINK_URL;
   const text = generateShareText();
   const u = encodeURIComponent(pageUrl);
   const quote = encodeURIComponent(text.replace(/\s+/g, " ").trim().slice(0, 500));
@@ -314,13 +277,13 @@ function closeShareDialog() {
 
 async function shareViaSystemSheet() {
   const text = generateShareText();
-  const url = getSharePageUrl() || undefined;
+  const url = SHARE_SITE_LINK_URL;
   if (!navigator.share) {
     setShareDialogStatus("Sharing is not available in this browser.");
     return;
   }
   try {
-    const payload = url ? { title: "Flaglette", text, url } : { title: "Flaglette", text };
+    const payload = { title: "Flaglette", text, url };
     await navigator.share(payload);
     closeShareDialog();
   } catch (e) {
@@ -455,18 +418,16 @@ function startMidnightCountdown() {
   midnightCountdownTimerId = setInterval(tick, 1000);
 }
 
-/** Save progress for today’s key on win/loss (attempts, hints, palette emoji line for share) */
+/** Save progress for today’s key on win/loss (attempts, hints) */
 function persistDailyComplete(won) {
   const totalAttempts = won ? attempts + 1 : maxAttempts;
   const wrongBeforeEnd = won ? attempts : maxAttempts;
   const hintsUsed = won ? Math.min(wrongBeforeEnd, 5) : 5;
-  const stripeEmojiLine = sharePaletteEmojiLine(currentCountry);
   shareSnapshot = {
     won,
     attempts: totalAttempts,
     hintsUsed,
     maxGuesses: maxAttempts,
-    stripeEmojiLine,
   };
   if (practiceModeCode) {
     return;
@@ -478,7 +439,6 @@ function persistDailyComplete(won) {
     attempts: totalAttempts,
     maxGuesses: maxAttempts,
     hintsUsed,
-    stripeEmojiLine,
   };
   try {
     localStorage.setItem(getDailyStorageKey(), JSON.stringify(payload));
@@ -501,7 +461,6 @@ function showDailyCompleteScreen(savedRaw) {
     attempts: saved.attempts,
     hintsUsed: saved.hintsUsed ?? 0,
     maxGuesses: maxG,
-    stripeEmojiLine: saved.stripeEmojiLine || "",
   };
   if (gameZone) gameZone.hidden = true;
   if (panel) panel.hidden = false;
@@ -524,13 +483,6 @@ function normalize(str) {
 function isCorrectGuess(guess, country) {
   const g = normalize(guess);
   return g === normalize(country.name_en);
-}
-
-/** Wordle-style share line from palette colors (storage field name kept: stripeEmojiLine). */
-function sharePaletteEmojiLine(country) {
-  const pal = country?.palette;
-  if (!Array.isArray(pal) || pal.length === 0) return "🌍";
-  return pal.map((p) => colorToEmoji(p.color)).join("");
 }
 
 /** Show daily flag image (flagcdn); round 1 hint is visual only. */
