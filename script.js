@@ -564,9 +564,9 @@ function handleGuess() {
       `Population: ${currentCountry.population_en ?? "—"}`
     );
   } else if (attempts === 2) {
-    appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
-  } else if (attempts === 3) {
     appendHintLine(`Continent: ${currentCountry.continent ?? "—"}`);
+  } else if (attempts === 3) {
+    appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
   } else if (attempts === 4) {
     appendHintLine(`Starts with: ${currentCountry.first_letter_en}`);
   } else if (attempts === 5) {
