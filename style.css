@@ -352,6 +352,27 @@ main {
   background: #141414;
 }
 
+.country-comment {
+  width: 100%;
+  max-width: min(100%, 440px);
+  margin: 0.35rem auto 0;
+  padding: 0.55rem 0.75rem 0.55rem 0.85rem;
+  font-size: clamp(0.86rem, 2.5vw, 0.98rem);
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-left: 3px solid var(--accent);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.country-comment[hidden] {
+  display: none !important;
+}
+
 #attempts {
   font-size: clamp(1rem, 3.2vw, 1.12rem);
   font-weight: 700;
@@ -525,12 +546,55 @@ main {
   margin-top: 0.65rem;
 }
 
+.feedback-block {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+  width: 100%;
+}
+
 #feedback {
   min-height: 2.5rem;
   font-size: 1.35rem;
   font-weight: 700;
   line-height: 1.4;
   text-align: center;
+  align-self: center;
+  width: 100%;
+}
+
+.feedback-answer-comment {
+  margin: 0;
+  padding: 0.55rem 0.75rem 0.55rem 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-left: 3px solid var(--accent);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.feedback-answer-comment[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 399px) {
+  .feedback-answer-comment {
+    font-size: 0.86rem;
+    line-height: 1.32;
+  }
 }
 
 #feedback.feedback-success {

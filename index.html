@@ -8044,13 +8044,17 @@
     </section>
     <div id="game-zone" hidden>
     <div id="flag-display"></div>
+    <p id="country-comment" class="country-comment" hidden lang="en" aria-live="polite"></p>
     <div class="guess-row">
       <input type="text" id="guess-input" placeholder="Enter a country name" autocomplete="off" inputmode="text" lang="en">
       <button type="button" id="submit-btn">Guess</button>
     </div>
     <div id="hints" aria-live="polite"></div>
     <div id="attempts">Guesses: 0 / 6</div>
-    <div id="feedback"></div>
+    <div class="feedback-block" id="feedback-block">
+      <div id="feedback"></div>
+      <p id="feedback-answer-comment" class="feedback-answer-comment" hidden lang="en" aria-live="polite"></p>
+    </div>
     <div id="share-row" class="share-row" hidden>
       <button type="button" class="share-btn" id="share-btn-game">Share result</button>
     </div>
@@ -8079,7 +8083,7 @@
       </div>
       <p class="share-dialog__sub">Pick a destination. Share via device opens your system share sheet. X opens a post draft. Instagram and TikTok copy your result first — paste in the app.</p>
       <div class="share-dialog__grid">
-        <button type="button" class="share-dialog__btn share-dialog__btn--system" id="share-opt-system" hidden>
+        <button type="button" class="share-dialog__btn share-dialog__btn--system" id="share-opt-system">
           Share via device…
         </button>
         <button type="button" class="share-dialog__btn share-dialog__btn--facebook" id="share-opt-facebook">Facebook</button>

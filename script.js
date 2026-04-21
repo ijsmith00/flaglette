@@ -1,7 +1,7 @@
 let currentCountry = null;
 let attempts = 0;
 const maxAttempts = 6;
-const SAVE_SCHEMA_VERSION = 3;
+const SAVE_SCHEMA_VERSION = 4;
 /** Share body line 3 — no protocol (spec). Link fields use SHARE_SITE_LINK_URL. */
 const SHARE_SITE_TEXT_LINE = "flaglette.com";
 const SHARE_SITE_LINK_URL = "https://flaglette.com/";
@@ -77,7 +77,8 @@ function getDailyGameNumber() {
 
 /**
  * Legacy save (3 guesses): normalize maxGuesses and schemaVersion.
- * v3: drop stripeEmojiLine; share grid is derived from won + attempts only.
+ * v3: drop stripeEmojiLine; share grid from won + attempts.
+ * v4: optional share fields countryCode, comment, emoji for share text.
  */
 function migrateDailyPayload(p) {
   if (!p || typeof p !== "object") return p;
@@ -116,6 +117,21 @@ function letterCountFromName(nameEn) {
   return String(nameEn || "").replace(/\s/g, "").length;
 }
 
+/**
+ * ISO 3166-1 alpha-2 (e.g. "FR", "gr") → flag emoji (e.g. "🇫🇷", "🇬🇷").
+ * Uses regional indicator symbols U+1F1E6..U+1F1FF. Invalid input → "".
+ */
+function countryISO2ToFlagEmoji(iso2) {
+  if (typeof iso2 !== "string" || iso2.length !== 2) return "";
+  const u = iso2.toUpperCase();
+  if (!/^[A-Z]{2}$/.test(u)) return "";
+  const base = 0x1f1e6;
+  return String.fromCodePoint(
+    base + (u.charCodeAt(0) - 65),
+    base + (u.charCodeAt(1) - 65)
+  );
+}
+
 /** Neighboring countries hint line (English only). Empty = no land borders in REST data (e.g. islands). */
 function formatNeighborsHint(country) {
   const n = country.neighbors_en ?? [];
@@ -137,6 +153,9 @@ function loadShareSnapshotFromStorage() {
       attempts: p.attempts,
       hintsUsed: p.hintsUsed ?? 0,
       maxGuesses: p.maxGuesses ?? 3,
+      countryCode: typeof p.countryCode === "string" ? p.countryCode : undefined,
+      comment: typeof p.comment === "string" ? p.comment : "",
+      emoji: typeof p.emoji === "string" ? p.emoji : undefined,
     };
   } catch (_) {
     return null;
@@ -154,8 +173,20 @@ function buildShareAttemptPatternLine(snap) {
   return "🟥".repeat(maxG);
 }
 
-/** Three-line result string (same for clipboard and social quote text). */
-function generateShareText() {
+/** Flag for share line 1: optional `emoji` from data, else derived from ISO2 `countryCode`. */
+function getShareFlagEmojiPrefix(snap) {
+  if (typeof snap?.emoji === "string" && snap.emoji.trim()) {
+    return `${snap.emoji.trim()} `;
+  }
+  const fe = countryISO2ToFlagEmoji(snap?.countryCode);
+  return fe ? `${fe} ` : "";
+}
+
+/**
+ * Clipboard, Web Share API, X/Facebook quote — identical string.
+ * @returns {string}
+ */
+function getShareableGameResultText() {
   const snap = shareSnapshot || loadShareSnapshotFromStorage();
   if (!snap) return "";
   const n = getDailyGameNumber();
@@ -167,9 +198,21 @@ function generateShareText() {
   } else {
     resultEmoji = "❌";
   }
-  const line1 = `Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
+  const flagPrefix = getShareFlagEmojiPrefix(snap);
+  const line1 = `${flagPrefix}Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
   const line2 = buildShareAttemptPatternLine(snap);
-  return `${line1}\n${line2}\n${SHARE_SITE_TEXT_LINE}`;
+  const lines = [line1, line2, ""];
+  const comment = typeof snap.comment === "string" ? snap.comment.trim() : "";
+  if (comment) {
+    lines.push("📍 TIL", comment, "");
+  }
+  lines.push(SHARE_SITE_TEXT_LINE);
+  return lines.join("\n");
+}
+
+/** @deprecated Use getShareableGameResultText; kept for call-site compatibility */
+function generateShareText() {
+  return getShareableGameResultText();
 }
 
 /** Show inline share row right after the game ends */
@@ -186,7 +229,7 @@ function hideShareRow() {
 
 /** Copy share string to clipboard; returns success */
 async function copyShareTextToClipboard() {
-  const text = generateShareText();
+  const text = getShareableGameResultText();
   if (!text.trim()) return false;
   try {
     await navigator.clipboard.writeText(text);
@@ -216,7 +259,7 @@ function setShareDialogStatus(message) {
 
 /** Share dialog: Instagram/TikTok have no web post API — copy then open app/site */
 function openShareDialog() {
-  const text = generateShareText();
+  const text = getShareableGameResultText();
   if (!text.trim()) return;
   const dlg = document.getElementById("share-dialog");
   if (!dlg || typeof dlg.showModal !== "function") {
@@ -232,7 +275,7 @@ function openShareDialog() {
 
 async function shareToFacebookFromDialog() {
   const pageUrl = SHARE_SITE_LINK_URL;
-  const text = generateShareText();
+  const text = getShareableGameResultText();
   const u = encodeURIComponent(pageUrl);
   const quote = encodeURIComponent(text.replace(/\s+/g, " ").trim().slice(0, 500));
   const url = `https://www.facebook.com/sharer/sharer.php?u=${u}&quote=${quote}`;
@@ -241,7 +284,7 @@ async function shareToFacebookFromDialog() {
 }
 
 function shareToXFromDialog() {
-  const text = generateShareText();
+  const text = getShareableGameResultText();
   if (!text.trim()) return;
   const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
   window.open(intentUrl, "_blank", "noopener,noreferrer");
@@ -276,7 +319,7 @@ function closeShareDialog() {
 }
 
 async function shareViaSystemSheet() {
-  const text = generateShareText();
+  const text = getShareableGameResultText();
   const url = SHARE_SITE_LINK_URL;
   if (!navigator.share) {
     setShareDialogStatus("Sharing is not available in this browser.");
@@ -307,9 +350,8 @@ function initShareDialog() {
 
   const webBtn = document.getElementById("share-opt-system");
   if (webBtn) {
-    webBtn.hidden = !(
-      typeof navigator !== "undefined" && typeof navigator.share === "function"
-    );
+    /* Always show: itch.io / HTTP embeds often lack navigator.share; tap shows status message. */
+    webBtn.hidden = false;
     webBtn.addEventListener("click", () => shareViaSystemSheet());
   }
 
@@ -423,12 +465,19 @@ function persistDailyComplete(won) {
   const totalAttempts = won ? attempts + 1 : maxAttempts;
   const wrongBeforeEnd = won ? attempts : maxAttempts;
   const hintsUsed = won ? Math.min(wrongBeforeEnd, 5) : 5;
+  const commentRaw =
+    typeof currentCountry?.comment === "string" ? currentCountry.comment : "";
   shareSnapshot = {
     won,
     attempts: totalAttempts,
     hintsUsed,
     maxGuesses: maxAttempts,
+    countryCode: currentCountry?.code,
+    comment: commentRaw,
   };
+  if (typeof currentCountry?.emoji === "string" && currentCountry.emoji.trim()) {
+    shareSnapshot.emoji = currentCountry.emoji.trim();
+  }
   if (practiceModeCode) {
     return;
   }
@@ -439,7 +488,12 @@ function persistDailyComplete(won) {
     attempts: totalAttempts,
     maxGuesses: maxAttempts,
     hintsUsed,
+    countryCode: currentCountry?.code,
+    comment: commentRaw,
   };
+  if (typeof currentCountry?.emoji === "string" && currentCountry.emoji.trim()) {
+    payload.emoji = currentCountry.emoji.trim();
+  }
   try {
     localStorage.setItem(getDailyStorageKey(), JSON.stringify(payload));
   } catch (e) {
@@ -461,6 +515,9 @@ function showDailyCompleteScreen(savedRaw) {
     attempts: saved.attempts,
     hintsUsed: saved.hintsUsed ?? 0,
     maxGuesses: maxG,
+    countryCode: typeof saved.countryCode === "string" ? saved.countryCode : undefined,
+    comment: typeof saved.comment === "string" ? saved.comment : "",
+    emoji: typeof saved.emoji === "string" ? saved.emoji : undefined,
   };
   if (gameZone) gameZone.hidden = true;
   if (panel) panel.hidden = false;
@@ -503,6 +560,53 @@ function renderFlagImage(country) {
   img.decoding = "async";
   frame.appendChild(img);
   display.appendChild(frame);
+  updateCountryComment(country);
+}
+
+/** One-line trivia under the flag when `country.comment` is set. */
+function updateCountryComment(country) {
+  const el = document.getElementById("country-comment");
+  if (!el) return;
+  const answerLine = document.getElementById("feedback-answer-comment");
+  if (answerLine && !answerLine.hidden) {
+    el.hidden = true;
+    return;
+  }
+  const text = typeof country?.comment === "string" ? country.comment.trim() : "";
+  if (!text) {
+    el.textContent = "";
+    el.hidden = true;
+    return;
+  }
+  el.textContent = text;
+  el.hidden = false;
+}
+
+/** After win/loss: show `comment` under the answer line (hidden if empty). */
+function setFeedbackAnswerComment(country) {
+  const el = document.getElementById("feedback-answer-comment");
+  const flagLine = document.getElementById("country-comment");
+  if (!el) return;
+  const raw = typeof country?.comment === "string" ? country.comment : "";
+  const text = raw.trim();
+  if (!text) {
+    el.textContent = "";
+    el.hidden = true;
+    if (flagLine && country) updateCountryComment(country);
+    return;
+  }
+  el.textContent = `\u{1F4CD} ${text}`;
+  el.hidden = false;
+  if (flagLine) flagLine.hidden = true;
+}
+
+function clearFeedbackAnswerComment() {
+  const el = document.getElementById("feedback-answer-comment");
+  if (el) {
+    el.textContent = "";
+    el.hidden = true;
+  }
+  if (currentCountry) updateCountryComment(currentCountry);
 }
 
 /** Update #attempts label */
@@ -551,6 +655,7 @@ function handleGuess() {
     feedback.className = "feedback-success";
     isGameOver = true;
     setInputsDisabled(true);
+    setFeedbackAnswerComment(currentCountry);
     persistDailyComplete(true);
     showShareRow();
     return;
@@ -579,6 +684,7 @@ function handleGuess() {
     isGameOver = true;
     setInputsDisabled(true);
     input.value = "";
+    setFeedbackAnswerComment(currentCountry);
     persistDailyComplete(false);
     showShareRow();
     return;
@@ -586,6 +692,7 @@ function handleGuess() {
 
   feedback.textContent = "Not quite. Try again!";
   feedback.className = "feedback-error";
+  clearFeedbackAnswerComment();
   input.value = "";
 }
 
@@ -694,6 +801,7 @@ async function init() {
   shareSnapshot = null;
   hideShareRow();
 
+  clearFeedbackAnswerComment();
   renderFlagImage(currentCountry);
   updateAttemptsDisplay();
   clearHints();
