@@ -560,13 +560,13 @@ function handleGuess() {
   updateAttemptsDisplay();
 
   if (attempts === 1) {
+    appendHintLine(`Continent: ${currentCountry.continent ?? "—"}`);
+  } else if (attempts === 2) {
+    appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
+  } else if (attempts === 3) {
     appendHintLine(
       `Population: ${currentCountry.population_en ?? "—"}`
     );
-  } else if (attempts === 2) {
-    appendHintLine(`Continent: ${currentCountry.continent ?? "—"}`);
-  } else if (attempts === 3) {
-    appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
   } else if (attempts === 4) {
     appendHintLine(`Starts with: ${currentCountry.first_letter_en}`);
   } else if (attempts === 5) {
