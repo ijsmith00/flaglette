@@ -1,7 +1,7 @@
 let currentCountry = null;
 let attempts = 0;
 const maxAttempts = 6;
-const SAVE_SCHEMA_VERSION = 4;
+const SAVE_SCHEMA_VERSION = 5;
 /** Share body line 3 — no protocol (spec). Link fields use SHARE_SITE_LINK_URL. */
 const SHARE_SITE_TEXT_LINE = "flaglette.com";
 const SHARE_SITE_LINK_URL = "https://flaglette.com/";
@@ -79,6 +79,7 @@ function getDailyGameNumber() {
  * Legacy save (3 guesses): normalize maxGuesses and schemaVersion.
  * v3: drop stripeEmojiLine; share grid from won + attempts.
  * v4: optional share fields countryCode, comment, emoji for share text.
+ * v5: `comment` → `til` (English-only trivia line).
  */
 function migrateDailyPayload(p) {
   if (!p || typeof p !== "object") return p;
@@ -103,6 +104,10 @@ function migrateDailyPayload(p) {
         schemaVersion: SAVE_SCHEMA_VERSION,
       };
       delete next.stripeEmojiLine;
+      if (typeof next.comment === "string" && next.til === undefined) {
+        next.til = next.comment;
+        delete next.comment;
+      }
       return next;
     } catch (_) {
       return { ...out, completed: false };
@@ -154,7 +159,12 @@ function loadShareSnapshotFromStorage() {
       hintsUsed: p.hintsUsed ?? 0,
       maxGuesses: p.maxGuesses ?? 3,
       countryCode: typeof p.countryCode === "string" ? p.countryCode : undefined,
-      comment: typeof p.comment === "string" ? p.comment : "",
+      til:
+        typeof p.til === "string"
+          ? p.til
+          : typeof p.comment === "string"
+            ? p.comment
+            : "",
       emoji: typeof p.emoji === "string" ? p.emoji : undefined,
     };
   } catch (_) {
@@ -202,9 +212,14 @@ function getShareableGameResultText() {
   const line1 = `${flagPrefix}Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
   const line2 = buildShareAttemptPatternLine(snap);
   const lines = [line1, line2, ""];
-  const comment = typeof snap.comment === "string" ? snap.comment.trim() : "";
-  if (comment) {
-    lines.push("📍 TIL", comment, "");
+  const til =
+    typeof snap.til === "string"
+      ? snap.til.trim()
+      : typeof snap.comment === "string"
+        ? snap.comment.trim()
+        : "";
+  if (til) {
+    lines.push("📍 TIL", til, "");
   }
   lines.push(SHARE_SITE_TEXT_LINE);
   return lines.join("\n");
@@ -465,15 +480,15 @@ function persistDailyComplete(won) {
   const totalAttempts = won ? attempts + 1 : maxAttempts;
   const wrongBeforeEnd = won ? attempts : maxAttempts;
   const hintsUsed = won ? Math.min(wrongBeforeEnd, 5) : 5;
-  const commentRaw =
-    typeof currentCountry?.comment === "string" ? currentCountry.comment : "";
+  const tilRaw =
+    typeof currentCountry?.til === "string" ? currentCountry.til : "";
   shareSnapshot = {
     won,
     attempts: totalAttempts,
     hintsUsed,
     maxGuesses: maxAttempts,
     countryCode: currentCountry?.code,
-    comment: commentRaw,
+    til: tilRaw,
   };
   if (typeof currentCountry?.emoji === "string" && currentCountry.emoji.trim()) {
     shareSnapshot.emoji = currentCountry.emoji.trim();
@@ -489,7 +504,7 @@ function persistDailyComplete(won) {
     maxGuesses: maxAttempts,
     hintsUsed,
     countryCode: currentCountry?.code,
-    comment: commentRaw,
+    til: tilRaw,
   };
   if (typeof currentCountry?.emoji === "string" && currentCountry.emoji.trim()) {
     payload.emoji = currentCountry.emoji.trim();
@@ -516,7 +531,12 @@ function showDailyCompleteScreen(savedRaw) {
     hintsUsed: saved.hintsUsed ?? 0,
     maxGuesses: maxG,
     countryCode: typeof saved.countryCode === "string" ? saved.countryCode : undefined,
-    comment: typeof saved.comment === "string" ? saved.comment : "",
+    til:
+      typeof saved.til === "string"
+        ? saved.til
+        : typeof saved.comment === "string"
+          ? saved.comment
+          : "",
     emoji: typeof saved.emoji === "string" ? saved.emoji : undefined,
   };
   if (gameZone) gameZone.hidden = true;
@@ -563,7 +583,7 @@ function renderFlagImage(country) {
   updateCountryComment(country);
 }
 
-/** One-line trivia under the flag when `country.comment` is set. */
+/** One-line trivia under the flag when `country.til` is set. */
 function updateCountryComment(country) {
   const el = document.getElementById("country-comment");
   if (!el) return;
@@ -572,7 +592,7 @@ function updateCountryComment(country) {
     el.hidden = true;
     return;
   }
-  const text = typeof country?.comment === "string" ? country.comment.trim() : "";
+  const text = typeof country?.til === "string" ? country.til.trim() : "";
   if (!text) {
     el.textContent = "";
     el.hidden = true;
@@ -582,12 +602,12 @@ function updateCountryComment(country) {
   el.hidden = false;
 }
 
-/** After win/loss: show `comment` under the answer line (hidden if empty). */
+/** After win/loss: show `til` under the answer line (hidden if empty). */
 function setFeedbackAnswerComment(country) {
   const el = document.getElementById("feedback-answer-comment");
   const flagLine = document.getElementById("country-comment");
   if (!el) return;
-  const raw = typeof country?.comment === "string" ? country.comment : "";
+  const raw = typeof country?.til === "string" ? country.til : "";
   const text = raw.trim();
   if (!text) {
     el.textContent = "";

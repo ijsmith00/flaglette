@@ -26,7 +26,7 @@ export interface Country {
   tier: "daily" | "archive";
   palette: CountryPaletteBand[];
   /** One-line shareable trivia in English (no flag facts); empty string if unset. */
-  comment: string;
+  til: string;
   /** Optional override for share line; if absent, flag emoji is derived from `code`. */
   emoji?: string;
   stripes?: unknown;

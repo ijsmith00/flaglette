@@ -259,7 +259,7 @@ async function main() {
       continent: continentLabel(apiRow),
       difficulty: diff,
       tier: tierFromDifficulty(diff),
-      comment: legacy?.comment ?? "",
+      til: legacy?.til ?? legacy?.comment ?? "",
     };
 
     if (legacy) {
