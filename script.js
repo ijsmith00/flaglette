@@ -580,26 +580,15 @@ function renderFlagImage(country) {
   img.decoding = "async";
   frame.appendChild(img);
   display.appendChild(frame);
-  updateCountryComment(country);
+  hideCountryCommentUnderFlag();
 }
 
-/** One-line trivia under the flag when `country.til` is set. */
-function updateCountryComment(country) {
+/** TIL is not shown under the flag during play—only after game over (see `setFeedbackAnswerComment`). */
+function hideCountryCommentUnderFlag() {
   const el = document.getElementById("country-comment");
   if (!el) return;
-  const answerLine = document.getElementById("feedback-answer-comment");
-  if (answerLine && !answerLine.hidden) {
-    el.hidden = true;
-    return;
-  }
-  const text = typeof country?.til === "string" ? country.til.trim() : "";
-  if (!text) {
-    el.textContent = "";
-    el.hidden = true;
-    return;
-  }
-  el.textContent = text;
-  el.hidden = false;
+  el.textContent = "";
+  el.hidden = true;
 }
 
 /** After win/loss: show `til` under the answer line (hidden if empty). */
@@ -612,7 +601,7 @@ function setFeedbackAnswerComment(country) {
   if (!text) {
     el.textContent = "";
     el.hidden = true;
-    if (flagLine && country) updateCountryComment(country);
+    hideCountryCommentUnderFlag();
     return;
   }
   el.textContent = `\u{1F4CD} ${text}`;
@@ -626,7 +615,7 @@ function clearFeedbackAnswerComment() {
     el.textContent = "";
     el.hidden = true;
   }
-  if (currentCountry) updateCountryComment(currentCountry);
+  hideCountryCommentUnderFlag();
 }
 
 /** Update #attempts label */
