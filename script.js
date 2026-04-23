@@ -11,6 +11,8 @@ let isGameOver = false;
 let shareSnapshot = null;
 /** Set when URL has ?play=XX / ?country=XX / ?test=XX (ISO2) — no daily save, skips today’s complete gate. */
 let practiceModeCode = null;
+/** ISO2 → English terrain line (third hint); filled from `terrain-hints-proposal.json` or `#terrain-hints-embedded`. */
+let terrainHintsByCode = {};
 
 /** Optional ISO2 code from query (?play=PT&…). */
 function getPracticeModeCodeFromUrl() {
@@ -678,9 +680,10 @@ function handleGuess() {
   } else if (attempts === 2) {
     appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
   } else if (attempts === 3) {
-    appendHintLine(
-      `Population: ${currentCountry.population_en ?? "—"}`
-    );
+    const terrainRaw = terrainHintsByCode[currentCountry.code];
+    const terrain =
+      typeof terrainRaw === "string" ? terrainRaw.trim() : "";
+    appendHintLine(terrain ? `Terrain: ${terrain}` : "Terrain: —");
   } else if (attempts === 4) {
     appendHintLine(`Starts with: ${currentCountry.first_letter_en}`);
   } else if (attempts === 5) {
@@ -725,6 +728,30 @@ async function loadCountries() {
       return JSON.parse(embedded.textContent);
     }
     throw err;
+  }
+}
+
+/** Load terrain hint strings from #terrain-hints-embedded or terrain-hints-proposal.json */
+async function loadTerrainHints() {
+  const embedded = document.getElementById("terrain-hints-embedded");
+
+  if (window.location.protocol === "file:") {
+    if (!embedded) {
+      return {};
+    }
+    return JSON.parse(embedded.textContent);
+  }
+
+  try {
+    const response = await fetch("terrain-hints-proposal.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.json();
+  } catch (err) {
+    if (embedded) {
+      return JSON.parse(embedded.textContent);
+    }
+    console.warn("terrain-hints-proposal.json missing; third hint will show em dash.", err);
+    return {};
   }
 }
 
@@ -786,7 +813,11 @@ async function init() {
   const gameZone = document.getElementById("game-zone");
   if (gameZone) gameZone.hidden = false;
 
-  const countries = await loadCountries();
+  const [countries, terrainMap] = await Promise.all([
+    loadCountries(),
+    loadTerrainHints(),
+  ]);
+  terrainHintsByCode = terrainMap && typeof terrainMap === "object" ? terrainMap : {};
   const pool = countries.filter((c) => c.tier === "daily");
   if (pool.length === 0) {
     throw new Error('No country has tier "daily".');
