@@ -8232,7 +8232,16 @@
         <button type="button" class="howto-btn" id="howto-open-btn" aria-label="How to play" title="How to play">?</button>
       </div>
       <p class="tagline">A daily flag puzzle.</p>
+      <div class="home-secondary-actions" id="home-secondary-actions">
+        <button type="button" class="share-btn" id="home-practice-btn">Practice Mode</button>
+      </div>
     </header>
+    <section id="practice-picker-view" class="practice-picker-view" hidden>
+      <button type="button" class="practice-back-btn share-btn" id="practice-picker-back">← Back</button>
+      <h2 class="practice-picker-title">Choose a continent</h2>
+      <ul class="practice-continent-list" id="practice-continent-list" role="list"></ul>
+    </section>
+    <div id="practice-cycle-toast" class="practice-cycle-toast" hidden role="status" aria-live="polite"></div>
     <section id="daily-complete" class="daily-complete" hidden>
       <p class="daily-complete__title">✅ Today's Flaglette complete!</p>
       <p class="daily-complete__result">Result: <span id="daily-result-label"></span></p>
@@ -8243,6 +8252,10 @@
       <button type="button" class="share-btn" id="share-btn-daily">Share result</button>
     </section>
     <div id="game-zone" hidden>
+    <div id="practice-play-chrome" class="practice-play-chrome" hidden>
+      <button type="button" class="practice-exit-btn" id="practice-exit-btn" aria-label="Exit practice mode">× Exit</button>
+      <span class="practice-mode-label" id="practice-mode-label"></span>
+    </div>
     <div id="flag-display"></div>
     <p id="country-comment" class="country-comment" hidden lang="en" aria-live="polite"></p>
     <div class="guess-row">
@@ -8254,6 +8267,19 @@
     <div class="feedback-block" id="feedback-block">
       <div id="feedback"></div>
       <p id="feedback-answer-comment" class="feedback-answer-comment" hidden lang="en" aria-live="polite"></p>
+    </div>
+    <div id="practice-result" class="practice-result" hidden>
+      <p class="practice-result__title" id="practice-result-title"></p>
+      <div class="practice-result__til">
+        <p class="practice-result__til-label">📖 TIL</p>
+        <p class="practice-result__til-text" id="practice-result-til" lang="en"></p>
+      </div>
+      <hr class="practice-result__rule" />
+      <div class="practice-result__actions">
+        <button type="button" id="practice-next-btn">Next Country</button>
+        <button type="button" class="share-btn practice-result__linkish" id="practice-change-continent-btn">Change Continent</button>
+        <button type="button" class="share-btn practice-result__linkish" id="practice-exit-home-btn">Exit to Home</button>
+      </div>
     </div>
     <div id="share-row" class="share-row" hidden>
       <button type="button" class="share-btn" id="share-btn-game">Share result</button>
@@ -8295,6 +8321,6 @@
       <button type="button" class="share-dialog__copy" id="share-copy-only">Copy text only</button>
     </div>
   </dialog>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

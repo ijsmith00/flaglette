@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/practice", "destination": "/index.html" },
+    { "source": "/practice/:continentKey", "destination": "/index.html" }
+  ]
+}

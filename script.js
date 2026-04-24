@@ -1,3 +1,10 @@
+import { getCountriesByContinent } from "./lib/getCountriesByContinent.js";
+import {
+  getNext,
+  getQueueProgress,
+  isPracticeRouteKey,
+} from "./lib/practiceQueue.js";
+
 let currentCountry = null;
 let attempts = 0;
 const maxAttempts = 6;
@@ -11,8 +18,78 @@ let isGameOver = false;
 let shareSnapshot = null;
 /** Set when URL has ?play=XX / ?country=XX / ?test=XX (ISO2) — no daily save, skips today’s complete gate. */
 let practiceModeCode = null;
+/** Set while `/practice/:continentKey` play UI is active — no daily save, custom end screen. */
+let practiceRouteContinentKey = null;
+/** Cached full country list after first load. */
+let allCountriesCache = null;
+/** @type {Promise<unknown[]> | null} */
+let dataLoadPromise = null;
 /** ISO2 → English terrain line (third hint); filled from `terrain-hints-proposal.json` or `#terrain-hints-embedded`. */
 let terrainHintsByCode = {};
+
+const PRACTICE_PICKER_ROWS = [
+  { routeKey: "americas", emoji: "🌎", label: "Americas" },
+  { routeKey: "europe", emoji: "🌍", label: "Europe" },
+  { routeKey: "asia", emoji: "🌏", label: "Asia" },
+  { routeKey: "africa", emoji: "🌍", label: "Africa" },
+  { routeKey: "oceania", emoji: "🌏", label: "Oceania" },
+  { divider: true },
+  { routeKey: "random", emoji: "🎲", label: "Random (all)" },
+];
+
+let practiceCycleToastTimerId = null;
+
+const SESSION_PRACTICE_FROM_PICKER = "fl_pr_play_from_picker";
+
+/** Google Analytics (gtag) — optional; matches index.html GA snippet. */
+function trackPracticeEvent(eventName, params) {
+  try {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, params || {});
+    }
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+function markPracticePlayEnteredFromPicker() {
+  try {
+    sessionStorage.setItem(SESSION_PRACTICE_FROM_PICKER, "1");
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+function consumePracticePlayEnteredFromPicker() {
+  try {
+    if (sessionStorage.getItem(SESSION_PRACTICE_FROM_PICKER)) {
+      sessionStorage.removeItem(SESSION_PRACTICE_FROM_PICKER);
+      return true;
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  return false;
+}
+
+/**
+ * Direct opens of `/practice/:key` often have a single history entry, so Back would skip
+ * the picker. Synthesize `/practice` underneath (same as stacking from the picker UI).
+ * In-app picker navigation already pushed `/practice` first — then skip.
+ */
+function ensurePracticePlayHistoryStack(routeKey) {
+  if (usesHashRouting()) return;
+  const fromPicker = consumePracticePlayEnteredFromPicker();
+  if (fromPicker) return;
+  const playPath = `/practice/${routeKey}`;
+  try {
+    if (window.location.pathname !== playPath) return;
+    window.history.replaceState({}, "", "/practice");
+    window.history.pushState({}, "", playPath);
+  } catch (e) {
+    console.warn("[practice] Could not adjust history stack", e);
+  }
+}
 
 /** Optional ISO2 code from query (?play=PT&…). */
 function getPracticeModeCodeFromUrl() {
@@ -26,6 +103,338 @@ function getPracticeModeCodeFromUrl() {
   } catch (_) {
     return null;
   }
+}
+
+/** `file://` pages have no real pathname for SPA segments — use `#/practice` instead. */
+function usesHashRouting() {
+  return window.location.protocol === "file:";
+}
+
+function pathFromLocationForRouter() {
+  if (usesHashRouting()) {
+    const h = window.location.hash;
+    if (!h || h === "#") return "/";
+    const inner = h.replace(/^#/, "").trim() || "/";
+    return inner.replace(/\/+$/, "") || "/";
+  }
+  const raw = window.location.pathname || "/";
+  return raw.replace(/\/+$/, "") || "/";
+}
+
+function parseRoute() {
+  const path = pathFromLocationForRouter();
+  if (path === "/practice") return { type: "practice-picker" };
+  const m = path.match(/^\/practice\/([^/]+)$/i);
+  if (m) return { type: "practice-play", key: m[1].toLowerCase() };
+  return { type: "home" };
+}
+
+const DAILY_RESUME_KEY = "flaglette_daily_resume_v1";
+
+function clearDailyResumeSnapshot() {
+  try {
+    sessionStorage.removeItem(DAILY_RESUME_KEY);
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+/** Persist in-progress daily guesses when leaving `/` for routed practice (same tab). */
+function snapshotDailyProgressForResume() {
+  if (getPracticeModeCodeFromUrl()) return;
+  if (practiceRouteContinentKey) return;
+  if (!currentCountry || isGameOver) return;
+  try {
+    const raw = localStorage.getItem(getDailyStorageKey());
+    if (raw) {
+      const st = migrateDailyPayload(JSON.parse(raw));
+      if (st && st.completed === true) return;
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  try {
+    sessionStorage.setItem(
+      DAILY_RESUME_KEY,
+      JSON.stringify({
+        dateKey: getLocalDateKeyString(),
+        code: currentCountry.code,
+        attempts,
+      })
+    );
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+function appendHintsThroughWrongAttempts(country, wrongAttempts) {
+  clearHints();
+  const n = Math.min(maxAttempts, Math.max(0, wrongAttempts));
+  for (let a = 1; a <= n; a++) {
+    if (a === 1) {
+      appendHintLine(`Continent: ${country.continent ?? "—"}`);
+    } else if (a === 2) {
+      appendHintLine(`Neighboring countries: ${formatNeighborsHint(country)}`);
+    } else if (a === 3) {
+      const terrainRaw = terrainHintsByCode[country.code];
+      const terrain = typeof terrainRaw === "string" ? terrainRaw.trim() : "";
+      appendHintLine(terrain ? `Terrain: ${terrain}` : "Terrain: —");
+    } else if (a === 4) {
+      appendHintLine(`Starts with: ${country.first_letter_en}`);
+    } else if (a === 5) {
+      appendHintLine(
+        `Name length (letters): ${letterCountFromName(country.name_en)}`
+      );
+    }
+  }
+}
+
+/** @returns {boolean} true if a session was restored */
+function consumeDailyResumeIfValid(countries) {
+  try {
+    const raw = sessionStorage.getItem(DAILY_RESUME_KEY);
+    if (!raw) return false;
+    const o = JSON.parse(raw);
+    if (o.dateKey !== getLocalDateKeyString()) return false;
+    const code = typeof o.code === "string" ? o.code : "";
+    const found = countries.find((c) => c.code === code);
+    if (!found) return false;
+    currentCountry = found;
+    attempts = Math.min(maxAttempts, Math.max(0, Math.floor(Number(o.attempts)) || 0));
+    appendHintsThroughWrongAttempts(found, attempts);
+    sessionStorage.removeItem(DAILY_RESUME_KEY);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+function navigate(path) {
+  const from = parseRoute();
+  if (
+    from.type === "home" &&
+    (path === "/practice" || path.startsWith("/practice/"))
+  ) {
+    snapshotDailyProgressForResume();
+  }
+  if (usesHashRouting()) {
+    const nextHash = path === "/" ? "" : `#${path}`;
+    if ((window.location.hash || "") === nextHash) {
+      renderRoute().catch((err) => console.error(err));
+    } else {
+      window.location.hash = nextHash;
+    }
+    return;
+  }
+  window.history.pushState({}, "", path);
+  renderRoute().catch((err) => console.error(err));
+}
+
+function isPathPracticePlay() {
+  return practiceRouteContinentKey != null;
+}
+
+function practiceLabelFromRouteKey(key) {
+  if (key === "random") return "Random";
+  return key.charAt(0).toUpperCase() + key.slice(1);
+}
+
+function getCountryListForPracticeKey(routeKey, allCountries) {
+  if (routeKey === "random") return [...allCountries];
+  const byCont = getCountriesByContinent(allCountries);
+  const map = {
+    africa: "Africa",
+    americas: "Americas",
+    asia: "Asia",
+    europe: "Europe",
+    oceania: "Oceania",
+  };
+  const bucket = map[routeKey];
+  return bucket ? [...(byCont[bucket] || [])] : [];
+}
+
+function ensureCountriesTerrain() {
+  if (dataLoadPromise) return dataLoadPromise;
+  dataLoadPromise = Promise.all([loadCountries(), loadTerrainHints()]).then(
+    ([countries, terrainMap]) => {
+      allCountriesCache = countries;
+      terrainHintsByCode =
+        terrainMap && typeof terrainMap === "object" ? terrainMap : {};
+      return countries;
+    }
+  );
+  return dataLoadPromise;
+}
+
+function removeLegacyPracticeBanner() {
+  document.getElementById("legacy-practice-banner")?.remove();
+}
+
+function hidePracticeCycleToast() {
+  const el = document.getElementById("practice-cycle-toast");
+  if (practiceCycleToastTimerId != null) {
+    clearTimeout(practiceCycleToastTimerId);
+    practiceCycleToastTimerId = null;
+  }
+  if (el) el.hidden = true;
+}
+
+function showPracticeFreshCycleToast(routeKey, nCountries) {
+  hidePracticeCycleToast();
+  const el = document.getElementById("practice-cycle-toast");
+  if (!el) return;
+  if (routeKey === "random") {
+    el.textContent = `🎉 You've played all ${nCountries} countries! Starting a fresh round.`;
+  } else {
+    el.textContent = `🎉 You've played all ${nCountries} ${practiceLabelFromRouteKey(
+      routeKey
+    )} countries! Starting a fresh round.`;
+  }
+  el.hidden = false;
+  practiceCycleToastTimerId = setTimeout(() => {
+    el.hidden = true;
+    practiceCycleToastTimerId = null;
+  }, 3000);
+}
+
+function setPracticeChromeLabel(routeKey) {
+  const el = document.getElementById("practice-mode-label");
+  if (!el) return;
+  el.textContent = `Practice · ${practiceLabelFromRouteKey(routeKey)}`;
+}
+
+function setPracticePlaySurfaceVisible(visible) {
+  const guessRow = document.querySelector("#game-zone .guess-row");
+  const hints = document.getElementById("hints");
+  const attemptsEl = document.getElementById("attempts");
+  const feedbackBlock = document.getElementById("feedback-block");
+  const hidden = !visible;
+  if (guessRow) guessRow.hidden = hidden;
+  if (hints) hints.hidden = hidden;
+  if (attemptsEl) attemptsEl.hidden = hidden;
+  if (feedbackBlock) feedbackBlock.hidden = hidden;
+}
+
+function hidePracticeResultPanel() {
+  const result = document.getElementById("practice-result");
+  if (result) result.hidden = true;
+}
+
+function resetRoundStateForNewPuzzle() {
+  attempts = 0;
+  isGameOver = false;
+  const input = document.getElementById("guess-input");
+  if (input) input.value = "";
+}
+
+function renderPracticePickerList() {
+  const ul = document.getElementById("practice-continent-list");
+  if (!ul || !allCountriesCache) return;
+  ul.innerHTML = "";
+  for (const def of PRACTICE_PICKER_ROWS) {
+    if (def.divider) {
+      const li = document.createElement("li");
+      li.className = "practice-continent-row--divider";
+      li.setAttribute("aria-hidden", "true");
+      ul.appendChild(li);
+      continue;
+    }
+    const list = getCountryListForPracticeKey(def.routeKey, allCountriesCache);
+    const total = list.length;
+    if (total === 0) {
+      continue;
+    }
+    const { played } = getQueueProgress(def.routeKey, total);
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "practice-continent-row";
+    btn.setAttribute(
+      "aria-label",
+      `${def.label}, ${total} countries, ${played} of ${total} played`
+    );
+    const main = document.createElement("span");
+    main.className = "practice-continent-row__main";
+    main.appendChild(document.createTextNode(`${def.emoji} ${def.label}`));
+    const meta = document.createElement("span");
+    meta.className = "practice-continent-row__meta";
+    meta.textContent = `${total} countries · ${played}/${total} played`;
+    btn.appendChild(main);
+    btn.appendChild(meta);
+    btn.addEventListener("click", () => {
+      trackPracticeEvent("practice_continent_selected", {
+        continent_key: def.routeKey,
+      });
+      markPracticePlayEnteredFromPicker();
+      navigate(`/practice/${def.routeKey}`);
+    });
+    const li = document.createElement("li");
+    li.appendChild(btn);
+    ul.appendChild(li);
+  }
+}
+
+function startPracticeRoundFromRoute(routeKey) {
+  const list = getCountryListForPracticeKey(routeKey, allCountriesCache);
+  if (list.length === 0) {
+    navigate("/practice");
+    return;
+  }
+  const { country, isFreshCycle } = getNext(routeKey, list);
+  if (!country) {
+    navigate("/practice");
+    return;
+  }
+  hidePracticeResultPanel();
+  setPracticePlaySurfaceVisible(true);
+  resetRoundStateForNewPuzzle();
+  currentCountry = country;
+  if (isFreshCycle) {
+    showPracticeFreshCycleToast(routeKey, list.length);
+  } else {
+    hidePracticeCycleToast();
+  }
+  hideShareRow();
+  clearFeedbackAnswerComment();
+  renderFlagImage(currentCountry);
+  updateAttemptsDisplay();
+  clearHints();
+  const feedback = document.getElementById("feedback");
+  if (feedback) {
+    feedback.textContent = "";
+    feedback.className = "";
+  }
+  setInputsDisabled(false);
+  document.getElementById("guess-input")?.focus();
+}
+
+function finishPracticeRound(won) {
+  setPracticePlaySurfaceVisible(false);
+  const result = document.getElementById("practice-result");
+  const title = document.getElementById("practice-result-title");
+  const tilEl = document.getElementById("practice-result-til");
+  if (title) {
+    title.textContent = won
+      ? `✓ You got it in ${attempts + 1}!`
+      : `The answer was ${currentCountry.name_en}`;
+  }
+  const tilRaw =
+    typeof currentCountry?.til === "string" ? currentCountry.til : "";
+  if (tilEl) tilEl.textContent = tilRaw.trim() || "—";
+  if (result) result.hidden = false;
+  const guesses = won ? attempts + 1 : maxAttempts;
+  trackPracticeEvent("practice_round_completed", {
+    continent: practiceRouteContinentKey,
+    won,
+    guesses,
+  });
+  requestAnimationFrame(() => {
+    document.getElementById("practice-next-btn")?.focus();
+  });
+}
+
+function onPracticeNextCountry() {
+  if (!practiceRouteContinentKey) return;
+  startPracticeRoundFromRoute(practiceRouteContinentKey);
 }
 
 /** V1.1 practice mode: random country from list (unused for now). */
@@ -214,15 +623,6 @@ function getShareableGameResultText() {
   const line1 = `${flagPrefix}Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
   const line2 = buildShareAttemptPatternLine(snap);
   const lines = [line1, line2, ""];
-  const til =
-    typeof snap.til === "string"
-      ? snap.til.trim()
-      : typeof snap.comment === "string"
-        ? snap.comment.trim()
-        : "";
-  if (til) {
-    lines.push("📍 TIL", til, "");
-  }
   lines.push(SHARE_SITE_TEXT_LINE);
   return lines.join("\n");
 }
@@ -495,7 +895,7 @@ function persistDailyComplete(won) {
   if (typeof currentCountry?.emoji === "string" && currentCountry.emoji.trim()) {
     shareSnapshot.emoji = currentCountry.emoji.trim();
   }
-  if (practiceModeCode) {
+  if (practiceModeCode || practiceRouteContinentKey) {
     return;
   }
   const payload = {
@@ -513,6 +913,7 @@ function persistDailyComplete(won) {
   }
   try {
     localStorage.setItem(getDailyStorageKey(), JSON.stringify(payload));
+    clearDailyResumeSnapshot();
   } catch (e) {
     console.warn("localStorage save failed", e);
   }
@@ -550,6 +951,12 @@ function showDailyCompleteScreen(savedRaw) {
   if (shareDaily) {
     shareDaily.onclick = () => openShareDialog();
   }
+  document.getElementById("home-secondary-actions") &&
+    (document.getElementById("home-secondary-actions").hidden = false);
+  document.getElementById("practice-picker-view") &&
+    (document.getElementById("practice-picker-view").hidden = true);
+  document.getElementById("practice-play-chrome") &&
+    (document.getElementById("practice-play-chrome").hidden = true);
   startMidnightCountdown();
 }
 
@@ -622,8 +1029,8 @@ function clearFeedbackAnswerComment() {
 
 /** Update #attempts label */
 function updateAttemptsDisplay() {
-  document.getElementById("attempts").textContent =
-    `Guesses: ${attempts} / ${maxAttempts}`;
+  const el = document.getElementById("attempts");
+  if (el) el.textContent = `Guesses: ${attempts} / ${maxAttempts}`;
 }
 
 /** Clear hints container */
@@ -667,8 +1074,12 @@ function handleGuess() {
     isGameOver = true;
     setInputsDisabled(true);
     setFeedbackAnswerComment(currentCountry);
-    persistDailyComplete(true);
-    showShareRow();
+    if (isPathPracticePlay()) {
+      finishPracticeRound(true);
+    } else {
+      persistDailyComplete(true);
+      showShareRow();
+    }
     return;
   }
 
@@ -697,8 +1108,12 @@ function handleGuess() {
     setInputsDisabled(true);
     input.value = "";
     setFeedbackAnswerComment(currentCountry);
-    persistDailyComplete(false);
-    showShareRow();
+    if (isPathPracticePlay()) {
+      finishPracticeRound(false);
+    } else {
+      persistDailyComplete(false);
+      showShareRow();
+    }
     return;
   }
 
@@ -776,7 +1191,8 @@ function initHowToPlay() {
   });
   try {
     if (
-      !practiceModeCode &&
+      !getPracticeModeCodeFromUrl() &&
+      parseRoute().type === "home" &&
       !localStorage.getItem(HOWTO_STORAGE_KEY) &&
       typeof dlg.showModal === "function"
     ) {
@@ -784,18 +1200,75 @@ function initHowToPlay() {
       localStorage.setItem(HOWTO_STORAGE_KEY, "1");
     }
   } catch (_) {
-    if (!practiceModeCode && typeof dlg.showModal === "function") dlg.showModal();
+    if (
+      !getPracticeModeCodeFromUrl() &&
+      parseRoute().type === "home" &&
+      typeof dlg.showModal === "function"
+    ) {
+      dlg.showModal();
+    }
   }
 }
 
-/** Page load: if today not done, pick daily country and wire events */
-async function init() {
+let gameControlsWired = false;
+/** Bumped on each `renderRoute` entry; stale async completions must not repaint over a newer route. */
+let renderRouteGeneration = 0;
+
+function wireGameControlsOnce() {
+  if (gameControlsWired) return;
+  gameControlsWired = true;
+  const practiceBtn = document.getElementById("home-practice-btn");
+  if (!practiceBtn) {
+    console.warn("[flaglette] #home-practice-btn not found — Practice Mode not wired.");
+  } else {
+    practiceBtn.addEventListener("click", () => {
+      snapshotDailyProgressForResume();
+      navigate("/practice");
+    });
+  }
+  document.getElementById("practice-picker-back")?.addEventListener("click", () => {
+    navigate("/");
+  });
+  document.getElementById("practice-exit-btn")?.addEventListener("click", () => {
+    navigate("/practice");
+  });
+  document.getElementById("practice-next-btn")?.addEventListener("click", () => {
+    onPracticeNextCountry();
+  });
+  document.getElementById("practice-change-continent-btn")?.addEventListener("click", () => {
+    navigate("/practice");
+  });
+  document.getElementById("practice-exit-home-btn")?.addEventListener("click", () => {
+    navigate("/");
+  });
+
+  const shareGameBtn = document.getElementById("share-btn-game");
+  if (shareGameBtn) {
+    shareGameBtn.onclick = () => openShareDialog();
+  }
+  document.getElementById("submit-btn")?.addEventListener("click", handleGuess);
+  document.getElementById("guess-input")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleGuess();
+    }
+  });
+}
+
+/** Home `/`: daily complete gate, legacy `?play=`, or today’s puzzle. */
+async function startHomeDailyGame(routeGen) {
+  practiceRouteContinentKey = null;
   practiceModeCode = getPracticeModeCodeFromUrl();
 
-  initShareDialog();
-  initHowToPlay();
+  const gameZone = document.getElementById("game-zone");
+  const dailyComplete = document.getElementById("daily-complete");
+  const picker = document.getElementById("practice-picker-view");
+  const practiceChrome = document.getElementById("practice-play-chrome");
+
+  if (picker) picker.hidden = true;
+  if (practiceChrome) practiceChrome.hidden = true;
+
   if (!practiceModeCode) {
-    /* Sync check before await — avoid flashing game zone if already complete */
     try {
       const raw = localStorage.getItem(getDailyStorageKey());
       if (raw) {
@@ -810,19 +1283,20 @@ async function init() {
     }
   }
 
-  const gameZone = document.getElementById("game-zone");
+  if (dailyComplete) dailyComplete.hidden = true;
   if (gameZone) gameZone.hidden = false;
 
-  const [countries, terrainMap] = await Promise.all([
-    loadCountries(),
-    loadTerrainHints(),
-  ]);
-  terrainHintsByCode = terrainMap && typeof terrainMap === "object" ? terrainMap : {};
+  await ensureCountriesTerrain();
+  if (routeGen !== renderRouteGeneration) return;
+  const countries = allCountriesCache;
   const pool = countries.filter((c) => c.tier === "daily");
   if (pool.length === 0) {
     throw new Error('No country has tier "daily".');
   }
 
+  removeLegacyPracticeBanner();
+
+  let resumedDaily = false;
   if (practiceModeCode) {
     const found = countries.find((c) => c.code === practiceModeCode);
     if (!found) {
@@ -830,36 +1304,117 @@ async function init() {
     }
     currentCountry = found;
     const banner = document.createElement("p");
+    banner.id = "legacy-practice-banner";
     banner.className = "play-mode-banner";
     banner.setAttribute("role", "status");
     banner.textContent = `Practice — ${found.name_en} (${found.code}). Daily save is off. Remove ?play= from the URL for the real puzzle.`;
-    gameZone.insertBefore(banner, gameZone.firstChild);
+    const flagDisplay = document.getElementById("flag-display");
+    if (flagDisplay && gameZone) {
+      gameZone.insertBefore(banner, flagDisplay);
+    } else if (gameZone) {
+      gameZone.insertBefore(banner, gameZone.firstChild);
+    }
   } else {
-    currentCountry = getDailyCountry(pool);
+    resumedDaily = consumeDailyResumeIfValid(countries);
+    if (!resumedDaily) {
+      currentCountry = getDailyCountry(pool);
+    }
   }
 
   shareSnapshot = null;
   hideShareRow();
+  hidePracticeResultPanel();
+  hidePracticeCycleToast();
+  setPracticePlaySurfaceVisible(true);
 
   clearFeedbackAnswerComment();
   renderFlagImage(currentCountry);
   updateAttemptsDisplay();
-  clearHints();
-
-  const guessInput = document.getElementById("guess-input");
-  const shareGameBtn = document.getElementById("share-btn-game");
-  if (shareGameBtn) {
-    shareGameBtn.onclick = () => openShareDialog();
+  if (!resumedDaily) clearHints();
+  const feedback = document.getElementById("feedback");
+  if (feedback) {
+    feedback.textContent = "";
+    feedback.className = "";
   }
-  document.getElementById("submit-btn").addEventListener("click", handleGuess);
-  guessInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleGuess();
-    }
-  });
+  if (routeGen !== renderRouteGeneration) return;
+  setInputsDisabled(false);
 }
 
-init().catch((err) => {
-  console.error(err);
-});
+async function renderRoute() {
+  const gen = ++renderRouteGeneration;
+  const route = parseRoute();
+
+  const homeActions = document.getElementById("home-secondary-actions");
+  const picker = document.getElementById("practice-picker-view");
+  const gameZone = document.getElementById("game-zone");
+  const dailyComplete = document.getElementById("daily-complete");
+  const practiceChrome = document.getElementById("practice-play-chrome");
+
+  if (route.type === "practice-picker") {
+    practiceRouteContinentKey = null;
+    clearMidnightCountdown();
+    if (dailyComplete) dailyComplete.hidden = true;
+    if (gameZone) gameZone.hidden = true;
+    if (picker) picker.hidden = false;
+    if (practiceChrome) practiceChrome.hidden = true;
+    if (homeActions) homeActions.hidden = true;
+    hidePracticeCycleToast();
+    await ensureCountriesTerrain();
+    if (gen !== renderRouteGeneration) return;
+    renderPracticePickerList();
+    trackPracticeEvent("practice_mode_entered", {});
+    return;
+  }
+
+  if (route.type === "practice-play") {
+    if (!isPracticeRouteKey(route.key)) {
+      if (usesHashRouting()) {
+        window.location.hash = "#/practice";
+      } else {
+        window.history.replaceState({}, "", "/practice");
+        renderRoute().catch((err) => console.error(err));
+      }
+      return;
+    }
+    ensurePracticePlayHistoryStack(route.key);
+    practiceRouteContinentKey = route.key;
+    clearMidnightCountdown();
+    if (dailyComplete) dailyComplete.hidden = true;
+    if (picker) picker.hidden = true;
+    if (gameZone) gameZone.hidden = false;
+    if (practiceChrome) practiceChrome.hidden = false;
+    if (homeActions) homeActions.hidden = true;
+    await ensureCountriesTerrain();
+    if (gen !== renderRouteGeneration) return;
+    hideShareRow();
+    hidePracticeResultPanel();
+    setPracticeChromeLabel(route.key);
+    startPracticeRoundFromRoute(route.key);
+    return;
+  }
+
+  practiceRouteContinentKey = null;
+  hidePracticeCycleToast();
+  if (picker) picker.hidden = true;
+  if (practiceChrome) practiceChrome.hidden = true;
+  if (homeActions) homeActions.hidden = false;
+
+  await startHomeDailyGame(gen);
+}
+
+function bootstrap() {
+  initShareDialog();
+  initHowToPlay();
+  wireGameControlsOnce();
+  window.addEventListener("popstate", () => {
+    renderRoute().catch((err) => console.error(err));
+  });
+  window.addEventListener("hashchange", () => {
+    if (usesHashRouting()) {
+      renderRoute().catch((err) => console.error(err));
+    }
+  });
+  renderRoute().catch((err) => console.error(err));
+}
+
+bootstrap();

@@ -20,6 +20,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ad.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -59,6 +60,7 @@
     "letterCount": 18,
     "flagUrl": "https://flagcdn.com/w640/ae.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -106,6 +108,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/af.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -139,6 +142,7 @@
     "letterCount": 17,
     "flagUrl": "https://flagcdn.com/w640/ag.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -182,6 +186,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/al.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -225,6 +230,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/am.png",
     "continent": "Asia",
+    "subregion": "Caucasus",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -268,6 +274,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/ao.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -313,6 +320,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/ar.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -364,6 +372,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/at.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -397,6 +406,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/au.png",
     "continent": "Oceania",
+    "subregion": "Australia and New Zealand",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -442,6 +452,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/az.png",
     "continent": "Europe",
+    "subregion": "Caucasus",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -483,6 +494,7 @@
     "letterCount": 20,
     "flagUrl": "https://flagcdn.com/w640/ba.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -516,6 +528,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/bb.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -555,6 +568,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/bd.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -598,6 +612,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/be.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -645,6 +660,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/bf.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -690,6 +706,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/bg.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -723,6 +740,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/bh.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -764,6 +782,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/bi.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -807,6 +826,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/bj.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -844,6 +864,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/bn.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -889,6 +910,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/bo.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -944,6 +966,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/br.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -977,6 +1000,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/bs.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -1016,6 +1040,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/bt.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -1059,6 +1084,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/bw.png",
     "continent": "Africa",
+    "subregion": "Southern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -1104,6 +1130,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/by.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -1143,6 +1170,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/bz.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -1180,6 +1208,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/ca.png",
     "continent": "North America",
+    "subregion": "Northern America",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -1233,6 +1262,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/cd.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -1280,6 +1310,7 @@
     "letterCount": 22,
     "flagUrl": "https://flagcdn.com/w640/cf.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -1325,6 +1356,7 @@
     "letterCount": 18,
     "flagUrl": "https://flagcdn.com/w640/cg.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -1370,6 +1402,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/ch.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -1415,6 +1448,7 @@
     "letterCount": 12,
     "flagUrl": "https://flagcdn.com/w640/ci.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -1456,6 +1490,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/cl.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -1503,6 +1538,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/cm.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -1570,6 +1606,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/cn.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -1615,6 +1652,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/co.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -1654,6 +1692,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/cr.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -1687,6 +1726,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/cu.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -1720,6 +1760,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/cv.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -1753,6 +1794,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/cy.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -1796,6 +1838,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/cz.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -1849,6 +1892,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/de.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -1890,6 +1934,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/dj.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -1927,6 +1972,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/dk.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -1960,6 +2006,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/dm.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -1997,6 +2044,7 @@
     "letterCount": 17,
     "flagUrl": "https://flagcdn.com/w640/do.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -2046,6 +2094,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/dz.png",
     "continent": "Africa",
+    "subregion": "Northern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -2085,6 +2134,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ec.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -2124,6 +2174,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ee.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -2167,6 +2218,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/eg.png",
     "continent": "Africa",
+    "subregion": "Northern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -2208,6 +2260,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/er.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2253,6 +2306,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/es.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -2300,6 +2354,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/et.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -2341,6 +2396,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/fi.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2374,6 +2430,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/fj.png",
     "continent": "Oceania",
+    "subregion": "Melanesia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2407,6 +2464,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/fm.png",
     "continent": "Oceania",
+    "subregion": "Micronesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -2458,6 +2516,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/fr.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -2499,6 +2558,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ga.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -2536,6 +2596,7 @@
     "letterCount": 13,
     "flagUrl": "https://flagcdn.com/w640/gb.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -2569,6 +2630,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/gd.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -2612,6 +2674,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ge.png",
     "continent": "Asia",
+    "subregion": "Caucasus",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2653,6 +2716,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/gh.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -2686,6 +2750,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/gl.png",
     "continent": "North America",
+    "subregion": "Northern America",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -2723,6 +2788,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/gm.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2770,6 +2836,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/gn.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -2809,6 +2876,7 @@
     "letterCount": 16,
     "flagUrl": "https://flagcdn.com/w640/gq.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2852,6 +2920,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/gr.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -2895,6 +2964,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/gt.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -2934,6 +3004,7 @@
     "letterCount": 13,
     "flagUrl": "https://flagcdn.com/w640/gw.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -2975,6 +3046,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/gy.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -3012,6 +3084,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/hk.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -3053,6 +3126,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/hn.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -3098,6 +3172,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/hr.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -3135,6 +3210,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ht.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -3184,6 +3260,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/hu.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -3225,6 +3302,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/id.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -3258,6 +3336,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ie.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -3303,6 +3382,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/il.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -3350,6 +3430,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/in.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -3397,6 +3478,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/iq.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -3446,6 +3528,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/ir.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -3479,6 +3562,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/is.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -3526,6 +3610,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/it.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -3559,6 +3644,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/jm.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -3604,6 +3690,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/jo.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -3637,6 +3724,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/jp.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -3678,6 +3766,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ke.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -3721,6 +3810,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/kg.png",
     "continent": "Asia",
+    "subregion": "Central Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -3762,6 +3852,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/kh.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -3795,6 +3886,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/ki.png",
     "continent": "Oceania",
+    "subregion": "Micronesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -3828,6 +3920,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/km.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -3861,6 +3954,7 @@
     "letterCount": 18,
     "flagUrl": "https://flagcdn.com/w640/kn.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -3902,6 +3996,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/kp.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -3939,6 +4034,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/kr.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -3978,6 +4074,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/kw.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4023,6 +4120,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/kz.png",
     "continent": "Asia",
+    "subregion": "Central Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -4068,6 +4166,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/la.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -4107,6 +4206,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/lb.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4140,6 +4240,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/lc.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -4179,6 +4280,7 @@
     "letterCount": 13,
     "flagUrl": "https://flagcdn.com/w640/li.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -4212,6 +4314,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/lk.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -4253,6 +4356,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/lr.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4290,6 +4394,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ls.png",
     "continent": "Africa",
+    "subregion": "Southern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4333,6 +4438,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/lt.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -4374,6 +4480,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/lu.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -4417,6 +4524,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/lv.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -4464,6 +4572,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ly.png",
     "continent": "Africa",
+    "subregion": "Northern Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -4505,6 +4614,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ma.png",
     "continent": "Africa",
+    "subregion": "Northern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -4542,6 +4652,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/mc.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -4577,6 +4688,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/md.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4622,6 +4734,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/me.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4655,6 +4768,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/mg.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -4688,6 +4802,7 @@
     "letterCount": 15,
     "flagUrl": "https://flagcdn.com/w640/mh.png",
     "continent": "Oceania",
+    "subregion": "Micronesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -4733,6 +4848,7 @@
     "letterCount": 14,
     "flagUrl": "https://flagcdn.com/w640/mk.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4782,6 +4898,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/ml.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -4827,6 +4944,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/mm.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -4866,6 +4984,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/mn.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4909,6 +5028,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/mr.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -4942,6 +5062,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/mt.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -4975,6 +5096,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/mu.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -5012,6 +5134,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/mv.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -5053,6 +5176,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/mw.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -5094,6 +5218,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/mx.png",
     "continent": "North America",
+    "subregion": "Northern America",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5135,6 +5260,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/my.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5182,6 +5308,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/mz.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5225,6 +5352,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/na.png",
     "continent": "Africa",
+    "subregion": "Southern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5274,6 +5402,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ne.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -5317,6 +5446,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ng.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -5352,6 +5482,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/ni.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -5391,6 +5522,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/nl.png",
     "continent": "Europe",
+    "subregion": "Western Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -5432,6 +5564,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/no.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5471,6 +5604,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/np.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5504,6 +5638,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/nr.png",
     "continent": "Oceania",
+    "subregion": "Micronesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -5537,6 +5672,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/nz.png",
     "continent": "Oceania",
+    "subregion": "Australia and New Zealand",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5578,6 +5714,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/om.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5617,6 +5754,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/pa.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5662,6 +5800,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/pe.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5699,6 +5838,7 @@
     "letterCount": 14,
     "flagUrl": "https://flagcdn.com/w640/pg.png",
     "continent": "Oceania",
+    "subregion": "Melanesia",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -5732,6 +5872,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/ph.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5775,6 +5916,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/pk.png",
     "continent": "Asia",
+    "subregion": "South Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -5824,6 +5966,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/pl.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -5853,6 +5996,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/pr.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5894,6 +6038,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/ps.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -5931,6 +6076,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/pt.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -5964,6 +6110,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/pw.png",
     "continent": "Oceania",
+    "subregion": "Micronesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -6005,6 +6152,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/py.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6042,6 +6190,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/qa.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6087,6 +6236,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ro.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6138,6 +6288,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/rs.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -6201,6 +6352,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/ru.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -6244,6 +6396,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/rw.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -6293,6 +6446,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/sa.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -6326,6 +6480,7 @@
     "letterCount": 14,
     "flagUrl": "https://flagcdn.com/w640/sb.png",
     "continent": "Oceania",
+    "subregion": "Melanesia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6359,6 +6514,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/sc.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -6408,6 +6564,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/sd.png",
     "continent": "Africa",
+    "subregion": "Northern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -6447,6 +6604,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/se.png",
     "continent": "Europe",
+    "subregion": "Northern Europe",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6480,6 +6638,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/sg.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6523,6 +6682,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/si.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6568,6 +6728,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/sk.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6607,6 +6768,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/sl.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6644,6 +6806,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/sm.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -6689,6 +6852,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/sn.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6730,6 +6894,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/so.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6771,6 +6936,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/sr.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6818,6 +6984,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/ss.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6851,6 +7018,7 @@
     "letterCount": 18,
     "flagUrl": "https://flagcdn.com/w640/st.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -6890,6 +7058,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/sv.png",
     "continent": "North America",
+    "subregion": "Central America",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -6935,6 +7104,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/sy.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -6974,6 +7144,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/sz.png",
     "continent": "Africa",
+    "subregion": "Southern Africa",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -7021,6 +7192,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/td.png",
     "continent": "Africa",
+    "subregion": "Middle Africa",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -7062,6 +7234,7 @@
     "letterCount": 4,
     "flagUrl": "https://flagcdn.com/w640/tg.png",
     "continent": "Africa",
+    "subregion": "Western Africa",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -7105,6 +7278,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/th.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -7148,6 +7322,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/tj.png",
     "continent": "Asia",
+    "subregion": "Central Asia",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -7185,6 +7360,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/tl.png",
     "continent": "Oceania",
+    "subregion": "Melanesia",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -7228,6 +7404,7 @@
     "letterCount": 12,
     "flagUrl": "https://flagcdn.com/w640/tm.png",
     "continent": "Asia",
+    "subregion": "Central Asia",
     "difficulty": 3,
     "tier": "archive",
     "palette": [
@@ -7267,6 +7444,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/tn.png",
     "continent": "Africa",
+    "subregion": "Northern Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -7300,6 +7478,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/to.png",
     "continent": "Oceania",
+    "subregion": "Polynesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -7351,6 +7530,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/tr.png",
     "continent": "Europe",
+    "subregion": "Western Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -7384,6 +7564,7 @@
     "letterCount": 17,
     "flagUrl": "https://flagcdn.com/w640/tt.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -7417,6 +7598,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/tv.png",
     "continent": "Oceania",
+    "subregion": "Polynesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -7450,6 +7632,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/tw.png",
     "continent": "Asia",
+    "subregion": "East Asia",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -7501,6 +7684,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/tz.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -7550,6 +7734,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/ua.png",
     "continent": "Europe",
+    "subregion": "Eastern Europe",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -7591,6 +7776,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/ug.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -7630,6 +7816,7 @@
     "letterCount": 12,
     "flagUrl": "https://flagcdn.com/w640/us.png",
     "continent": "North America",
+    "subregion": "Northern America",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -7669,6 +7856,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/uy.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -7714,6 +7902,7 @@
     "letterCount": 10,
     "flagUrl": "https://flagcdn.com/w640/uz.png",
     "continent": "Asia",
+    "subregion": "Central Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -7751,6 +7940,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/va.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -7784,6 +7974,7 @@
     "letterCount": 28,
     "flagUrl": "https://flagcdn.com/w640/vc.png",
     "continent": "North America",
+    "subregion": "Caribbean",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -7825,6 +8016,7 @@
     "letterCount": 9,
     "flagUrl": "https://flagcdn.com/w640/ve.png",
     "continent": "South America",
+    "subregion": "South America",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -7866,6 +8058,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/vn.png",
     "continent": "Asia",
+    "subregion": "Southeast Asia",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -7899,6 +8092,7 @@
     "letterCount": 7,
     "flagUrl": "https://flagcdn.com/w640/vu.png",
     "continent": "Oceania",
+    "subregion": "Melanesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -7932,6 +8126,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ws.png",
     "continent": "Oceania",
+    "subregion": "Polynesia",
     "difficulty": 5,
     "tier": "archive",
     "palette": [
@@ -7975,6 +8170,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/xk.png",
     "continent": "Europe",
+    "subregion": "Southern Europe",
     "difficulty": 4,
     "tier": "archive",
     "palette": [
@@ -8014,6 +8210,7 @@
     "letterCount": 5,
     "flagUrl": "https://flagcdn.com/w640/ye.png",
     "continent": "Asia",
+    "subregion": "Western Asia",
     "difficulty": 1,
     "tier": "daily",
     "palette": [
@@ -8061,6 +8258,7 @@
     "letterCount": 11,
     "flagUrl": "https://flagcdn.com/w640/za.png",
     "continent": "Africa",
+    "subregion": "Southern Africa",
     "difficulty": 2,
     "tier": "daily",
     "palette": [
@@ -8112,6 +8310,7 @@
     "letterCount": 6,
     "flagUrl": "https://flagcdn.com/w640/zm.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "daily",
     "palette": [
@@ -8155,6 +8354,7 @@
     "letterCount": 8,
     "flagUrl": "https://flagcdn.com/w640/zw.png",
     "continent": "Africa",
+    "subregion": "Eastern Africa",
     "difficulty": 3,
     "tier": "archive",
     "palette": [

@@ -2,8 +2,8 @@
   "name": "flaglette",
   "private": true,
   "scripts": {
-    "start": "serve -l 3000 .",
-    "dev": "serve -l 3000 .",
+    "start": "serve -l 3000 -s .",
+    "dev": "serve -l 3000 -s .",
     "prepare:og": "node scripts/resolve-og.mjs",
     "sync:countries": "node scripts/sync-countries-embedded.mjs",
     "generate:countries": "node scripts/generate-countries-database.mjs",

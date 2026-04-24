@@ -22,6 +22,7 @@ export interface Country {
   letterCount: number;
   flagUrl: string;
   continent: string;
+  subregion: string;
   difficulty: number;
   tier: "daily" | "archive";
   palette: CountryPaletteBand[];
