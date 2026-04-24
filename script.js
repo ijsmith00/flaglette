@@ -38,6 +38,7 @@ const PRACTICE_PICKER_ROWS = [
 ];
 
 let practiceCycleToastTimerId = null;
+let dailyHintsToggleWired = false;
 
 const SESSION_PRACTICE_FROM_PICKER = "fl_pr_play_from_picker";
 
@@ -308,6 +309,12 @@ function setPracticePlaySurfaceVisible(visible) {
   const hints = document.getElementById("hints");
   const attemptsEl = document.getElementById("attempts");
   const feedbackBlock = document.getElementById("feedback-block");
+  const dailyHintsToggle = document.getElementById("daily-hints-toggle");
+  if (dailyHintsToggle) {
+    dailyHintsToggle.hidden = true;
+    dailyHintsToggle.setAttribute("aria-expanded", "false");
+    dailyHintsToggle.textContent = "▶ Show hints";
+  }
   const hidden = !visible;
   if (guessRow) guessRow.hidden = hidden;
   if (hints) hints.hidden = hidden;
@@ -632,10 +639,43 @@ function generateShareText() {
   return getShareableGameResultText();
 }
 
+function wireDailyHintsToggleOnce() {
+  if (dailyHintsToggleWired) return;
+  const toggle = document.getElementById("daily-hints-toggle");
+  if (!toggle) return;
+  dailyHintsToggleWired = true;
+  toggle.addEventListener("click", () => {
+    const hints = document.getElementById("hints");
+    if (!hints) return;
+    hints.hidden = !hints.hidden;
+    const expanded = !hints.hidden;
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.textContent = expanded ? "▼ Hide hints" : "▶ Show hints";
+  });
+}
+
+/** Daily end only: collapse hints behind a toggle. No-op for practice / legacy ?play=. */
+function showDailyHintsCollapsedAfterEnd() {
+  if (practiceModeCode || practiceRouteContinentKey) return;
+  const toggle = document.getElementById("daily-hints-toggle");
+  const hints = document.getElementById("hints");
+  if (!toggle || !hints) return;
+  hints.hidden = true;
+  toggle.hidden = false;
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-controls", "hints");
+  toggle.textContent = "▶ Show hints";
+  wireDailyHintsToggleOnce();
+}
+
 /** Show inline share row right after the game ends */
 function showShareRow() {
   const row = document.getElementById("share-row");
   if (row) row.hidden = false;
+  if (!practiceModeCode && !practiceRouteContinentKey) {
+    showGameEndNextPuzzleCountdown();
+    showDailyHintsCollapsedAfterEnd();
+  }
 }
 
 /** Hide inline share row (e.g. when starting a new round) */
@@ -836,11 +876,22 @@ function msUntilNextLocalMidnight() {
 
 let midnightCountdownTimerId = null;
 
-/** Clear midnight countdown interval on complete screen */
-function clearMidnightCountdown() {
+function stopMidnightCountdownInterval() {
   if (midnightCountdownTimerId != null) {
     clearInterval(midnightCountdownTimerId);
     midnightCountdownTimerId = null;
+  }
+}
+
+/** Stop timer and hide in-game “next puzzle” line (daily complete panel uses its own elements). */
+function clearMidnightCountdown() {
+  stopMidnightCountdownInterval();
+  const wrap = document.getElementById("game-end-countdown-wrap");
+  if (wrap) wrap.hidden = true;
+  const gameNote = document.getElementById("game-end-countdown-note");
+  if (gameNote) {
+    gameNote.textContent = "";
+    gameNote.hidden = true;
   }
 }
 
@@ -853,28 +904,47 @@ function formatCountdownHMS(totalSeconds) {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 }
 
-/** Complete panel: countdown to next midnight */
+/** Countdown to next local midnight (#daily-countdown and/or #game-end-countdown-value). */
 function startMidnightCountdown() {
-  clearMidnightCountdown();
-  const el = document.getElementById("daily-countdown");
+  stopMidnightCountdownInterval();
+  const dailyEl = document.getElementById("daily-countdown");
+  const gameClock = document.getElementById("game-end-countdown-value");
   const note = document.getElementById("daily-midnight-note");
-  if (!el) return;
+  const gameNote = document.getElementById("game-end-countdown-note");
+  const clocks = [dailyEl, gameClock].filter(Boolean);
+  if (clocks.length === 0) return;
   const tick = () => {
     const ms = msUntilNextLocalMidnight();
     if (ms <= 0) {
-      el.textContent = "00:00:00";
+      const zero = "00:00:00";
+      for (const el of clocks) el.textContent = zero;
       if (note) {
-        note.textContent =
-          "Refresh the page to play the new daily puzzle.";
+        note.textContent = "Refresh the page to play the new daily puzzle.";
         note.hidden = false;
       }
-      clearMidnightCountdown();
+      if (gameNote) {
+        gameNote.textContent = "Refresh the page to play the new daily puzzle.";
+        gameNote.hidden = false;
+      }
+      stopMidnightCountdownInterval();
       return;
     }
-    el.textContent = formatCountdownHMS(ms / 1000);
+    const text = formatCountdownHMS(ms / 1000);
+    for (const el of clocks) el.textContent = text;
   };
   tick();
   midnightCountdownTimerId = setInterval(tick, 1000);
+}
+
+function showGameEndNextPuzzleCountdown() {
+  const wrap = document.getElementById("game-end-countdown-wrap");
+  if (wrap) wrap.hidden = false;
+  const gameNote = document.getElementById("game-end-countdown-note");
+  if (gameNote) {
+    gameNote.textContent = "";
+    gameNote.hidden = true;
+  }
+  startMidnightCountdown();
 }
 
 /** Save progress for today’s key on win/loss (attempts, hints) */
@@ -957,6 +1027,7 @@ function showDailyCompleteScreen(savedRaw) {
     (document.getElementById("practice-picker-view").hidden = true);
   document.getElementById("practice-play-chrome") &&
     (document.getElementById("practice-play-chrome").hidden = true);
+  clearMidnightCountdown();
   startMidnightCountdown();
 }
 
@@ -1170,6 +1241,17 @@ async function loadTerrainHints() {
   }
 }
 
+function shouldOpenHowtoFromQuery() {
+  try {
+    const v = new URLSearchParams(window.location.search).get("howto");
+    if (!v || typeof v !== "string") return false;
+    const t = v.trim().toLowerCase();
+    return t === "1" || t === "true" || t === "open";
+  } catch (_) {
+    return false;
+  }
+}
+
 function initHowToPlay() {
   const dlg = document.getElementById("howto-dialog");
   const openBtn = document.getElementById("howto-open-btn");
@@ -1189,6 +1271,20 @@ function initHowToPlay() {
   dlg.addEventListener("click", (e) => {
     if (e.target === dlg) close();
   });
+  if (
+    shouldOpenHowtoFromQuery() &&
+    !getPracticeModeCodeFromUrl() &&
+    parseRoute().type === "home" &&
+    typeof dlg.showModal === "function"
+  ) {
+    dlg.showModal();
+    try {
+      localStorage.setItem(HOWTO_STORAGE_KEY, "1");
+    } catch (_) {
+      /* noop */
+    }
+    return;
+  }
   try {
     if (
       !getPracticeModeCodeFromUrl() &&
@@ -1323,6 +1419,7 @@ async function startHomeDailyGame(routeGen) {
 
   shareSnapshot = null;
   hideShareRow();
+  clearMidnightCountdown();
   hidePracticeResultPanel();
   hidePracticeCycleToast();
   setPracticePlaySurfaceVisible(true);

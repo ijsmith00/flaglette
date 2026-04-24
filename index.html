@@ -8262,6 +8262,16 @@
       <input type="text" id="guess-input" placeholder="Enter a country name" autocomplete="off" inputmode="text" lang="en">
       <button type="button" id="submit-btn">Guess</button>
     </div>
+    <button
+      type="button"
+      id="daily-hints-toggle"
+      class="daily-hints-toggle"
+      hidden
+      aria-expanded="false"
+      aria-controls="hints"
+    >
+      ▶ Show hints
+    </button>
     <div id="hints" aria-live="polite"></div>
     <div id="attempts">Guesses: 0 / 6</div>
     <div class="feedback-block" id="feedback-block">
@@ -8284,6 +8294,10 @@
     <div id="share-row" class="share-row" hidden>
       <button type="button" class="share-btn" id="share-btn-game">Share result</button>
     </div>
+    <div id="game-end-countdown-wrap" class="game-end-countdown-wrap" hidden>
+      <p class="game-end-countdown" lang="en">Next puzzle in <span id="game-end-countdown-value">--:--:--</span></p>
+      <p id="game-end-countdown-note" class="game-end-countdown__note" hidden lang="en"></p>
+    </div>
     </div>
   </main>
   <dialog id="howto-dialog" class="howto-dialog" aria-labelledby="howto-dialog-title">
@@ -8291,12 +8305,13 @@
       <h2 id="howto-dialog-title" class="howto-dialog__title">How to play</h2>
       <ol class="howto-dialog__list">
         <li>Guess the country from <strong>its flag</strong> (image). Up to <strong>6</strong> guesses per calendar day.</li>
-        <li><strong>Round 1</strong> is the flag image only—no text hints yet. After each <em>wrong</em> guess, the next hint unlocks in order: continent → neighboring countries → population → first letter → name length (five hints total before the last guess).</li>
+        <li><strong>Round 1</strong> is the flag image only—no text hints yet. After each <em>wrong</em> guess, the next hint unlocks in order: continent → neighboring countries → <strong>terrain</strong> (landscape / geographic traits) → first letter → name length (five hints total before the last guess).</li>
         <li>Hints stay on screen; type the country name in <strong>English</strong>.</li>
+        <li><strong>Practice</strong> (from the home screen): choose a <strong>continent</strong> or <strong>Random</strong> for a shuffled queue—Random covers on the order of <strong>200</strong> countries. Same six guesses and the same hint order as the daily puzzle, but <strong>no once-a-day limit</strong>: you can play round after round, and results <strong>do not</strong> count toward or replace today’s daily save.</li>
       </ol>
       <div class="howto-dialog__example" role="note">
         <p class="howto-dialog__example-title">Example</p>
-        <p class="howto-dialog__example-body">You see the flag → guess “Italy” → wrong → continent appears → guess again → wrong → neighbors appear → guess again → wrong → population appears → … until you solve or use all six guesses.</p>
+        <p class="howto-dialog__example-body">You see the flag → guess “Italy” → wrong → continent appears → guess again → wrong → neighbors appear → guess again → wrong → a terrain hint appears → … until you solve or use all six guesses.</p>
       </div>
       <button type="button" class="howto-dialog__close" id="howto-close-btn">Got it</button>
     </div>
