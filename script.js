@@ -1484,13 +1484,7 @@ function initHowToPlay() {
       localStorage.setItem(HOWTO_STORAGE_KEY, "1");
     }
   } catch (_) {
-    if (
-      !getPracticeModeCodeFromUrl() &&
-      parseRoute().type === "home" &&
-      typeof dlg.showModal === "function"
-    ) {
-      dlg.showModal();
-    }
+    /* localStorage unavailable: skip auto-open; manual `?` button still works */
   }
 }
 

@@ -157,6 +157,18 @@ main {
   text-align: left;
 }
 
+.howto-dialog__inner > p {
+  max-width: 32ch;
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.howto-dialog__inner > p:last-of-type {
+  margin-bottom: 0;
+}
+
 .howto-dialog__title {
   font-size: 1.2rem;
   font-weight: 800;
@@ -217,7 +229,7 @@ main {
 }
 
 .howto-dialog__close {
-  margin-top: 1rem;
+  margin-top: 1.05rem;
   width: 100%;
   min-height: 44px;
   border-radius: 10px;
