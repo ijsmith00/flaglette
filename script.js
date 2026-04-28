@@ -10,6 +10,7 @@ import {
   resetStats,
   saveStats,
 } from "./lib/stats.js";
+import { trackEvent } from "./lib/analytics.js";
 
 let currentCountry = null;
 let attempts = 0;
@@ -51,22 +52,8 @@ let statsAutoOpenTimerId = null;
 
 const SESSION_PRACTICE_FROM_PICKER = "fl_pr_play_from_picker";
 
-/** Google Analytics (gtag) — optional; matches index.html GA snippet. */
-function trackAnalyticsEvent(eventName, params) {
-  try {
-    if (
-      typeof window !== "undefined" &&
-      typeof window.gtag === "function"
-    ) {
-      window.gtag("event", eventName, params || {});
-    }
-  } catch (_) {
-    /* ignore */
-  }
-}
-
 function trackPracticeEvent(eventName, params) {
-  trackAnalyticsEvent(eventName, params);
+  trackEvent(eventName, params);
 }
 
 function markPracticePlayEnteredFromPicker() {
@@ -411,6 +398,7 @@ function startPracticeRoundFromRoute(routeKey) {
   setPracticePlaySurfaceVisible(true);
   resetRoundStateForNewPuzzle();
   currentCountry = country;
+  trackEvent("game_started", { mode: "practice" });
   if (isFreshCycle) {
     showPracticeFreshCycleToast(routeKey, list.length);
   } else {
@@ -445,7 +433,7 @@ function finishPracticeRound(won) {
   if (tilEl) tilEl.textContent = tilRaw.trim() || "—";
   if (result) result.hidden = false;
   const guesses = won ? attempts + 1 : maxAttempts;
-  trackPracticeEvent("practice_round_completed", {
+  trackEvent("practice_completed", {
     continent: practiceRouteContinentKey,
     won,
     guesses,
@@ -721,7 +709,7 @@ function openStatsDialog(trigger = "manual") {
   if (!dlg || typeof dlg.showModal !== "function") return;
   renderStatsDialogBody();
   const stats = loadStats();
-  trackAnalyticsEvent("stats_modal_opened", {
+  trackEvent("stats_modal_opened", {
     trigger,
     current_streak: stats.currentStreak ?? 0,
   });
@@ -800,6 +788,29 @@ function initDevHelpers() {
   };
 }
 
+function injectSearchConsoleVerificationMeta() {
+  let token = "";
+  try {
+    if (
+      typeof process !== "undefined" &&
+      process.env &&
+      typeof process.env.NEXT_PUBLIC_SEARCH_CONSOLE_TOKEN === "string"
+    ) {
+      token = process.env.NEXT_PUBLIC_SEARCH_CONSOLE_TOKEN.trim();
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  if (!token) return;
+  if (typeof document === "undefined") return;
+  const existing = document.querySelector('meta[name="google-site-verification"]');
+  if (existing) return;
+  const meta = document.createElement("meta");
+  meta.setAttribute("name", "google-site-verification");
+  meta.setAttribute("content", token);
+  document.head.appendChild(meta);
+}
+
 /** Show inline share row right after the game ends */
 function showShareRow() {
   const row = document.getElementById("share-row");
@@ -853,7 +864,7 @@ function openShareDialog() {
   if (!text.trim()) return;
   const snap = shareSnapshot || loadShareSnapshotFromStorage();
   const stats = loadStats();
-  trackAnalyticsEvent("share_clicked", {
+  trackEvent("share_clicked", {
     result: snap?.won ? "win" : "loss",
     guesses: snap?.attempts ?? 0,
     current_streak: stats.currentStreak ?? 0,
@@ -1142,14 +1153,14 @@ function recordDailyResultForStats(won) {
       hintsUsed,
       gameStartedAt: typeof gameStartedAt === "number" ? gameStartedAt : undefined,
     });
-    trackAnalyticsEvent("game_completed", {
+    trackEvent("game_completed", {
       won,
       guesses: totalAttempts,
       hints_used: hintsUsed,
       current_streak: out?.stats?.currentStreak ?? 0,
     });
     if (out?.newMilestone != null) {
-      trackAnalyticsEvent("streak_milestone", {
+      trackEvent("streak_milestone", {
         streak_days: out.newMilestone,
       });
     }
@@ -1329,17 +1340,22 @@ function handleGuess() {
   updateAttemptsDisplay();
 
   if (attempts === 1) {
+    trackEvent("hint_revealed", { hint_number: 1 });
     appendHintLine(`Continent: ${currentCountry.continent ?? "—"}`);
   } else if (attempts === 2) {
+    trackEvent("hint_revealed", { hint_number: 2 });
     appendHintLine(`Neighboring countries: ${formatNeighborsHint(currentCountry)}`);
   } else if (attempts === 3) {
+    trackEvent("hint_revealed", { hint_number: 3 });
     const terrainRaw = terrainHintsByCode[currentCountry.code];
     const terrain =
       typeof terrainRaw === "string" ? terrainRaw.trim() : "";
     appendHintLine(terrain ? `Terrain: ${terrain}` : "Terrain: —");
   } else if (attempts === 4) {
+    trackEvent("hint_revealed", { hint_number: 4 });
     appendHintLine(`Starts with: ${currentCountry.first_letter_en}`);
   } else if (attempts === 5) {
+    trackEvent("hint_revealed", { hint_number: 5 });
     appendHintLine(
       `Name length (letters): ${letterCountFromName(currentCountry.name_en)}`
     );
@@ -1598,6 +1614,9 @@ async function startHomeDailyGame(routeGen) {
   if (!resumedDaily || typeof gameStartedAt !== "number") {
     gameStartedAt = Date.now();
   }
+  if (!resumedDaily && !practiceModeCode && !practiceRouteContinentKey) {
+    trackEvent("game_started", { mode: "daily" });
+  }
 
   clearFeedbackAnswerComment();
   renderFlagImage(currentCountry);
@@ -1676,6 +1695,7 @@ async function renderRoute() {
 }
 
 function bootstrap() {
+  injectSearchConsoleVerificationMeta();
   initShareDialog();
   initStatsDialog();
   initHowToPlay();
