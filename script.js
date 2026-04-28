@@ -4,10 +4,17 @@ import {
   getQueueProgress,
   isPracticeRouteKey,
 } from "./lib/practiceQueue.js";
+import {
+  loadStats,
+  recordGameResult,
+  resetStats,
+  saveStats,
+} from "./lib/stats.js";
 
 let currentCountry = null;
 let attempts = 0;
 const maxAttempts = 6;
+let gameStartedAt = null;
 const SAVE_SCHEMA_VERSION = 5;
 /** Share body line 3 — no protocol (spec). Link fields use SHARE_SITE_LINK_URL. */
 const SHARE_SITE_TEXT_LINE = "flaglette.com";
@@ -39,18 +46,27 @@ const PRACTICE_PICKER_ROWS = [
 
 let practiceCycleToastTimerId = null;
 let dailyHintsToggleWired = false;
+let statsDialogInited = false;
+let statsAutoOpenTimerId = null;
 
 const SESSION_PRACTICE_FROM_PICKER = "fl_pr_play_from_picker";
 
 /** Google Analytics (gtag) — optional; matches index.html GA snippet. */
-function trackPracticeEvent(eventName, params) {
+function trackAnalyticsEvent(eventName, params) {
   try {
-    if (typeof window.gtag === "function") {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.gtag === "function"
+    ) {
       window.gtag("event", eventName, params || {});
     }
   } catch (_) {
     /* ignore */
   }
+}
+
+function trackPracticeEvent(eventName, params) {
+  trackAnalyticsEvent(eventName, params);
 }
 
 function markPracticePlayEnteredFromPicker() {
@@ -629,7 +645,16 @@ function getShareableGameResultText() {
   const flagPrefix = getShareFlagEmojiPrefix(snap);
   const line1 = `${flagPrefix}Flaglette #${n} ${totalAttempts}/${maxG} ${resultEmoji}`;
   const line2 = buildShareAttemptPatternLine(snap);
-  const lines = [line1, line2, ""];
+  let streakLine = "";
+  try {
+    const stats = loadStats();
+    if ((stats?.currentStreak ?? 0) >= 2) {
+      streakLine = `🔥 Streak: ${stats.currentStreak}`;
+    }
+  } catch (_) {
+    /* ignore stats load errors in share text */
+  }
+  const lines = streakLine ? [line1, line2, streakLine, ""] : [line1, line2, ""];
   lines.push(SHARE_SITE_TEXT_LINE);
   return lines.join("\n");
 }
@@ -668,6 +693,113 @@ function showDailyHintsCollapsedAfterEnd() {
   wireDailyHintsToggleOnce();
 }
 
+function clearStatsAutoOpenTimer() {
+  if (statsAutoOpenTimerId != null) {
+    clearTimeout(statsAutoOpenTimerId);
+    statsAutoOpenTimerId = null;
+  }
+}
+
+function renderStatsDialogBody() {
+  const body = document.getElementById("stats-dialog-body");
+  if (!body) return;
+  const stats = loadStats();
+  const winRate =
+    stats.totalPlayed > 0
+      ? Math.round((stats.totalWon / stats.totalPlayed) * 100)
+      : null;
+  body.innerHTML = `
+    <div class="stats-kpi"><span class="stats-kpi__label">Played</span><span class="stats-kpi__value">${stats.totalPlayed}</span></div>
+    <div class="stats-kpi"><span class="stats-kpi__label">Won</span><span class="stats-kpi__value">${stats.totalWon}</span></div>
+    <div class="stats-kpi"><span class="stats-kpi__label">Win Rate</span><span class="stats-kpi__value">${winRate == null ? "—" : `${winRate}%`}</span></div>
+    <div class="stats-kpi"><span class="stats-kpi__label">Streak</span><span class="stats-kpi__value stats-kpi__value--streak">${stats.currentStreak}</span></div>
+  `;
+}
+
+function openStatsDialog(trigger = "manual") {
+  const dlg = document.getElementById("stats-dialog");
+  if (!dlg || typeof dlg.showModal !== "function") return;
+  renderStatsDialogBody();
+  const stats = loadStats();
+  trackAnalyticsEvent("stats_modal_opened", {
+    trigger,
+    current_streak: stats.currentStreak ?? 0,
+  });
+  dlg.dataset.trigger = trigger;
+  if (!dlg.open) dlg.showModal();
+}
+
+function scheduleStatsDialogAutoOpen(delayMs = 1200) {
+  clearStatsAutoOpenTimer();
+  statsAutoOpenTimerId = setTimeout(() => {
+    statsAutoOpenTimerId = null;
+    openStatsDialog("auto");
+  }, delayMs);
+}
+
+function initStatsDialog() {
+  if (statsDialogInited) return;
+  const dlg = document.getElementById("stats-dialog");
+  if (!dlg) return;
+  statsDialogInited = true;
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) dlg.close();
+  });
+  document.getElementById("stats-open-btn")?.addEventListener("click", () => {
+    openStatsDialog("manual");
+  });
+  document.getElementById("stats-dialog-close")?.addEventListener("click", () => {
+    dlg.close();
+  });
+}
+
+function isDevelopmentRuntime() {
+  try {
+    if (typeof window === "undefined" || !window.location) return false;
+    const host = window.location.hostname;
+    return (
+      window.location.protocol === "file:" ||
+      host === "localhost" ||
+      host === "127.0.0.1"
+    );
+  } catch (_) {
+    return false;
+  }
+}
+
+function initDevHelpers() {
+  if (!isDevelopmentRuntime()) return;
+  window.__flaglette = {
+    stats: () => loadStats(),
+    reset: () => resetStats(),
+    setStreak: (n) => {
+      const stats = loadStats();
+      const next = Math.max(0, Math.floor(Number(n) || 0));
+      stats.currentStreak = next;
+      stats.maxStreak = Math.max(stats.maxStreak, next);
+      if (!stats.lastPlayedDate) {
+        stats.lastPlayedDate = getLocalDateKeyString();
+      }
+      saveStats(stats);
+      return stats;
+    },
+    fakeYesterday: () => {
+      const stats = loadStats();
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, "0");
+      const dd = String(d.getDate()).padStart(2, "0");
+      stats.lastPlayedDate = `${yyyy}-${mm}-${dd}`;
+      if (!stats.firstPlayedDate) {
+        stats.firstPlayedDate = stats.lastPlayedDate;
+      }
+      saveStats(stats);
+      return stats;
+    },
+  };
+}
+
 /** Show inline share row right after the game ends */
 function showShareRow() {
   const row = document.getElementById("share-row");
@@ -675,6 +807,7 @@ function showShareRow() {
   if (!practiceModeCode && !practiceRouteContinentKey) {
     showGameEndNextPuzzleCountdown();
     showDailyHintsCollapsedAfterEnd();
+    scheduleStatsDialogAutoOpen(1200);
   }
 }
 
@@ -718,6 +851,13 @@ function setShareDialogStatus(message) {
 function openShareDialog() {
   const text = getShareableGameResultText();
   if (!text.trim()) return;
+  const snap = shareSnapshot || loadShareSnapshotFromStorage();
+  const stats = loadStats();
+  trackAnalyticsEvent("share_clicked", {
+    result: snap?.won ? "win" : "loss",
+    guesses: snap?.attempts ?? 0,
+    current_streak: stats.currentStreak ?? 0,
+  });
   const dlg = document.getElementById("share-dialog");
   if (!dlg || typeof dlg.showModal !== "function") {
     const btn =
@@ -989,6 +1129,35 @@ function persistDailyComplete(won) {
   }
 }
 
+function recordDailyResultForStats(won) {
+  if (practiceModeCode || practiceRouteContinentKey) return;
+  try {
+    const totalAttempts = won ? attempts + 1 : maxAttempts;
+    const wrongBeforeEnd = won ? attempts : maxAttempts;
+    const hintsUsed = won ? Math.min(wrongBeforeEnd, 5) : 5;
+    const out = recordGameResult({
+      won,
+      guesses: totalAttempts,
+      countryCode: currentCountry?.code ?? "",
+      hintsUsed,
+      gameStartedAt: typeof gameStartedAt === "number" ? gameStartedAt : undefined,
+    });
+    trackAnalyticsEvent("game_completed", {
+      won,
+      guesses: totalAttempts,
+      hints_used: hintsUsed,
+      current_streak: out?.stats?.currentStreak ?? 0,
+    });
+    if (out?.newMilestone != null) {
+      trackAnalyticsEvent("streak_milestone", {
+        streak_days: out.newMilestone,
+      });
+    }
+  } catch (e) {
+    console.warn("stats record failed", e);
+  }
+}
+
 /** Today’s puzzle already finished — show complete card only */
 function showDailyCompleteScreen(savedRaw) {
   const saved = migrateDailyPayload(savedRaw);
@@ -1029,6 +1198,7 @@ function showDailyCompleteScreen(savedRaw) {
     (document.getElementById("practice-play-chrome").hidden = true);
   clearMidnightCountdown();
   startMidnightCountdown();
+  scheduleStatsDialogAutoOpen(0);
 }
 
 /** Normalize guess string for comparison */
@@ -1148,6 +1318,7 @@ function handleGuess() {
     if (isPathPracticePlay()) {
       finishPracticeRound(true);
     } else {
+      recordDailyResultForStats(true);
       persistDailyComplete(true);
       showShareRow();
     }
@@ -1182,6 +1353,7 @@ function handleGuess() {
     if (isPathPracticePlay()) {
       finishPracticeRound(false);
     } else {
+      recordDailyResultForStats(false);
       persistDailyComplete(false);
       showShareRow();
     }
@@ -1423,6 +1595,9 @@ async function startHomeDailyGame(routeGen) {
   hidePracticeResultPanel();
   hidePracticeCycleToast();
   setPracticePlaySurfaceVisible(true);
+  if (!resumedDaily || typeof gameStartedAt !== "number") {
+    gameStartedAt = Date.now();
+  }
 
   clearFeedbackAnswerComment();
   renderFlagImage(currentCountry);
@@ -1440,6 +1615,7 @@ async function startHomeDailyGame(routeGen) {
 async function renderRoute() {
   const gen = ++renderRouteGeneration;
   const route = parseRoute();
+  clearStatsAutoOpenTimer();
 
   const homeActions = document.getElementById("home-secondary-actions");
   const picker = document.getElementById("practice-picker-view");
@@ -1501,7 +1677,9 @@ async function renderRoute() {
 
 function bootstrap() {
   initShareDialog();
+  initStatsDialog();
   initHowToPlay();
+  initDevHelpers();
   wireGameControlsOnce();
   window.addEventListener("popstate", () => {
     renderRoute().catch((err) => console.error(err));

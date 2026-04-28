@@ -84,6 +84,28 @@ main {
   transform: translateY(-1px);
 }
 
+.stats-btn {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+
+.stats-btn:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.88);
+  transform: translateY(-1px);
+}
+
 .howto-dialog {
   padding: 0;
   border: none;
@@ -831,6 +853,92 @@ main {
 
 .share-dialog__copy:hover {
   color: var(--accent);
+}
+
+.stats-dialog {
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  width: min(24rem, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  background: #1f1f1f;
+  color: var(--text);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.58);
+}
+
+.stats-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.stats-dialog__inner {
+  padding: 1rem;
+}
+
+.stats-dialog__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.stats-dialog__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f5f5f5;
+}
+
+.stats-dialog__close {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #cfcfcf;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.stats-dialog__close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.stats-dialog__body {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.stats-kpi {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  background: #181818;
+  padding: 0.65rem;
+}
+
+.stats-kpi__label {
+  display: block;
+  color: #c8c8c8;
+  font-size: 0.75rem;
+}
+
+.stats-kpi__value {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stats-kpi__value--streak {
+  color: #fbbf24;
 }
 
 .home-secondary-actions {

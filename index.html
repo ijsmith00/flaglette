@@ -8230,6 +8230,7 @@
       <div class="title-block__row">
         <h1 class="app-title"><span class="app-title__flag">Flag</span><span class="app-title__lette">lette</span><span class="title-emoji" aria-hidden="true"> 🌍</span></h1>
         <button type="button" class="howto-btn" id="howto-open-btn" aria-label="How to play" title="How to play">?</button>
+        <button type="button" class="stats-btn" id="stats-open-btn" aria-label="Open statistics" title="Statistics">📊</button>
       </div>
       <p class="tagline">A daily flag puzzle.</p>
       <div class="home-secondary-actions" id="home-secondary-actions">
@@ -8334,6 +8335,15 @@
       </div>
       <p class="share-dialog__status" id="share-dialog-status" role="status" aria-live="polite"></p>
       <button type="button" class="share-dialog__copy" id="share-copy-only">Copy text only</button>
+    </div>
+  </dialog>
+  <dialog id="stats-dialog" class="stats-dialog" aria-labelledby="stats-dialog-title">
+    <div class="stats-dialog__inner">
+      <div class="stats-dialog__top">
+        <h2 id="stats-dialog-title" class="stats-dialog__title">Statistics</h2>
+        <button type="button" class="stats-dialog__close" id="stats-dialog-close" aria-label="Close">×</button>
+      </div>
+      <div id="stats-dialog-body" class="stats-dialog__body"></div>
     </div>
   </dialog>
   <script type="module" src="script.js"></script>
