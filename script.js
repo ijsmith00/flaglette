@@ -19,6 +19,7 @@ let gameStartedAt = null;
 const SAVE_SCHEMA_VERSION = 5;
 /** Share body line 3 — no protocol (spec). Link fields use SHARE_SITE_LINK_URL. */
 const SHARE_SITE_TEXT_LINE = "flaglette.com";
+const SHARE_HASHTAG_LINE = "#flaglette";
 const SHARE_SITE_LINK_URL = "https://flaglette.com/";
 const HOWTO_STORAGE_KEY = "flaglette_howto_seen_v2";
 let isGameOver = false;
@@ -644,6 +645,7 @@ function getShareableGameResultText() {
   }
   const lines = streakLine ? [line1, line2, streakLine, ""] : [line1, line2, ""];
   lines.push(SHARE_SITE_TEXT_LINE);
+  lines.push(SHARE_HASHTAG_LINE);
   return lines.join("\n");
 }
 
